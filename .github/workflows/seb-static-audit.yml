@@ -78,3 +78,65 @@ jobs:
           path: audit-output/
           if-no-files-found: warn
           retention-days: 7
+
+  windows-artifact-provenance:
+    name: Hash files and inspect Authenticode signatures without execution
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out investigation branch
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+
+      - name: Record hashes and signature metadata
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $root = $env:GITHUB_WORKSPACE
+          $outDir = Join-Path $root 'audit-output'
+          New-Item -ItemType Directory -Force -Path $outDir | Out-Null
+          $targets = @(
+            'SecureExamBrowser.exe',
+            'SebWindowsServiceWCF.exe',
+            'SEBWindowsServiceContracts.dll',
+            'hirepro-chromium-installer.exe'
+          )
+          $results = foreach ($relativePath in $targets) {
+            $fullPath = Join-Path $root $relativePath
+            if (-not (Test-Path -LiteralPath $fullPath -PathType Leaf)) {
+              [pscustomobject]@{ path = $relativePath; error = 'File not found in checkout' }
+              continue
+            }
+            $item = Get-Item -LiteralPath $fullPath
+            $hash = Get-FileHash -LiteralPath $fullPath -Algorithm SHA256
+            $signature = Get-AuthenticodeSignature -LiteralPath $fullPath
+            $signer = $signature.SignerCertificate
+            $timestamp = $signature.TimeStamperCertificate
+            [pscustomobject]@{
+              path = $relativePath
+              bytes = $item.Length
+              sha256 = $hash.Hash.ToLowerInvariant()
+              signatureStatus = $signature.Status.ToString()
+              signatureMessage = $signature.StatusMessage
+              signerSubject = if ($signer) { $signer.Subject } else { $null }
+              signerIssuer = if ($signer) { $signer.Issuer } else { $null }
+              signerThumbprint = if ($signer) { $signer.Thumbprint } else { $null }
+              signerNotBefore = if ($signer) { $signer.NotBefore.ToUniversalTime().ToString('o') } else { $null }
+              signerNotAfter = if ($signer) { $signer.NotAfter.ToUniversalTime().ToString('o') } else { $null }
+              timestampSubject = if ($timestamp) { $timestamp.Subject } else { $null }
+              timestampThumbprint = if ($timestamp) { $timestamp.Thumbprint } else { $null }
+            }
+          }
+          $jsonPath = Join-Path $outDir 'windows-artifact-provenance.json'
+          $results | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $jsonPath -Encoding utf8
+          Get-Content -LiteralPath $jsonPath
+
+      - name: Upload Windows provenance report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-artifact-provenance
+          path: audit-output/windows-artifact-provenance.json
+          if-no-files-found: error
+          retention-days: 7
