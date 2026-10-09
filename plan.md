@@ -3,7 +3,7 @@
 **Updated:** 2026-10-09  
 **Working branch:** redteam/monitoring-audit-2026-10-09  
 **Baseline:** main at branch creation  
-**Status:** Initial reconnaissance completed; artifact verification and controlled tests are next.
+**Status:** Repository reconnaissance and static PE/CLI inventory completed by CI; isolated Windows runtime tests are next.
 
 ## Objective
 Determine, with reproducible evidence, which components of the supplied SecureExamBrowser build observe and enforce exam-session restrictions, how observations become alerts, and whether monitoring gaps exist in the authorized competition environment. A finding must distinguish observed behaviour from inference and unknowns.
@@ -73,5 +73,5 @@ For every suspected control, trace: **signal/source → detector → decision �
 3. Do not infer global stealth from one absent warning. Server telemetry, independent agents, stored evidence and human observation are distinct channels.
 4. Do not modify main; keep investigation notes and permitted test tooling on this branch.
 
-## Initial status
-See findings.md and audit/architecture.md. Initial source review is not runtime validation; the Windows executables have not yet been decompiled or dynamically tested in this workflow.
+## Current status
+See findings.md, audit/static-application-analysis.md and audit/static-service-analysis.md. REA successfully built, passed its fast checks/tests and produced a static inventory of the app, service and contracts DLL. Static inspection is not runtime validation. No Windows runtime or online-platform tests have yet run, and no bypass has been claimed.
