@@ -117,3 +117,6 @@ This branch is for authorized assessment and reproducible detection-gap validati
 
 - [x] Document current published privacy-policy claims separately from unverified full-desktop capture/session-specific telemetry in audit/platform-observations.md and audit/control-map.md.
 - [ ] Only claim actual screen capture if supported by a concrete call path and/or authorized runtime evidence; keep current status unknown.
+
+- [x] Inspect legacy screenshot module and screenshot-related message handler; record as source-level capability with correspondence/activation unknown (F-018).
+- [ ] Resolve legacy XUL-to-package correspondence and any actual screenshot behavior only via authorized runtime/organizer evidence.
