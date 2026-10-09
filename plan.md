@@ -89,3 +89,7 @@ The system-level map is now consolidated in [audit/control-map.md](audit/control
 
 
 For the fastest continuation, see [audit/README.md](audit/README.md), which links the evidence and summarizes the static/provenance results and remaining runtime blockers.
+
+
+## Legacy source/config checkpoint
+A corrected canonical-byte check found 12 selected legacy XUL/config/startup files in exact hash agreement with the signed public SEB MSI. See [audit/legacy-source-package-comparison.md](audit/legacy-source-package-comparison.md). Sample configuration files do not establish the effective per-session configuration; active settings and actual capture/report behavior remain pending an authorized Windows runtime test.
