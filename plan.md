@@ -30,7 +30,7 @@ For every suspected control, trace: **signal/source → detector → decision �
 
 ### WS0 — Preserve and identify the target
 - [x] Record repository object IDs, sizes, raw SHA-256 hashes, assembly versions/MVIDs and PE architecture for the three managed application/service artifacts (audit/artifact-manifest.md).
-- [ ] Verify Authenticode signatures and product/file-version metadata on Windows.
+- [x] Verify Authenticode signature status and raw SHA-256 for the repository GUI, service, contracts DLL and Chromium installer on a Windows CI runner (audit/artifact-manifest.md).\n- [ ] Verify product/file-version metadata and exact installed/runtime file identity in a Windows VM.
 - [ ] Identify launch chain, process tree, command-line config inputs, loaded browser runtime and active configuration.
 - [ ] Preserve original artifacts read-only; conduct experiments against copies/snapshots.
 - Exit criterion: artifact manifest and repeatable clean restore procedure exist.
