@@ -204,3 +204,9 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - Windows CI parsed the script without executing it successfully in run https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37909760671 (the full workflow was still running when this note was written).
 - It reads only target file metadata/hashes/signature status and hashes config files without reading their contents. It masks USERPROFILE/LOCALAPPDATA paths and excludes process arguments, assessment URLs, tokens, logs, screenshots and recordings.
 - Do not ask the user to run it unless local installed-file identity is the necessary next step; current public source/package checks can continue without user actions.
+
+
+## Human observation track — 2026-10-09
+- Added audit/human-observation-protocol.md: a controlled mock-session protocol for measuring observer response and inter-reviewer agreement, keeping software telemetry and human observation separate.
+- Actual observer presence/coverage in the user's session remains unknown. This cannot be inferred from static binary inspection.
+- Do not provide or implement techniques for hiding prohibited conduct from an observer; use pre-approved test events in a mock setup and report missed detections to the organizer.
