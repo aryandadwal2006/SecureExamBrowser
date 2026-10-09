@@ -181,3 +181,11 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 
 ## Navigation
 - Start next session at [audit/README.md](audit/README.md), then review TODO.md, memory.md, findings.md, and audit/test-results.md.
+
+
+## Canonical source/package comparison complete — 2026-10-09
+- Workflow run https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37908852563 completed successfully with both jobs passing.
+- Corrected Windows CI uses `git cat-file blob HEAD:path` bytes to avoid `core.autocrlf`/CRLF working-copy noise.
+- 12 selected legacy XUL/config/startup assets were all exact SHA-256 matches to files inside the current signed public SEB MSI; raw result artifact 11605307704. See audit/legacy-source-package-comparison.md.
+- Configuration profile review is now in audit/config-profile-analysis.md. There are multiple sample configs and the runtime loader merges a custom config over defaults, so active settings for the candidate session remain unknown.
+- Keep screenshots/audio recording, page/navigation telemetry, host window/display monitoring, browser-window screenshot capability and full-desktop pixel capture as distinct evidence questions. Do not claim full-desktop capture or its absence without session evidence.
