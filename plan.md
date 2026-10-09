@@ -114,3 +114,7 @@ The second user-provided inventory has exact hash matches for all 11 Chromium EX
 ## Privileged service assurance
 
 The high-level service endpoint/policy-management review is recorded in [audit/privileged-service-authorization-review.md](audit/privileged-service-authorization-review.md), with test case T-019 in [audit/test-matrix.md](audit/test-matrix.md). This is a defense-in-depth review item, not a confirmed vulnerability. Dynamic validation must be limited to documented, non-destructive operations in an authorized disposable VM.
+
+
+## Current execution gap
+Repository and installed-file provenance checks are complete for all reported files; the latest static package workflow succeeded. The remaining substantive evidence is dynamic behavior: effective config, loaded modules, endpoint authorization, monitor-health events, remote receipt correlation and human-observer coverage. These require an approved disposable Windows VM and mock assessment. See T-001–T-019 in [audit/test-matrix.md](audit/test-matrix.md).
