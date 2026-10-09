@@ -59,3 +59,10 @@ CIL decoding used the opcode definitions in rea-main/src/dotnet/ManagedMemberIns
 A separate REA run inspected the main `SecureExamBrowser.exe` and found multiple process/window/display, clipboard, camera/screen-sharing, executable-integrity, watchdog-health and log-protection subsystems in its managed type inventory. This does not contradict the narrow `IsSebRunning` observation above: the service method is only one component of the overall application.
 
 Do not extrapolate that method to the main GUI executable. See [main application static analysis](static-application-analysis.md). All findings remain static observations pending runtime activation and end-to-end event checks.
+
+
+## Privileged-operation authorization review (open)
+
+The exact-build static inventory shows registry-policy management operations, a service endpoint registration path, and a process-launch helper. Static metadata is insufficient to establish the binding's access-control list, caller authorization, operation reachability, or whether untrusted values can influence process arguments. No exploitability conclusion is supported.
+
+See [privileged-service-authorization-review.md](privileged-service-authorization-review.md) for the defensive validation requirements. Until a maintainer-approved Windows test confirms the endpoint security model, authorization and request reachability are unknown.
