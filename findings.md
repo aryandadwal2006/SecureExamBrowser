@@ -114,37 +114,31 @@ REA static PE/CLI, member/CIL and managed/native-boundary inventory completed fo
 - **Recommendation:** Independently verify publisher/signature and request an official hash or confirmation from the employer/HirePro if provenance is unclear. This observation alone does not show the installer is malicious.
 
 
-## F-014 — Authenticode trust differs across checked-out components
-- **Status:** Observed / provenance review required.
-- **Observation:** The Windows preflight reports `SecureExamBrowser.exe` as `Valid`, signed by `CN=Hirepro Consulting Pvt Ltd`. The checked-out `SebWindowsServiceWCF.exe`, `SEBWindowsServiceContracts.dll` and `hirepro-chromium-installer.exe` return `NotSigned`.
-- **Evidence:** [Windows provenance workflow run](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37904465412), artifact ID 11603138113; full identities in [audit/artifact-manifest.md](audit/artifact-manifest.md).
-- **Confidence:** High for Authenticode status and hashes of the repository checkout inspected by the Windows runner.
-- **Impact:** The GUI executable's valid signature does not extend automatically to its neighboring service, DLL or installer. Their provenance needs separate verification.
-- **Limitation:** Unsigned does not mean malicious, and the repo's large Chromium installer has not been shown to be identical to the candidate's email-linked download.
-- **Next action:** Obtain expected vendor hashes/publishers and verify the files installed on a clean Windows VM. Do not run or patch unsigned components just to test trust.
+## F-014 — Repository component provenance matches the current signed vendor package
+- **Status:** Resolved for repository root files; actual user installation not checked.
+- **Observation:** The main `SecureExamBrowser.exe` is Authenticode-valid and signed by Hirepro Consulting Pvt Ltd. The service EXE, contracts DLL, Chromium bootstrapper and other root-level DLLs are not individually signed. However, a read-only extraction of the currently public signed SEB 2.0.2 MSI showed every repository root-level `.exe` and `.dll` file matches a same-named file inside that package by exact SHA-256.
+- **Evidence:** [Successful Windows component-comparison run](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190); [artifact 11604173812](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190/artifacts/11604173812); [audit/vendor-package-comparison.md](audit/vendor-package-comparison.md).
+- **Confidence:** High for the current public MSI and repository checkout: 39 of 39 root-level EXE/DLLs match; zero mismatches.
+- **Interpretation:** The standalone unsigned status of components is not evidence of tampering by itself; these exact bytes are contained in an authenticated vendor package.
+- **Limitations:** No comparison has been made with the user's installed file hashes or their exact email-linked package.
 
+## F-015 — Bundled Chromium bootstrapper is a component of the signed SEB installer
+- **Status:** Resolved.
+- **Observation:** The repository `hirepro-chromium-installer.exe` is not byte-identical to the separately downloadable `Chromium_1.0.1_signed.msi`, but its exact SHA-256 appears in the file set extracted from the signed SEB 2.0.2 MSI.
+- **Evidence:** [Component comparison artifact](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190/artifacts/11604173812).
+- **Interpretation:** It is a package-contained bootstrapper payload, not an unexplained repository-only binary relative to the inspected MSI. This is not evidence of malware.
 
-## F-015 — Bundled Chromium bootstrapper is distinct from the standalone Chromium MSI but is vendor-package-contained
-- **Status:** Observed / distinction resolved.
-- **Observation:** The repository `hirepro-chromium-installer.exe` is not byte-identical to the separately downloaded `Chromium_1.0.1_signed.msi`; it is, however, an exact SHA-256 match to a file path inside the signed public SEB 2.0.2 MSI.
-- **Evidence:** [Public-package component comparison](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906360710/artifacts/11604692503); [vendor package comparison](audit/vendor-package-comparison.md).
-- **Interpretation:** The different standalone file type/name is explained by its presence as a package-contained component in the signed SEB MSI. This is not evidence of malware.
-- **Limitations:** The current install candidate and the user's local file are not hashed here.
-
-
-
-## F-016 — Current public SEB MSI is signed by the same publisher as the main executable
+## F-016 — Published SEB MSI and main executable have valid HirePro signatures
 - **Status:** Observed.
-- **Observation:** The current public `SecureExamBrowserInstaller_en_2.0.2.msi` (111,493,632 bytes, SHA-256 `ab22021acbfb81e30ff191d57772e616ec4fd971a88016fe6fd972f9cb322f42`) reports Authenticode `Valid` and signer `Hirepro Consulting Pvt Ltd`. The repository's main `SecureExamBrowser.exe` validates under the same signer thumbprint.
-- **Evidence:** [Windows comparison run](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906017253); [comparison report](audit/vendor-package-comparison.md).
-- **Confidence:** High for those exact downloaded/repository files.
-- **Limitations:** The current installer has not been installed, the internal file manifest has not yet been compared, and the user's candidate-specific download is unverified.
+- **Observation:** The current public `SecureExamBrowserInstaller_en_2.0.2.msi` (SHA-256 `ab22021acbfb81e30ff191d57772e616ec4fd971a88016fe6fd972f9cb322f42`) is Authenticode-valid and signed by Hirepro Consulting Pvt Ltd. The repository's main `SecureExamBrowser.exe` also validates standalone and matches byte-for-byte with the executable inside that MSI.
+- **Evidence:** [Windows provenance and component comparison](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190); [audit/vendor-package-comparison.md](audit/vendor-package-comparison.md).
+- **Confidence:** High for the specific public package and repository checkout.
+- **Limitations:** The candidate-specific invitation asset and the user's installed files have not been hashed.
 
-
-## F-017 — Four repository artifacts exactly match files inside the signed public SEB 2.0.2 MSI
+## F-017 — All 39 root-level EXE/DLL files match the public signed installer payload
 - **Status:** Observed / exact hash comparison completed.
-- **Observation:** `lessmsi` extracted the publicly linked `SecureExamBrowserInstaller_en_2.0.2.msi` without installing it. Its package payload contains `SecureExamBrowser.exe`, `SebWindowsServiceWCF.exe`, `SEBWindowsServiceContracts.dll` and `hirepro-chromium-installer.exe`, each with the exact SHA-256 recorded for the corresponding repository file.
-- **Evidence:** [Successful workflow run](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906360710); [artifact 11604692503](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906360710/artifacts/11604692503); [audit/vendor-package-comparison.md](audit/vendor-package-comparison.md).
-- **Confidence:** High for the files extracted from the current public signed MSI and the repository checkout.
-- **Impact:** This eliminates the prior suspicion that those four repository files are arbitrary replacements relative to this published installer. It does not establish the user's installed file identity or prove all other DLLs match.
-- **Next action:** Expand package comparison to all root-level EXE/DLL dependencies and keep runtime/proctoring tests pending.
+- **Observation:** A static extraction of the publicly linked SEB MSI produced same-named files whose SHA-256 digests exactly matched all 39 top-level repository executables and DLLs.
+- **Evidence:** [Workflow run](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190); [component report 11604173812](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190/artifacts/11604173812).
+- **Confidence:** High for those artifacts and that package.
+- **Impact:** No root-level EXE/DLL mismatch was found between the repository and current public installer. This establishes repository/package correspondence, not the effectiveness of security controls or the identity of the files on the user's machine.
+- **Next action:** Treat static provenance as complete for repository files; proceed with authorized runtime validation only when a Windows lab is available.
