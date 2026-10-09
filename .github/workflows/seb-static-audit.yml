@@ -192,6 +192,20 @@ jobs:
             if ($LASTEXITCODE -ne 0) { throw "lessmsi extraction failed for $($package.name)" }
           }
           $allExtracted = Get-ChildItem -LiteralPath $extractRoot -Recurse -File
+          $binaryInventory = foreach ($file in ($allExtracted | Where-Object { $_.Extension.ToLowerInvariant() -in @('.exe', '.dll') } | Sort-Object FullName)) {
+            $hash = (Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+            $signature = Get-AuthenticodeSignature -LiteralPath $file.FullName
+            [pscustomobject]@{
+              packageRelativePath = $file.FullName.Substring($extractRoot.Length).TrimStart('\','/')
+              fileName = $file.Name
+              bytes = $file.Length
+              sha256 = $hash
+              signatureStatus = $signature.Status.ToString()
+              signerSubject = if ($signature.SignerCertificate) { $signature.SignerCertificate.Subject } else { $null }
+              signerThumbprint = if ($signature.SignerCertificate) { $signature.SignerCertificate.Thumbprint } else { $null }
+            }
+          }
+          $binaryInventory | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $outDir 'vendor-package-binary-inventory.json') -Encoding utf8
           $repoFiles = Get-ChildItem -LiteralPath $root -File | Where-Object { $_.Extension.ToLowerInvariant() -in @('.exe', '.dll') } | Sort-Object Name
           $comparison = foreach ($repoFile in $repoFiles) {
             $name = $repoFile.Name
@@ -301,5 +315,13 @@ jobs:
         with:
           name: legacy-source-package-comparison
           path: audit-output/legacy-source-package-comparison.json
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Upload complete vendor package binary inventory
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vendor-package-binary-inventory
+          path: audit-output/vendor-package-binary-inventory.json
           if-no-files-found: warn
           retention-days: 7
