@@ -123,3 +123,12 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - Repo `hirepro-chromium-installer.exe`: 102,636,032 bytes; SHA-256 `1b3c640153c82eb40074e4bf55877a90ea5f2ea3d426e5de4eddc0c4bc09ea16`; NotSigned; not the same byte identity as the current public MSI.
 - Repo `SecureExamBrowser.exe` signed by same signer thumbprint as current official MSIs; the service exe and contracts DLL are unsigned individually. This does not establish whether installer package signing covers those internal files or whether the exact candidate build matches.
 - See audit/vendor-package-comparison.md. Next high-value read-only comparison is package manifest/contained file hashes, not executing the installer.
+
+
+## Signed installer payload comparison — 2026-10-09
+- Windows job run: https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906360710
+- Artifact 11604692503: read-only lessmsi extraction / SHA-256 comparison.
+- The signed public SEB 2.0.2 MSI contains exact byte/hash matches for all four root artifacts checked: SecureExamBrowser.exe, SebWindowsServiceWCF.exe, SEBWindowsServiceContracts.dll and hirepro-chromium-installer.exe.
+- Thus, although service EXE, contract DLL and Chromium EXE are not signed individually, they are identical to files inside the currently published, Authenticode-valid SEB MSI. Do not describe their unsigned status by itself as suspicious.
+- Remaining: broaden match to all top-level DLLs; local installed file identity still unknown.
+- Updated report: audit/vendor-package-comparison.md; finding F-017.
