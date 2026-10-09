@@ -61,3 +61,12 @@ Human observation is independent of local software instrumentation. Assess what 
 - **N/A:** not applicable.
 
 Never treat a missing log entry as proof of absence unless channel completeness, time synchronization and capture health are independently established.
+
+
+## Additional static evidence from main application (2026-10-09)
+
+REA's complete managed metadata inventory of `SecureExamBrowser.exe` (assembly 2.0.2.0, target .NET Framework 4.5.2) shows distinct type groups for process observation/enforcement, foreground/window/display supervision, clipboard and network-activity monitoring, screen-sharing/desktop facilities, camera/VM checks, executable integrity, watchdog health and log protection.
+
+This broadens the architecture hypothesis: the main client itself contains candidate observation/enforcement layers; the service's `IsSebRunning` check is only one narrow lifecycle/recovery behaviour. Do not infer the main client is bypassable or fully effective from type names alone. Runtime activation, active configuration, event delivery and online-server telemetry remain unverified.
+
+The exact artifact identity, counts and evidence limits are in [audit/static-application-analysis.md](static-application-analysis.md). The REA CI workflow run completed static inspection, but did not execute the exam browser.
