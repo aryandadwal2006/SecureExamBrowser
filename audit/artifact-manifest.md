@@ -29,3 +29,19 @@ These raw-file digests were computed by REA from the checked-out repository arti
 - Verify Authenticode status and file/product version metadata in a Windows environment.
 - Confirm the exact launch target, loaded modules, process ancestry, active config path and runtime settings.
 - Do not execute the browser installer while establishing identity; use an isolated VM snapshot if execution becomes necessary.
+
+
+## Windows Authenticode preflight (2026-10-09)
+
+A Windows GitHub Actions job ran `Get-FileHash -Algorithm SHA256` and `Get-AuthenticodeSignature` on the repository checkout. It did not execute any target binaries. Report: [workflow run 37904465412](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37904465412), artifact `windows-artifact-provenance` (ID 11603138113).
+
+| File | SHA-256 | Authenticode status | Signer |
+|---|---|---|---|
+| `SecureExamBrowser.exe` | `9b7c84cb4d5be544592696177cf9ee576bc01fbbac5f1d7ba74e0676798dd38e` | **Valid** | `CN=Hirepro Consulting Pvt Ltd`; thumbprint `B522BE129C67224D25A7566A9F293E5C256CC143`; certificate validity reported as 2024-02-21 through 2027-02-20 UTC. |
+| `SebWindowsServiceWCF.exe` | `a2ac4fd12eaa38ffd8f422b20eef68bae8f7b44b91ababfe7447ef2fc9c6ac57` | **NotSigned** | None. |
+| `SEBWindowsServiceContracts.dll` | `60309b30499bbe98f98e1cc07cdc5379c34bafd1172ac2f8f8f5e8384250a2e5` | **NotSigned** | None. |
+| `hirepro-chromium-installer.exe` | `1b3c640153c82eb40074e4bf55877a90ea5f2ea3d426e5de4eddc0c4bc09ea16` | **NotSigned** | None. |
+
+The valid main-EXE signature confirms the checked-out file verifies under Windows Authenticode and names Hirepro Consulting Pvt Ltd as the signer. It is not a full security audit. The other three files' unsigned status is a provenance concern, **not evidence by itself of malware**. In particular, the repository's `hirepro-chromium-installer.exe` has not been proven to be the same file the user downloaded from the email link. Preserve that distinction.
+
+Recommended follow-up: ask the competition/employer/vendor for expected hashes and publishers for the service/contract DLL and the exact installer package; compare with the Windows report and validate the installed files in an isolated VM.
