@@ -57,3 +57,6 @@ The broadened Windows comparison enumerated **all 39 top-level `.exe` and `.dll`
 Evidence: [comparison artifact 11604173812](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190/artifacts/11604173812). The JSON report records each repository digest, matching package path, packaged file digest and boolean match result. The Windows provenance job and the parallel REA static-analysis/test job both completed successfully in workflow run 37906673190.
 
 This supports the conclusion that the repository's complete root-level executable/DLL set is an exact extraction of the contents of the current public, Authenticode-valid SEB MSI. It does not prove that the user's installed files or candidate-specific link resolve to this same package.
+
+
+Complete per-file table: [audit/vendor-component-hashes.md](vendor-component-hashes.md). It records all 39 repository root-level EXE/DLL filenames, lengths, SHA-256 values, extracted MSI paths, and exact-match result.
