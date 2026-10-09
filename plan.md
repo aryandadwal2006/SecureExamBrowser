@@ -76,7 +76,7 @@ For every suspected control, trace: **signal/source → detector → decision �
 4. Do not modify main; keep investigation notes and permitted test tooling on this branch.
 
 ## Current status
-See findings.md, audit/static-application-analysis.md, audit/static-service-analysis.md and audit/artifact-manifest.md. REA successfully built, passed its fast checks and fast tests, and produced static inventories for the main app, service and contracts DLL. Static inspection is not runtime validation. No Windows runtime or online-platform tests have yet run, and no bypass has been claimed.
+See findings.md, audit/static-application-analysis.md, audit/static-service-analysis.md, audit/artifact-manifest.md and audit/test-results.md. REA successfully built, passed its fast checks and fast tests, and produced static inventories for the main app, service and contracts DLL. Static inspection is not runtime validation. Windows Authenticode/hash checks and static artifact analysis have run successfully. No SEB runtime or online-platform event-correlation tests have run, and no bypass has been claimed.
 
 
 ## Platform-flow follow-up
