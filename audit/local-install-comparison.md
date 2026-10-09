@@ -33,3 +33,8 @@ The local inventory confirms that the core SEB files found on the user's system 
 This finding establishes package/file correspondence for the reported files. It does not establish runtime monitor activation, the effective assessment configuration, screen-pixel capture behavior, remote telemetry delivery or human-observer coverage.
 
 For the remaining Chromium identity check, rerun the corrected inventory script after its CI syntax validation succeeds. Do not read or share any configuration content, logs, process command lines, tokens, URLs or recordings.
+
+
+## Chromium browser comparison pending
+
+The updated CI pipeline now extracts the nested Chromium payload as data only and records the 15 EXE/DLL hashes in [audit/chromium-payload-hashes.md](chromium-payload-hashes.md). The expected `chrome.exe` SHA-256 is `12f2e3b2e818060ed6828bd2bd6fc0de69385e3d1c5a9906a2c3cd1c3cd585e7`. Once the corrected local collector output is supplied, compare `chrome.exe`, `chrome.dll`, `chrome_elf.dll`, and associated files against that manifest.
