@@ -107,3 +107,7 @@ This branch is for authorized assessment and reproducible detection-gap validati
 - [x] Consolidated session startup, process/device/watchdog/integrity, local IPC, log/reporting, online-proctoring and human-observation layers in audit/control-map.md.
 - [x] Prioritized remaining checks by required evidence and clearly separated static evidence from runtime assumptions.
 - [ ] Continue static validation of configuration and message/data-flow relationships without constructing a suppression or concealment patch.
+
+
+## Hash manifest
+- [x] Commit the full 39-file SHA-256 table in audit/vendor-component-hashes.md for reproducible provenance review.
