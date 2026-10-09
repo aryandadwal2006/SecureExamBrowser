@@ -29,17 +29,17 @@ For every suspected control, trace: **signal/source → detector → decision �
 ## Workstreams
 
 ### WS0 — Preserve and identify the target
-- [ ] Record commit SHA, paths, sizes, file versions, SHA-256 hashes, signatures and PE architecture for relevant executables/DLLs.
+- [x] Record repository object IDs, sizes, raw SHA-256 hashes, assembly versions/MVIDs and PE architecture for the three managed application/service artifacts (audit/artifact-manifest.md).\n- [ ] Verify Authenticode signatures and product/file-version metadata on Windows.
 - [ ] Identify launch chain, process tree, command-line config inputs, loaded browser runtime and active configuration.
 - [ ] Preserve original artifacts read-only; conduct experiments against copies/snapshots.
 - Exit criterion: artifact manifest and repeatable clean restore procedure exist.
 
 ### WS1 — Static analysis
-- [ ] Build and verify the bundled REA project in a separate working copy.
-- [ ] Use REA managed PE/CLI inventory and member inspection on the application, service and contract DLL.
+- [x] Build REA in GitHub Actions; fast checks and the fast suite passed.
+- [x] Use REA managed PE/CLI inventory, member/CIL inspection and native-boundary inventory on the application, service and contract DLL.
 - [ ] Use a suitable .NET decompiler for C#-like reconstruction where needed; REA managed inspection is not a full C# decompiler.
 - [ ] Trace process/foreground observation, service commands, event tracing, registry/policy changes, configuration loading, alert reporting and IPC authentication.
-- [ ] Preserve exact artifact hashes, method identities, IL/native boundaries, call edges and coverage limitations.
+- [x] Preserve artifact hashes, MVIDs, type/method inventory sizes and coverage limitations in the audit reports.\n- [ ] Complete focused call-graph tracing of startup/configuration, enforcement and reporting relationships.
 - Exit criterion: evidence-backed call graph with unknowns marked explicitly.
 
 ### WS2 — Browser source/config correspondence
@@ -74,4 +74,4 @@ For every suspected control, trace: **signal/source → detector → decision �
 4. Do not modify main; keep investigation notes and permitted test tooling on this branch.
 
 ## Current status
-See findings.md, audit/static-application-analysis.md and audit/static-service-analysis.md. REA successfully built, passed its fast checks/tests and produced a static inventory of the app, service and contracts DLL. Static inspection is not runtime validation. No Windows runtime or online-platform tests have yet run, and no bypass has been claimed.
+See findings.md, audit/static-application-analysis.md, audit/static-service-analysis.md and audit/artifact-manifest.md. REA successfully built, passed its fast checks and fast tests, and produced static inventories for the main app, service and contracts DLL. Static inspection is not runtime validation. No Windows runtime or online-platform tests have yet run, and no bypass has been claimed.
