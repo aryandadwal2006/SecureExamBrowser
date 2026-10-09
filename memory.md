@@ -197,3 +197,10 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - The repository-to-vendor package identity work is complete for root EXE/DLLs (39/39) and selected legacy XUL/config files (12/12). Corrected comparison hashes canonical Git blobs, avoiding line-ending noise.
 - No actual SEB process/assessment was executed; effective session config, activation and remote reporting are not established.
 - For next GPT: start at audit/README.md, review TODO.md and audit/test-results.md. Continue with static evidence, test design and defensible hardening; do not implement concealment/suppression mechanisms.
+
+
+## Local inventory script prepared — 2026-10-09
+- Read-only script: audit/scripts/Collect-LocalSEBInventory.ps1; usage: audit/scripts/README.md.
+- Windows CI parsed the script without executing it successfully in run https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37909760671 (the full workflow was still running when this note was written).
+- It reads only target file metadata/hashes/signature status and hashes config files without reading their contents. It masks USERPROFILE/LOCALAPPDATA paths and excludes process arguments, assessment URLs, tokens, logs, screenshots and recordings.
+- Do not ask the user to run it unless local installed-file identity is the necessary next step; current public source/package checks can continue without user actions.
