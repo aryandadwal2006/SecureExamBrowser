@@ -60,3 +60,18 @@ The application binary contains a much broader set of candidate observation and 
 ## Limits
 
 This was a static managed-code inventory, not a Windows runtime test, not a decompilation of all dependencies, and not verification of online/server behaviour. Complete parser coverage does not mean complete semantic understanding.
+
+
+## Call-graph follow-up (static, 2026-10-09)
+
+REA's method-level call-edge inventory provides more than type-name evidence. In the identified main-executable artifact:
+
+- `SebWindowsClient.SebWindowsClientForm.OpenSEBForm` has call edges to `CheckProhibitedProcesses`, `MonitorProcesses` and `SEBXULRunnerWebSocketServer.StartServer`.
+- `SebWindowsClient.SebWindowsClientMain.Main` has a call edge to the executable integrity check routine `RunCheckNow`.
+- `ProcessWatchDog.CheckRunningProcessesTimer_Elapsed` references `ReportTickStart` and `ReportTickEnd`; `DisplayWatchDog.CheckDisplaysTimer_Elapsed` and `HighDataSendingProcessWatchDog.CheckHighDataSendingProcessTimer_Elapsed` reference `ReportHeartbeat`.
+- `ExeIntegrityWatchDog.Start` and its timer callback reference `RunCheckNow`, which references `VerifyCurrentExe` and `ReportCheckNotCompleted`.
+- The static call graph has references to log-upload methods such as `SendZippedLogFileToS3` from startup, logging and lifecycle paths. Static references do not prove an upload occurred in the supplied mock-test session.
+- The `SEBXULMessage` type declares fields/properties for system and hardware facts including MAC addresses, machine GUID, system model/OS, monitor count, camera presence and device plug/unplug counters. This is a message schema; which fields are populated, sent, or forwarded during this session remains unverified.
+- The client has device/desktop methods related to Bluetooth, multiple displays, virtual-machine/remote-connection checks and camera enumeration. Their existence does not establish which conditions the HirePro assessment enables.
+
+This evidence updates the static architecture but does not identify a verified false negative. See [platform observations](platform-observations.md).
