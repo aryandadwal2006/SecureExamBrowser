@@ -109,3 +109,8 @@ The user's read-only report shows the installed SEB core EXE/service/DLL and bun
 
 ## Updated local identity checkpoint
 The second user-provided inventory has exact hash matches for all 11 Chromium EXE/DLL files it reported, including `chrome.exe` and `chrome.dll`, against the signed package's nested Chromium payload. See [audit/local-install-comparison.md](audit/local-install-comparison.md). Four additional package manifest entries were not targeted by the collector and remain unchecked; no mismatch has been identified. Runtime policy/configuration and proctoring behavior remain a separate, unresolved evidence question.
+
+
+## Privileged service assurance
+
+The high-level service endpoint/policy-management review is recorded in [audit/privileged-service-authorization-review.md](audit/privileged-service-authorization-review.md), with test case T-019 in [audit/test-matrix.md](audit/test-matrix.md). This is a defense-in-depth review item, not a confirmed vulnerability. Dynamic validation must be limited to documented, non-destructive operations in an authorized disposable VM.
