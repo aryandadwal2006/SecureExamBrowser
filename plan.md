@@ -58,7 +58,7 @@ For every suspected control, trace: **signal/source → detector → decision �
 - Exit criterion: claims about detection or alert absence are backed by channel-by-channel records.
 
 ### WS4 — Online boundary
-- [ ] In an authorized test session, inventory delivered scripts, requested permissions, network endpoints and observable session events.
+- [ ] In an authorized test session, inventory delivered scripts, requested permissions, network endpoints and observable session events; the visible recording notice/public privacy policy have been documented, but session-specific payloads are still unmeasured.
 - [ ] Separate client-side observations from server-side decisions and independent monitoring agents.
 - [ ] Record unavailable remote logic as unknown.
 - Exit criterion: data-flow map identifies direct observations and unresolved areas.
@@ -77,3 +77,7 @@ For every suspected control, trace: **signal/source → detector → decision �
 
 ## Current status
 See findings.md, audit/static-application-analysis.md, audit/static-service-analysis.md and audit/artifact-manifest.md. REA successfully built, passed its fast checks and fast tests, and produced static inventories for the main app, service and contracts DLL. Static inspection is not runtime validation. No Windows runtime or online-platform tests have yet run, and no bypass has been claimed.
+
+
+## Platform-flow follow-up
+The user-provided screenshots and HirePro public page have been documented in audit/platform-observations.md. The browser external-application handoff, SEB's app-closing notice and the visible video/audio recording notice are separate from Windows service policy. Static main-client call edges connect startup/session paths to process monitoring and watchdog/integrity reporting, but runtime activation and remote receipts remain unverified.
