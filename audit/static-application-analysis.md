@@ -90,3 +90,8 @@ The method bodies give a more specific static relationship for the process/devic
 - `SebWindowsClientMain.Main` invokes `RunCheckNow`; the executable-integrity watchdog's start and timer paths invoke the same check routine.
 
 All points above are call-edge/CIL observations from the specific SHA-256/MVID recorded in the artifact manifest. They do not demonstrate a successful/failed runtime test, complete remote reporting, or a vulnerability. The benign Windows validation cases remain pending.
+
+
+## Screenshot capability: source/binary distinction
+
+The separate legacy source tree has a screenshot module capable of rendering a supplied browser window to image data, with a related message handler in `SebServer.jsm`. The main executable's static inventory and this legacy source were reviewed, but a definitive version/resource match tying these exact XUL modules to the current packaged 2.0.2 runtime has not been established. Do not infer continuous desktop capture or remote upload from function presence alone.
