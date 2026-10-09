@@ -45,3 +45,8 @@ A Windows GitHub Actions job ran `Get-FileHash -Algorithm SHA256` and `Get-Authe
 The valid main-EXE signature confirms the checked-out file verifies under Windows Authenticode and names Hirepro Consulting Pvt Ltd as the signer. It is not a full security audit. The other three files' unsigned status is a provenance concern, **not evidence by itself of malware**. In particular, the repository's `hirepro-chromium-installer.exe` has not been proven to be the same file the user downloaded from the email link. Preserve that distinction.
 
 Recommended follow-up: ask the competition/employer/vendor for expected hashes and publishers for the service/contract DLL and the exact installer package; compare with the Windows report and validate the installed files in an isolated VM.
+
+
+## Published-package comparison in progress
+
+The current generic HirePro page links to `Chromium_1.0.1_signed.msi` and `SecureExamBrowserInstaller_en_2.0.2.msi`. A new Windows CI job is downloading those exact public URLs and recording their size, SHA-256, Authenticode status and signer alongside the repository artifacts. See [run 37906017253](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906017253). Until that comparison finishes, the repository's `hirepro-chromium-installer.exe` must not be described as the same artifact as the published Chromium MSI.
