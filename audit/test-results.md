@@ -108,3 +108,9 @@ The current HirePro privacy policy names possible video/audio/live-image, device
 - An enhanced report now records extracted filenames, extensions, sizes and hashes, as well as EXE/DLL signatures.
 - Run [37926598648](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926598648) failed before extraction because Chocolatey could not resolve pinned `lessmsi` version 2.12.9. The version pin was removed; retry [37926726531](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926726531) was queued at document update time.
 - This is a tooling issue and does not change previously successful hash/signature results.
+
+
+## R-017 — Nested Chromium payload inventory (completed)
+- **Result:** Pass. The Windows job extracted the vendor MSI without installation, extracted the nested Chromium bootstrapper archive as data, and then extracted its `chrome.7z` payload. The inner extraction returned exit code 0 and contained 86 files, including 15 EXE/DLL files; none were run.
+- **Evidence:** [Workflow run 37926967501](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926967501); [artifact 11613754590](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926967501/artifacts/11613754590); [hash manifest](chromium-payload-hashes.md).
+- **Limit:** Installed Chromium binary hashes remain unmeasured until the corrected local collector is run.
