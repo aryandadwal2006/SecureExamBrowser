@@ -16,7 +16,15 @@
 
 ## REA static inspection identities
 
-| Path | Raw-file SHA-256 from REA | Assembly version / MVID | Static inventory summary |\n|---|---|---|---|\n| SecureExamBrowser.exe | `9b7c84cb4d5be544592696177cf9ee576bc01fbbac5f1d7ba74e0676798dd38e` | `2.0.2.0` / `704e0878-fd78-47f7-922f-49d7ed0a9f18` | 377 types; 2,212 methods; 17,867 call edges; 126 P/Invoke declarations; complete parser coverage. |\n| SebWindowsServiceWCF.exe | `a2ac4fd12eaa38ffd8f422b20eef68bae8f7b44b91ababfe7447ef2fc9c6ac57` | `2.2.0.0` / `aea1abb8-cb61-45e8-9b75-81f72e71d848` | 38 types; 98 methods; complete parser coverage. |\n| SEBWindowsServiceContracts.dll | `60309b30499bbe98f98e1cc07cdc5379c34bafd1172ac2f8f8f5e8384250a2e5` | `2.2.0.0` / `e7845311-4100-4832-b088-bb4dea31ed85` | 3 types; 4 methods; complete parser coverage. |\n\nThese raw-file digests were computed by REA from the checked-out repository artifacts in the successful workflow run; the Git blob IDs in the prior table remain Git object identifiers and are not these digests.\n\n## Remaining identity checks
+| Path | Raw-file SHA-256 from REA | Assembly version / MVID | Static inventory summary |
+|---|---|---|---|
+| SecureExamBrowser.exe | `9b7c84cb4d5be544592696177cf9ee576bc01fbbac5f1d7ba74e0676798dd38e` | `2.0.2.0` / `704e0878-fd78-47f7-922f-49d7ed0a9f18` | 377 types; 2,212 methods; 17,867 call edges; 126 P/Invoke declarations; complete parser coverage. |
+| SebWindowsServiceWCF.exe | `a2ac4fd12eaa38ffd8f422b20eef68bae8f7b44b91ababfe7447ef2fc9c6ac57` | `2.2.0.0` / `aea1abb8-cb61-45e8-9b75-81f72e71d848` | 38 types; 98 methods; complete parser coverage. |
+| SEBWindowsServiceContracts.dll | `60309b30499bbe98f98e1cc07cdc5379c34bafd1172ac2f8f8f5e8384250a2e5` | `2.2.0.0` / `e7845311-4100-4832-b088-bb4dea31ed85` | 3 types; 4 methods; complete parser coverage. |
+
+These raw-file digests were computed by REA from the checked-out repository artifacts in the successful workflow run; the Git blob IDs in the prior table remain Git object identifiers and are not these digests.
+
+## Remaining identity checks
 
 - Verify Authenticode status and file/product version metadata in a Windows environment.
 - Confirm the exact launch target, loaded modules, process ancestry, active config path and runtime settings.
