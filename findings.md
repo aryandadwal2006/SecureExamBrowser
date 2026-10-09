@@ -67,7 +67,7 @@ REA static PE/CLI, member/CIL and managed/native-boundary inventory completed fo
 - **Status:** Open / static analysis completed; runtime validation pending.
 - **Observation:** REA's complete managed inventory for the exact main executable contains process-start observation, prohibited-process handling, a process watchdog, foreground/window and display monitoring, clipboard handling, screen-sharing/desktop utilities, camera/VM checks, executable-integrity verification and watchdog-health/log-protection components.
 - **Artifact:** `SecureExamBrowser.exe`, SHA-256 `9b7c84cb4d5be544592696177cf9ee576bc01fbbac5f1d7ba74e0676798dd38e`, assembly `2.0.2.0`, MVID `704e0878-fd78-47f7-922f-49d7ed0a9f18`.
-- **Evidence:** [Static application analysis](audit/static-application-analysis.md); [GitHub Actions run](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37900802418).
+- **Evidence:** [Static application analysis](audit/static-application-analysis.md); [GitHub Actions run](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37901362719).
 - **Confidence:** High that these type/method declarations are present in this artifact; unknown whether each component is enabled or effective in a given configuration.
 - **Impact:** The previous service-only check cannot be treated as a complete model of the browser's monitoring. Broader client-side controls are present and need controlled validation.
 - **Next action:** Map configuration/lifecycle to these components, run known-positive controls and correlate independent Windows evidence with browser/service/test-server outputs.
@@ -75,7 +75,7 @@ REA static PE/CLI, member/CIL and managed/native-boundary inventory completed fo
 
 ## F-009 — Automated static-analysis pipeline succeeded
 - **Status:** Completed for this repository snapshot.
-- **Observation:** GitHub Actions run 37900802418 completed successfully. REA dependency install, build, fast check (types/lint) and fast test suite passed; static inspection produced artifact, member and managed/native-boundary reports for the main executable, service executable and contracts DLL.
+- **Observation:** GitHub Actions run 37901362719 completed successfully. REA dependency install, build, fast check (types/lint) and fast test suite passed; static inspection produced artifact, member and managed/native-boundary reports for the main executable, service executable and contracts DLL.
 - **Test output:** 321 test files passed, 1 skipped; 3,450 tests passed, 4 skipped. This validates the REA toolchain and its tests, not SecureExamBrowser's runtime security.
-- **Evidence:** [Run and artifact](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37900802418).
+- **Evidence:** [Run and artifact](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37901362719).
 - **Next action:** Review the uploaded static reports, then perform isolated Windows runtime validation.
