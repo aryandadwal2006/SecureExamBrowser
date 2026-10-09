@@ -61,3 +61,7 @@ Run [37906017253](https://github.com/aryandadwal2006/SecureExamBrowser/actions/r
 
 
 Complete per-file table: [audit/vendor-component-hashes.md](vendor-component-hashes.md). It records all 39 repository root-level EXE/DLL filenames, lengths, SHA-256 values, extracted MSI paths, and exact-match result.
+
+
+## Public-policy interpretation boundary
+The current HirePro privacy policy names possible video/audio/live-image, device/browser, page/link and suspicious-activity processing. It does not by itself prove continuous full-desktop capture in a specific session. The screenshot's recording notice establishes that the UI disclosed audio/video recording; runtime collection and server receipts remain unmeasured. See [platform-observations.md](platform-observations.md).
