@@ -124,10 +124,19 @@ REA static PE/CLI, member/CIL and managed/native-boundary inventory completed fo
 - **Next action:** Obtain expected vendor hashes/publishers and verify the files installed on a clean Windows VM. Do not run or patch unsigned components just to test trust.
 
 
-## F-015 — Repository Chromium installer is not yet matched to the current public vendor package
-- **Status:** Pending direct hash comparison in CI.
-- **Observation:** The repository includes `hirepro-chromium-installer.exe` (102,636,032 bytes, unsigned in the Windows signature preflight). The current generic HirePro page publicly links to `Chromium_1.0.1_signed.msi`; the Accenture-specific page has a different presentation and may differ by tenant.
-- **Evidence:** [General HirePro SEB landing page](https://securetest.hirepro.in/); [public Chromium MSI](https://securetest.hirepro.in/s3_cached/hirepro-content/hirepro/paas/Chromium_1.0.1_signed.msi); [Windows workflow](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906017253); [artifact manifest](audit/artifact-manifest.md).
-- **Confidence:** High for names/links currently published; payload relationship unknown until hash/signature comparison completes.
-- **Risk interpretation:** An unsigned repository executable deserves provenance validation, but its signature status alone does not prove malware or relevance to the user's downloaded installer.
-- **Next action:** Compare hash, signature status and file sizes for both current official MSIs versus repo artifacts. Ask the competition organizer to confirm exact expected package hashes for the candidate-specific assessment.
+## F-015 — Repository Chromium installer differs from current public signed Chromium package
+- **Status:** Comparison complete / actual user package still unknown.
+- **Observation:** Repository `hirepro-chromium-installer.exe` is 102,636,032 bytes, SHA-256 `1b3c640153c82eb40074e4bf55877a90ea5f2ea3d426e5de4eddc0c4bc09ea16`, and reports `NotSigned`. The current public `Chromium_1.0.1_signed.msi` is 103,059,456 bytes, SHA-256 `946557de73da7aaccda17f9b1af63716492058069cfd6bdd709a825f7666d67f`, with a valid Hirepro Consulting Pvt Ltd signature.
+- **Evidence:** [General HirePro SEB landing page](https://securetest.hirepro.in/); [public Chromium MSI](https://securetest.hirepro.in/s3_cached/hirepro-content/hirepro/paas/Chromium_1.0.1_signed.msi); [successful Windows workflow](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906017253); [comparison table](audit/vendor-package-comparison.md).
+- **Confidence:** High that the inspected repository EXE and current public MSI are different files. Unknown whether the repo EXE is an older/staged package, an intermediate build, or the exact candidate asset.
+- **Risk interpretation:** File mismatch plus lack of signature warrants provenance verification; neither fact independently proves malware.
+- **Next action:** Verify hashes/versions of the actual installed files and obtain publisher/hash confirmation for the candidate-specific assessment.
+
+
+
+## F-016 — Current public SEB MSI is signed by the same publisher as the main executable
+- **Status:** Observed.
+- **Observation:** The current public `SecureExamBrowserInstaller_en_2.0.2.msi` (111,493,632 bytes, SHA-256 `ab22021acbfb81e30ff191d57772e616ec4fd971a88016fe6fd972f9cb322f42`) reports Authenticode `Valid` and signer `Hirepro Consulting Pvt Ltd`. The repository's main `SecureExamBrowser.exe` validates under the same signer thumbprint.
+- **Evidence:** [Windows comparison run](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906017253); [comparison report](audit/vendor-package-comparison.md).
+- **Confidence:** High for those exact downloaded/repository files.
+- **Limitations:** The current installer has not been installed, the internal file manifest has not yet been compared, and the user's candidate-specific download is unverified.
