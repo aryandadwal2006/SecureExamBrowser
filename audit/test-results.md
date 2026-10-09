@@ -89,3 +89,10 @@ The current HirePro privacy policy names possible video/audio/live-image, device
 - **Result:** Core reported file hashes match existing repository/public MSI evidence: main EXE, service EXE, contracts DLL, bundled Chromium bootstrapper, `config.json`, `config.SEB22.json`, `default.json`, main EXE .config and service .config package copy.
 - **Evidence:** [audit/local-install-comparison.md](local-install-comparison.md); [current public package comparison](vendor-package-comparison.md).
 - **Limit:** First inventory script did not search for `chrome.exe`; the installed Chromium browser executable and associated runtime DLLs remain unmeasured. The inventory did not reveal effective session configuration or runtime behavior.
+
+
+## R-014 — Full packaged-binary inventory (read-only)
+- **Result:** The Windows job extracted both public MSIs and wrote hashes, signatures and package paths for each EXE/DLL. No installer was run.
+- **Evidence:** [Run 37925812683](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37925812683); [artifact 11614615520](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37925812683/artifacts/11614615520).
+- **Observation:** The Chromium package's `chromium-135-0-7049-96.exe` has the same size/SHA-256 as the user's `hirepro-chromium-installer.exe` and is contained in a signed MSI.
+- **Limit:** The package contains a nested installer, not its post-install `chrome.exe`; installed browser binary identity remains pending.
