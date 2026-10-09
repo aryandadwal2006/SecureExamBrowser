@@ -121,3 +121,9 @@ The current HirePro privacy policy names possible video/audio/live-image, device
 - **Evidence:** User's second inventory; [audit/local-install-comparison.md](local-install-comparison.md); [audit/chromium-payload-hashes.md](chromium-payload-hashes.md).
 - **Limit:** Four packaged binary names were not requested by the local collector and are unverified. This is a collection-scope gap, not a detected mismatch.
 - **Security boundary:** File identity does not prove effective assessment settings, monitor activation, remote telemetry receipt or human-observer coverage.
+
+
+## R-019 — Privileged service authorization design review
+- **Result:** Static review item documented; dynamic outcome pending.
+- **Evidence:** [audit/privileged-service-authorization-review.md](privileged-service-authorization-review.md); [test case T-019](test-matrix.md).
+- **Limit:** Presence of policy-management methods and a process-launch helper does not establish untrusted reachability. Endpoint ACL, authentication, allow-listing and runtime denial behaviour remain unknown.
