@@ -151,3 +151,10 @@ This branch is for authorized assessment and reproducible detection-gap validati
 
 - [x] Verify full workflow run [37909760671](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37909760671) completed successfully: PowerShell parser pass, REA build/check/test and static package inspection pass.
 - [ ] If local identity must be verified, ask the user to run the read-only inventory on their installed copy; no such local data is required for this completed static phase.
+
+
+## User inventory follow-up — 2026-10-09
+- [x] Compare reported installed core SEB file hashes against the repository/public MSI; all reported core files match.
+- [x] Explain service .config package/Git byte difference as CRLF working-tree transformation: installed 186-byte file matches package/Windows copy.
+- [ ] Get a hash for actual installed Chromium browser executable and selected runtime DLLs; first report did not include chrome.exe.
+- [ ] Effective assessment config/runtime telemetry remains unknown; no configuration contents or process arguments should be collected for the next inventory.
