@@ -85,3 +85,8 @@ Notable entries:
 ## Nested-installer follow-up status
 
 A first 7-Zip archive attempt on the signed package's nested Chromium installer returned exit code 0 but no directly extracted EXE/DLL files; non-binary filenames were not recorded, so no conclusion was made. The next workflow adds a complete extracted-file listing. One attempt failed before extraction because the pinned Chocolatey `lessmsi` package version was unavailable; that pin has been removed and a retry was queued. Previously established file hashes/signatures remain unchanged.
+
+
+## Actual Chromium payload extracted
+
+The nested Chromium installer contains `chrome.7z`. 7-Zip extracted it without running the installer or any payload file; the archive yielded 86 files including 15 EXE/DLL files. Expected binary hashes are recorded in [audit/chromium-payload-hashes.md](chromium-payload-hashes.md). Local Chromium identity remains pending a corrected inventory because the first report didn't return `chrome.exe`.
