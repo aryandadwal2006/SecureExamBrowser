@@ -41,6 +41,15 @@ Do not assume a bypass exists. Do not modify main. Scope excludes a one-click st
 8. SebScreenshot.jsm contains screenshot routines exposed through the XUL layer. Active use, triggers and online-platform screenshot collection remain unverified.
 9. Initial tree review did not find the C# source for the compiled Windows app/service. Source-to-binary correspondence is unknown.
 
+## Static service analysis completed 2026-10-09
+- Service binary has Git blob ID 1364103ef2f4ce48f42f0dc3a71616fc3d40cf7d and repository size 170,496 bytes. This Git object ID is not the raw-file SHA-256.
+- Read-only PE parse reports machine 0x014c (x86), valid CLR/CLI metadata and .text/.rsrc/.reloc sections.
+- IsSebRunning calls System.Diagnostics.Process.GetProcessesByName("secureexambrowser"). ResetOnStartup calls IsSebRunning and logs that a new SecureExamBrowser process stops reset attempts. This is a process-presence/lifecycle check in the examined path, not proof of broad process surveillance or its absence elsewhere.
+- InitializeHost creates a NetNamedPipeBinding and has the endpoint string net.pipe://localhost/SebWindowsServiceWCF/service. Runtime auth semantics still need verification.
+- Service types include RegistryService and CommandExecutor; registry policy values are preserved and reset, and CommandExecutor uses ProcessStartInfo/Process.Start. Caller/argument validation remains to be traced.
+- Supporting notes: audit/static-service-analysis.md and audit/artifact-manifest.md.
+- The main SecureExamBrowser.exe could not be read through the connector's base64 route (returned empty content at 1.92 MB). The local container could not resolve github.com, so no clone/build/Windows runtime test ran.
+
 ## First next steps
 1. Verify branch head and audit files.
 2. Obtain a clean checkout or artifact set without executing the large installer.
