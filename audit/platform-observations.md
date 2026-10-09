@@ -109,3 +109,12 @@ See [audit/vendor-package-comparison.md](vendor-package-comparison.md) and [comp
 REA metadata shows that the native application's local browser message type includes categories of host/device identity, system characteristics, display/camera state, device-change summaries, process-handling outcomes, blocked-domain summaries, and health/logger status. This is enough to document a potential local information boundary, but **does not show that all fields are populated or sent to a remote platform**. The current analysis has not measured per-session payloads or received server-side events.
 
 If the organizer provides an authorized test endpoint/receipt, correlate only sanitized session events and omit personal identifiers, tokens, exact MAC/GUID values and recording contents from the repository.
+
+
+## 12. What the online policy establishes—and what it does not
+
+The publicly posted privacy policy says proctored services may collect assessment answers/scores, video/audio recordings, captured live images, IP address and derived location, browser/device information, pages accessed and links clicked. It also lists preventing navigation away from the test window and detecting/preventing fraud or suspicious activity among its stated service purposes. These statements describe possible processing under the hiring customer/partner's configuration; they are not a per-session telemetry export.
+
+**Not established by public policy alone:** full-desktop/screen-video capture, exact screenshot intervals, whether desktop frames are uploaded during this mock test, whether a human is watching live, or which optional collection features are enabled for this candidate. The user-provided UI explicitly says video/audio are recorded. Treat webcam/microphone recording, browser-page/activity telemetry, native host monitoring and screen-pixel capture as four distinct questions.
+
+The local app's display/device-monitoring code is static evidence of host/display-state checks; it does not automatically establish that screenshots or the entire desktop are continuously captured. Actual screen-capture use requires a concrete call path or authorized runtime evidence.
