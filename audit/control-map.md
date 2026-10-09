@@ -71,3 +71,10 @@ No bypass has been reproduced or ruled out. The control map is intended to turn 
 The statically inspected `SEBXULMessage` class has a schema with categories of fields for host/device identity and characteristics, display/camera state, device-change counts, process-handling summaries, blocked-domain summaries, watcher health and logger health. This is schema-level evidence only: it does not establish that every field is populated, that every message is sent in a given session, or that the local native/browser IPC message is forwarded to HirePro. The current analysis cannot infer that server-side collection occurs just because a field exists in this local message class.
 
 For session-specific data flow, only use authorized test-session network metadata and organizer-provided server receipt IDs. Do not infer “uploaded” from “field declared.”
+
+
+## Online visibility versus screen pixels
+
+HirePro's public privacy policy states potential collection of video/audio and live images, device/browser data, pages accessed and links clicked, and gives preventing navigation away from the test window and detecting suspicious activity as service purposes. In the screenshots, the running SEB UI explicitly says video/audio are being recorded.
+
+These are not equivalent to continuous capture of the entire desktop. Host-side display monitoring, browser visibility/navigation events, webcam imagery and desktop pixel capture are separate mechanisms. Current evidence establishes the first three only at a high-level code/policy/UI level; full-desktop capture in this particular session remains **unknown**. No assumption about absence of other platform-side or human observation should be made.
