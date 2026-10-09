@@ -71,3 +71,6 @@ This explains why three components report `NotSigned` individually: they are pac
 On 2026-10-09, the Windows CI job extracted the current public SEB 2.0.2 MSI without installing it, enumerated all **39 top-level EXE/DLL files** in the repository, and compared each hash with the extracted package. All 39 were exact SHA-256 matches; zero were absent or mismatched. See [audit/vendor-package-comparison.md](vendor-package-comparison.md) and [component report 11604173812](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190/artifacts/11604173812).
 
 The main executable also validates standalone Authenticode, and the enclosing public MSI validates under Authenticode with signer Hirepro Consulting Pvt Ltd. The other component files are not individually signed, but the exact bytes occur inside that signed MSI. The actual installed files on the user's machine remain unverified.
+
+
+Complete per-file table: [audit/vendor-component-hashes.md](vendor-component-hashes.md). It records all 39 repository root-level EXE/DLL filenames, lengths, SHA-256 values, extracted MSI paths, and exact-match result.
