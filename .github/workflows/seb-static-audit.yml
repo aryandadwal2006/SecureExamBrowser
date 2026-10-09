@@ -89,23 +89,44 @@ jobs:
         with:
           submodules: false
 
+      - name: Download current public vendor packages (do not execute)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $outDir = Join-Path $env:GITHUB_WORKSPACE 'audit-output'
+          $downloads = Join-Path $env:RUNNER_TEMP 'hirepro-published-packages'
+          New-Item -ItemType Directory -Force -Path $outDir, $downloads | Out-Null
+          $published = @(
+            @{ name = 'Chromium_1.0.1_signed.msi'; url = 'https://securetest.hirepro.in/s3_cached/hirepro-content/hirepro/paas/Chromium_1.0.1_signed.msi' },
+            @{ name = 'SecureExamBrowserInstaller_en_2.0.2.msi'; url = 'https://securetest.hirepro.in/s3_cached/hirepro-content/hirepro/paas/SecureExamBrowserInstaller_en_2.0.2.msi' }
+          )
+          foreach ($entry in $published) {
+            $destination = Join-Path $downloads $entry.name
+            Invoke-WebRequest -Uri $entry.url -OutFile $destination -MaximumRedirection 5
+            if (-not (Test-Path -LiteralPath $destination -PathType Leaf)) { throw "Download missing: $($entry.name)" }
+          }
+          $published | ForEach-Object { [pscustomobject]@{ name = $_.name; url = $_.url } } | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $outDir 'published-package-sources.json') -Encoding utf8
+
       - name: Record hashes and signature metadata
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
           $root = $env:GITHUB_WORKSPACE
           $outDir = Join-Path $root 'audit-output'
+          $downloads = Join-Path $env:RUNNER_TEMP 'hirepro-published-packages'
           New-Item -ItemType Directory -Force -Path $outDir | Out-Null
           $targets = @(
-            'SecureExamBrowser.exe',
-            'SebWindowsServiceWCF.exe',
-            'SEBWindowsServiceContracts.dll',
-            'hirepro-chromium-installer.exe'
+            @{ path = 'SecureExamBrowser.exe'; fullPath = (Join-Path $root 'SecureExamBrowser.exe'); kind = 'repository-checkout' },
+            @{ path = 'SebWindowsServiceWCF.exe'; fullPath = (Join-Path $root 'SebWindowsServiceWCF.exe'); kind = 'repository-checkout' },
+            @{ path = 'SEBWindowsServiceContracts.dll'; fullPath = (Join-Path $root 'SEBWindowsServiceContracts.dll'); kind = 'repository-checkout' },
+            @{ path = 'hirepro-chromium-installer.exe'; fullPath = (Join-Path $root 'hirepro-chromium-installer.exe'); kind = 'repository-checkout' },
+            @{ path = 'vendor/Chromium_1.0.1_signed.msi'; fullPath = (Join-Path $downloads 'Chromium_1.0.1_signed.msi'); kind = 'downloaded-from-public-vendor-page' },
+            @{ path = 'vendor/SecureExamBrowserInstaller_en_2.0.2.msi'; fullPath = (Join-Path $downloads 'SecureExamBrowserInstaller_en_2.0.2.msi'); kind = 'downloaded-from-public-vendor-page' }
           )
-          $results = foreach ($relativePath in $targets) {
-            $fullPath = Join-Path $root $relativePath
+          $results = foreach ($target in $targets) {
+            $fullPath = $target.fullPath
             if (-not (Test-Path -LiteralPath $fullPath -PathType Leaf)) {
-              [pscustomobject]@{ path = $relativePath; error = 'File not found in checkout' }
+              [pscustomobject]@{ path = $target.path; kind = $target.kind; error = 'File not found' }
               continue
             }
             $item = Get-Item -LiteralPath $fullPath
@@ -114,7 +135,8 @@ jobs:
             $signer = $signature.SignerCertificate
             $timestamp = $signature.TimeStamperCertificate
             [pscustomobject]@{
-              path = $relativePath
+              path = $target.path
+              kind = $target.kind
               bytes = $item.Length
               sha256 = $hash.Hash.ToLowerInvariant()
               signatureStatus = $signature.Status.ToString()
