@@ -1,0 +1,69 @@
+name: SEB static artifact audit
+
+on:
+  push:
+    branches:
+      - redteam/monitoring-audit-2026-10-09
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-managed-audit:
+    name: Build REA and inspect supplied PE/CLI artifacts
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out the investigation branch
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+
+      - name: Set up the Node.js version specified by REA
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: rea-main/.nvmrc
+          cache: npm
+          cache-dependency-path: rea-main/package-lock.json
+
+      - name: Prepare output directory
+        run: mkdir -p "$GITHUB_WORKSPACE/audit-output"
+
+      - name: Install pinned REA dependencies
+        working-directory: rea-main
+        run: npm ci
+
+      - name: Build REA
+        working-directory: rea-main
+        run: npm run build:cached
+
+      - name: Check REA types and lint
+        working-directory: rea-main
+        run: npm run check:fast
+
+      - name: Run REA fast test suite
+        working-directory: rea-main
+        run: npm run test:fast
+
+      - name: Inspect application, service and contracts without executing targets
+        working-directory: rea-main
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="$GITHUB_WORKSPACE/audit-output"
+          for target in SecureExamBrowser.exe SebWindowsServiceWCF.exe SEBWindowsServiceContracts.dll; do
+            path="$GITHUB_WORKSPACE/$target"
+            node scripts/rea.mjs inspect-managed-artifact "$path" --json > "$out/$target.artifact.json"
+            node scripts/rea.mjs inspect-managed-members "$path" --json > "$out/$target.members.json"
+            node scripts/rea.mjs inspect-managed-native-boundaries "$path" --json > "$out/$target.native-boundaries.json"
+          done
+
+      - name: Upload sanitized static-analysis results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seb-static-analysis
+          path: audit-output/
+          if-no-files-found: warn
+          retention-days: 7
