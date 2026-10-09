@@ -15,14 +15,14 @@ Statuses: [x] done, [ ] not done, [?] blocked/needs evidence.
 - [x] Verify audit files are visible on GitHub and branch head is correct.
 
 ## Target identification
-- [ ] Obtain a clean checkout/artifact set without executing the large installer. The container cannot resolve GitHub DNS; continue through an authorized local Windows analysis host if needed.
-- [ ] Verify signatures and local runtime identity; SHA-256, assembly versions, MVIDs and PE metadata from static analysis are recorded in audit/artifact-manifest.md.
+- [x] Obtain a clean automated checkout/artifact set through GitHub Actions without executing the large installer; the action analyzed the supplied files from a clean runner checkout.
+- [x] Record raw SHA-256, assembly versions, MVIDs, PE architecture and managed metadata for all three managed artifacts in audit/artifact-manifest.md.\n- [ ] Verify Authenticode status and exact runtime/loaded-module identity in a Windows VM.
 - [ ] Determine launch chain, child processes, loaded modules, active config path and runtime version.
 - [ ] Snapshot a clean VM and establish restore procedure.
 
 ## Static analysis
-- [ ] Build REA from its own folder in a separate workspace; record environment and test output.
-- [x] Perform read-only PE/CLI metadata triage on the service and contracts DLL; selected service CIL bodies were decoded in-memory. Full REA build and complete inspection remain pending.
+- [x] Build REA in GitHub Actions using rea-main/.nvmrc and the pinned lockfile; build and fast checks passed.
+- [x] Perform read-only PE/CLI metadata triage on the service and contracts DLL, then run REA artifact/member/native-boundary inspection on the main app, service and contracts DLL.
 - [x] Run exact-build member/CIL static inventory and record SHA-256/MVID in audit/static-application-analysis.md and audit/static-service-analysis.md. Full source-like C# decompilation remains optional/pending.
 - [x] Initial static inventory confirms process/watchdog, foreground/window/display, integrity/health and log-protection component groups; detailed lifecycle and report-path mapping remains open.
 - [ ] Confirm or reject correspondence between legacy XUL sources and supplied Windows build.
@@ -42,16 +42,18 @@ Statuses: [x] done, [ ] not done, [?] blocked/needs evidence.
 - [ ] Record a visual-observation assessment without implementing concealment or telemetry suppression.
 
 ## Findings and reporting
-- [ ] Update findings.md with evidence IDs and confidence.
-- [ ] Update memory.md after material discoveries.
-- [ ] Update this TODO after each work session.
+- [x] Update findings.md with static evidence, confidence and limits.
+- [x] Update memory.md after material discoveries.
+- [x] Update this TODO after each work session.
 - [ ] Produce final report with build identity, test matrix, verified findings, limitations and defensive remediations.
 
 ## Scope note
 This branch is for authorized assessment and reproducible detection-gap validation. It will not contain a one-click stealth toggle, alarm-suppression patch, log tampering, or operational procedures for hiding prohibited activity from a live invigilator or remote proctor.
-\n## Progress update — 2026-10-09\n- Read-only static check of service PE/CLI and selected CIL methods completed; see audit/static-service-analysis.md.\n- Main SecureExamBrowser.exe remains unanalyzed because the connected GitHub file path returned an empty base64 body for this larger binary.\n- No Windows runtime tests have run; do not report a bypass found or disproven.\n
-## Progress update — 2026-10-09 (REA CI)
-- [x] Add .github/workflows/seb-static-audit.yml; GitHub Actions run 37900802418 succeeded.
-- [x] Download and inspect the static report artifact; update F-008/F-009 in findings.md.
-- [ ] Create Windows VM snapshot and run a benign known-positive control.
-- [ ] Validate detector activation and alert/report flow dynamically; current tests do not run SEB or test a bypass.
+
+
+## Progress update — 2026-10-09 (REA CI and main-app inventory)
+- [x] GitHub Actions run [37900802418](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37900802418) succeeded.
+- [x] REA fast suite: 321 test files passed, 1 skipped; 3,450 tests passed, 4 skipped.
+- [x] Static artifact/member/native-boundary reports created for SecureExamBrowser.exe, SebWindowsServiceWCF.exe and SEBWindowsServiceContracts.dll; see audit/static-application-analysis.md and audit/static-service-analysis.md.
+- [ ] Create a Windows VM snapshot and establish collector health with a documented known-positive control.
+- [ ] Validate detector activation and the alert/report chain dynamically; current CI tests the REA toolchain and parses binaries, not the running exam browser.
