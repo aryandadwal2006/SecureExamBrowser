@@ -124,13 +124,12 @@ REA static PE/CLI, member/CIL and managed/native-boundary inventory completed fo
 - **Next action:** Obtain expected vendor hashes/publishers and verify the files installed on a clean Windows VM. Do not run or patch unsigned components just to test trust.
 
 
-## F-015 — Repository Chromium installer differs from current public signed Chromium package
-- **Status:** Comparison complete / actual user package still unknown.
-- **Observation:** Repository `hirepro-chromium-installer.exe` is 102,636,032 bytes, SHA-256 `1b3c640153c82eb40074e4bf55877a90ea5f2ea3d426e5de4eddc0c4bc09ea16`, and reports `NotSigned`. The current public `Chromium_1.0.1_signed.msi` is 103,059,456 bytes, SHA-256 `946557de73da7aaccda17f9b1af63716492058069cfd6bdd709a825f7666d67f`, with a valid Hirepro Consulting Pvt Ltd signature.
-- **Evidence:** [General HirePro SEB landing page](https://securetest.hirepro.in/); [public Chromium MSI](https://securetest.hirepro.in/s3_cached/hirepro-content/hirepro/paas/Chromium_1.0.1_signed.msi); [successful Windows workflow](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906017253); [comparison table](audit/vendor-package-comparison.md).
-- **Confidence:** High that the inspected repository EXE and current public MSI are different files. Unknown whether the repo EXE is an older/staged package, an intermediate build, or the exact candidate asset.
-- **Risk interpretation:** File mismatch plus lack of signature warrants provenance verification; neither fact independently proves malware.
-- **Next action:** Verify hashes/versions of the actual installed files and obtain publisher/hash confirmation for the candidate-specific assessment.
+## F-015 — Bundled Chromium bootstrapper is distinct from the standalone Chromium MSI but is vendor-package-contained
+- **Status:** Observed / distinction resolved.
+- **Observation:** The repository `hirepro-chromium-installer.exe` is not byte-identical to the separately downloaded `Chromium_1.0.1_signed.msi`; it is, however, an exact SHA-256 match to a file path inside the signed public SEB 2.0.2 MSI.
+- **Evidence:** [Public-package component comparison](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906360710/artifacts/11604692503); [vendor package comparison](audit/vendor-package-comparison.md).
+- **Interpretation:** The different standalone file type/name is explained by its presence as a package-contained component in the signed SEB MSI. This is not evidence of malware.
+- **Limitations:** The current install candidate and the user's local file are not hashed here.
 
 
 
@@ -140,3 +139,12 @@ REA static PE/CLI, member/CIL and managed/native-boundary inventory completed fo
 - **Evidence:** [Windows comparison run](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906017253); [comparison report](audit/vendor-package-comparison.md).
 - **Confidence:** High for those exact downloaded/repository files.
 - **Limitations:** The current installer has not been installed, the internal file manifest has not yet been compared, and the user's candidate-specific download is unverified.
+
+
+## F-017 — Four repository artifacts exactly match files inside the signed public SEB 2.0.2 MSI
+- **Status:** Observed / exact hash comparison completed.
+- **Observation:** `lessmsi` extracted the publicly linked `SecureExamBrowserInstaller_en_2.0.2.msi` without installing it. Its package payload contains `SecureExamBrowser.exe`, `SebWindowsServiceWCF.exe`, `SEBWindowsServiceContracts.dll` and `hirepro-chromium-installer.exe`, each with the exact SHA-256 recorded for the corresponding repository file.
+- **Evidence:** [Successful workflow run](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906360710); [artifact 11604692503](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906360710/artifacts/11604692503); [audit/vendor-package-comparison.md](audit/vendor-package-comparison.md).
+- **Confidence:** High for the files extracted from the current public signed MSI and the repository checkout.
+- **Impact:** This eliminates the prior suspicion that those four repository files are arbitrary replacements relative to this published installer. It does not establish the user's installed file identity or prove all other DLLs match.
+- **Next action:** Expand package comparison to all root-level EXE/DLL dependencies and keep runtime/proctoring tests pending.
