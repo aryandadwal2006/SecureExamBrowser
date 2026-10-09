@@ -231,3 +231,9 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - Run https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37925812683 completed successfully; both REA and Windows provenance/package jobs passed.
 - Inventory script current verified Git blob ID: `7dfc24f0a862c38058f67422bdb6276db4d5ef8d`; it includes `chrome.exe`, `chrome.dll`, `chrome_elf.dll`, `chrome_proxy.exe`, crashpad/pwa executables, and common runtime DLLs. PowerShell parser success is recorded in the successful workflow.
 - Next user step: run only this read-only collector once more to identify actual Chromium executable(s) and key DLLs. This is necessary because the first report did not contain `chrome.exe`; core SEB executable/service/DLL and config hashes already match the package.
+
+
+## Nested Chromium installer extraction follow-up — 2026-10-09
+- Workflow [37926409653](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926409653) succeeded and the nested 7-Zip step returned exit code 0 but found no extracted EXE/DLLs (artifact 11613924578). That first report did not list non-binary files, so extraction behavior is not understood yet.
+- New attempt added complete filename/size/hash listing for up to 300 extracted files. Workflow [37926598648](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926598648) failed before extraction because Chocolatey could not resolve pinned `lessmsi` 2.12.9 on that runner. The workflow pin was removed in commit 116c3e47; rerun [37926726531](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926726531) was queued at this note.
+- Core local inventory result remains valid; the only needed local rerun is to collect `chrome.exe` and key DLL hashes via the corrected collector (blob ID `7dfc24f0a862c38058f67422bdb6276db4d5ef8d`).
