@@ -16,7 +16,8 @@ Statuses: [x] done, [ ] not done, [?] blocked/needs evidence.
 
 ## Target identification
 - [x] Obtain a clean automated checkout/artifact set through GitHub Actions without executing the large installer; the action analyzed the supplied files from a clean runner checkout.
-- [x] Record raw SHA-256, assembly versions, MVIDs, PE architecture and managed metadata for all three managed artifacts in audit/artifact-manifest.md.\n- [ ] Verify Authenticode status and exact runtime/loaded-module identity in a Windows VM.
+- [x] Record raw SHA-256, assembly versions, MVIDs, PE architecture and managed metadata for all three managed artifacts in audit/artifact-manifest.md.
+- [ ] Verify Authenticode status and exact runtime/loaded-module identity in a Windows VM.
 - [ ] Determine launch chain, child processes, loaded modules, active config path and runtime version.
 - [ ] Snapshot a clean VM and establish restore procedure.
 
