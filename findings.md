@@ -142,3 +142,13 @@ REA static PE/CLI, member/CIL and managed/native-boundary inventory completed fo
 - **Confidence:** High for those artifacts and that package.
 - **Impact:** No root-level EXE/DLL mismatch was found between the repository and current public installer. This establishes repository/package correspondence, not the effectiveness of security controls or the identity of the files on the user's machine.
 - **Next action:** Treat static provenance as complete for repository files; proceed with authorized runtime validation only when a Windows lab is available.
+
+
+## F-018 — Legacy XUL source exposes browser-window screenshot capability
+- **Status:** Observed in checked-in source / active use unknown.
+- **Observation:** `SebScreenshot.jsm` can render a supplied browser window into canvas/image data. `SebServer.jsm` exposes a separate screenshot-data handling route.
+- **Evidence:** [SebScreenshot.jsm](https://github.com/aryandadwal2006/SecureExamBrowser/blob/main/SebWindowsBrowser/xul_seb/modules/SebScreenshot.jsm); [SebServer.jsm](https://github.com/aryandadwal2006/SecureExamBrowser/blob/main/SebWindowsBrowser/xul_seb/modules/SebServer.jsm); [platform observations](audit/platform-observations.md).
+- **Confidence:** High for the contents of the committed legacy source files.
+- **Limitations:** This is source-level evidence. The exact correspondence to the packaged 2.0.2 client, the handler's activation, whether it is used during this test, image destination, and any whole-desktop capture are unverified.
+- **Interpretation:** Do not claim “no screenshots” simply because the online page's policy does not explicitly list continuous screen recording; also do not claim continuous full-desktop capture from this code alone.
+- **Next action:** Resolve source/runtime correspondence and use organizer-authorized session evidence to determine actual collection behavior. No suppression or concealment patch is part of this audit.
