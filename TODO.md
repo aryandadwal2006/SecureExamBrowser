@@ -111,3 +111,6 @@ This branch is for authorized assessment and reproducible detection-gap validati
 
 ## Hash manifest
 - [x] Commit the full 39-file SHA-256 table in audit/vendor-component-hashes.md for reproducible provenance review.
+
+- [x] Add a privacy-scope caveat for local native/browser message-schema fields: schema presence does not prove remote collection.
+- [ ] If authorized server-side receipts become available, correlate sanitized event IDs with the local observation chain, without collecting secrets/recordings.
