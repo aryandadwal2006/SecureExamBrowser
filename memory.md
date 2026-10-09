@@ -147,3 +147,11 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - REA built, fast checks/tests passed, and all three managed target artifacts were statically inspected. Latest run's fast suite result is same as preceding run: 321 files passed / 1 skipped; 3,450 tests passed / 4 skipped.
 - Windows job downloaded the current public HirePro MSIs, verified Authenticode + SHA-256, extracted the public SEB MSI with lessmsi without installing it, and compared all 39 root-level EXE/DLL files to the package. 39/39 exact matches, 0 mismatches.
 - The package comparison confirms repository root-level components correspond exactly to the public signed installer. It does not verify the user's local install or behavior of a running assessment.
+
+
+## Control map added — 2026-10-09
+- New report: audit/control-map.md.
+- High-level session path: session-opening references environment checks, prohibited-process checks, local XUL communication server and monitoring startup. Separate control families include process/watchdog, foreground/display, device/desktop/Bluetooth/camera, VM/remote-session preflight, executable integrity, watchdog health, local IPC and log/telemetry reporting.
+- Static references establish code structure and call relationships, not runtime activation. Online proctoring data flow and human observation remain separate channels.
+- Current public signed SEB MSI contains exact matches for all 39 root EXE/DLL files from the repo; this establishes repository/package provenance for the current public package, not the user's installed identity.
+- No live runtime or candidate-session test is done. Next is static configuration/message-flow review; later requires authorized Windows VM evidence.
