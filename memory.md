@@ -201,7 +201,7 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 
 ## Local inventory script prepared — 2026-10-09
 - Read-only script: audit/scripts/Collect-LocalSEBInventory.ps1; usage: audit/scripts/README.md.
-- Windows CI parsed the script without executing it successfully in run https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37909760671 (the full workflow was still running when this note was written).
+- Windows CI parsed the script without executing it successfully; the full two-job workflow completed successfully in run https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37909760671.
 - It reads only target file metadata/hashes/signature status and hashes config files without reading their contents. It masks USERPROFILE/LOCALAPPDATA paths and excludes process arguments, assessment URLs, tokens, logs, screenshots and recordings.
 - Do not ask the user to run it unless local installed-file identity is the necessary next step; current public source/package checks can continue without user actions.
 
