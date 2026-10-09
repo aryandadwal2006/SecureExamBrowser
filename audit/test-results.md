@@ -101,3 +101,10 @@ The current HirePro privacy policy names possible video/audio/live-image, device
 ## R-015 — Latest integrated static/provenance run
 - **Result:** Pass. Both jobs completed successfully in [workflow run 37925812683](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37925812683). This includes REA build/check/test, binary static inspection, PowerShell parser validation, package extraction, component hashing and full EXE/DLL inventory of the public MSIs.
 - **Limit:** No target binary was executed. The user's installed `chrome.exe`/runtime DLL hash remains pending.
+
+
+## R-016 — Nested Chromium installer archive exploration (in progress)
+- Initial 7-Zip run returned exit code 0 but recorded no extracted EXE/DLL entries; that report omitted non-binary filenames, so interpretation is open.
+- An enhanced report now records extracted filenames, extensions, sizes and hashes, as well as EXE/DLL signatures.
+- Run [37926598648](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926598648) failed before extraction because Chocolatey could not resolve pinned `lessmsi` version 2.12.9. The version pin was removed; retry [37926726531](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926726531) was queued at document update time.
+- This is a tooling issue and does not change previously successful hash/signature results.
