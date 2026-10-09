@@ -112,3 +112,13 @@ REA static PE/CLI, member/CIL and managed/native-boundary inventory completed fo
 - **Evidence:** [Public installation guide](https://securetest.hirepro.in/accenture/).
 - **Risk:** Broadly disabling protection or overriding a warning without verifying artifact provenance increases endpoint risk.
 - **Recommendation:** Independently verify publisher/signature and request an official hash or confirmation from the employer/HirePro if provenance is unclear. This observation alone does not show the installer is malicious.
+
+
+## F-014 — Authenticode trust differs across checked-out components
+- **Status:** Observed / provenance review required.
+- **Observation:** The Windows preflight reports `SecureExamBrowser.exe` as `Valid`, signed by `CN=Hirepro Consulting Pvt Ltd`. The checked-out `SebWindowsServiceWCF.exe`, `SEBWindowsServiceContracts.dll` and `hirepro-chromium-installer.exe` return `NotSigned`.
+- **Evidence:** [Windows provenance workflow run](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37904465412), artifact ID 11603138113; full identities in [audit/artifact-manifest.md](audit/artifact-manifest.md).
+- **Confidence:** High for Authenticode status and hashes of the repository checkout inspected by the Windows runner.
+- **Impact:** The GUI executable's valid signature does not extend automatically to its neighboring service, DLL or installer. Their provenance needs separate verification.
+- **Limitation:** Unsigned does not mean malicious, and the repo's large Chromium installer has not been shown to be identical to the candidate's email-linked download.
+- **Next action:** Obtain expected vendor hashes/publishers and verify the files installed on a clean Windows VM. Do not run or patch unsigned components just to test trust.
