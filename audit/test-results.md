@@ -65,3 +65,10 @@ Complete per-file table: [audit/vendor-component-hashes.md](vendor-component-has
 
 ## Public-policy interpretation boundary
 The current HirePro privacy policy names possible video/audio/live-image, device/browser, page/link and suspicious-activity processing. It does not by itself prove continuous full-desktop capture in a specific session. The screenshot's recording notice establishes that the UI disclosed audio/video recording; runtime collection and server receipts remain unmeasured. See [platform-observations.md](platform-observations.md).
+
+
+## R-010 — Canonical legacy-source / installer match
+- **Result:** Pass. 12 selected XUL modules/configuration/startup assets matched exactly by SHA-256 to same-named files extracted from the current public signed SEB 2.0.2 MSI.
+- **Correction:** The first attempt hashed Windows working-tree copies with CRLF conversion; the corrected job hashes canonical Git blobs. The apparent initial mismatches were a line-ending artifact, not a source/package mismatch.
+- **Evidence:** [Run 37908852563](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37908852563); [artifact 11605307704](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37908852563/artifacts/11605307704); [audit/legacy-source-package-comparison.md](legacy-source-package-comparison.md).
+- **Limit:** File identity supports static source review; it does not establish active config or runtime behavior.
