@@ -38,3 +38,26 @@ For the remaining Chromium identity check, rerun the corrected inventory script 
 ## Chromium browser comparison pending
 
 The updated CI pipeline now extracts the nested Chromium payload as data only and records the 15 EXE/DLL hashes in [audit/chromium-payload-hashes.md](chromium-payload-hashes.md). The expected `chrome.exe` SHA-256 is `12f2e3b2e818060ed6828bd2bd6fc0de69385e3d1c5a9906a2c3cd1c3cd585e7`. Once the corrected local collector output is supplied, compare `chrome.exe`, `chrome.dll`, `chrome_elf.dll`, and associated files against that manifest.
+
+
+## Second inventory: Chromium executable/DLL comparison
+
+The corrected inventory includes the browser's actual installation paths. **All 11 Chromium binary files reported below match the official nested Chromium payload by exact byte count and SHA-256.**
+
+| Installed file | Bytes | SHA-256 | Result |
+|---|---:|---|---|
+| `chrome.exe` | 3,339,776 | `12f2e3b2e818060ed6828bd2bd6fc0de69385e3d1c5a9906a2c3cd1c3cd585e7` | Exact match |
+| `chrome.dll` | 247,295,488 | `7e1fbae4bb981688ed226c613b2a655534fff3da3e5b043dd0e8db7b8ec4846b` | Exact match |
+| `chrome_elf.dll` | 1,634,816 | `28a47a61c8eb57ab4c7815fc7900776ec8574c45283c127d53a20ea85eca0528` | Exact match |
+| `chrome_pwa_launcher.exe` | 1,757,696 | `185d6964494755f277cf2f4bdb2cbc80075f36380cfcef00d9ac872f579b270c` | Exact match |
+| `chrome_proxy.exe` | 1,453,056 | `70723a8ac0d18bfd17fde09a34ac657753c03a1bf9e411bf0f406a9ef25bbf02` | Exact match |
+| `d3dcompiler_47.dll` | 4,916,840 | `a05d04a270f68c8c6d6ea2d23bebf8cd1d5453b26b5442fa54965f90f1c62082` | Exact match |
+| `libEGL.dll` | 495,104 | `fd66ed01a2efdf25b2764635c6fac5b42fa9d6532aae42cd908956e3d715c78c` | Exact match |
+| `libGLESv2.dll` | 7,839,232 | `cc2176bd292f633c25ed1ca5b7034198962a2157fdbf609675e4f96f2bcd55ac` | Exact match |
+| `notification_helper.exe` | 1,665,536 | `990bf7d4812ae67cfd29ff96ded0cf233b89078f97cba2a1d5cc5523b2e88ed6` | Exact match |
+| `vk_swiftshader.dll` | 5,396,992 | `27cbfc7c94a66b35b98300e7df09d1b182dc78d6bcb6e70d8de83a3ad85a83dc` | Exact match |
+| `vulkan-1.dll` | 886,272 | `bb115d5c22c9316d9addeed43abb7a4417f5ac9647e733b8d870150803715aa2` | Exact match |
+
+The browser reports version `135.0.7049.96`, consistent with the package. Four other EXE/DLL entries in the 15-file package manifest were not included by the collector's target-name list: `chrome_wer.dll`, `dxcompiler.dll`, `dxil.dll`, and `eventlog_provider.dll`. They remain unverified, not presumed absent. Full details are in [audit/chromium-payload-hashes.md](chromium-payload-hashes.md).
+
+**Conclusion:** the main SEB files and all Chromium executable/DLL files reported in the user's two inventories match the examined public package. This closes the primary installed-file identity question for the reported files. It does not establish effective session configuration or the runtime operation of monitoring/proctoring controls.
