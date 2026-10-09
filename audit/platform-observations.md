@@ -118,3 +118,16 @@ The publicly posted privacy policy says proctored services may collect assessmen
 **Not established by public policy alone:** full-desktop/screen-video capture, exact screenshot intervals, whether desktop frames are uploaded during this mock test, whether a human is watching live, or which optional collection features are enabled for this candidate. The user-provided UI explicitly says video/audio are recorded. Treat webcam/microphone recording, browser-page/activity telemetry, native host monitoring and screen-pixel capture as four distinct questions.
 
 The local app's display/device-monitoring code is static evidence of host/display-state checks; it does not automatically establish that screenshots or the entire desktop are continuously captured. Actual screen-capture use requires a concrete call path or authorized runtime evidence.
+
+
+## 13. Legacy XUL screenshot code: browser-window image, not proof of desktop-wide capture
+
+The checked-in `SebScreenshot.jsm` has a screenshot routine that renders a supplied browser-window object into a canvas and can encode the result as image data. The separate legacy `SebServer.jsm` includes a message handler that delegates screenshot data handling to that module. This establishes a screenshot capability in the **checked-in legacy source**.
+
+Important limits:
+- The capture routine is passed a browser window; that alone is not evidence of all pixels across the Windows desktop being captured.
+- The presence of a screenshot message handler does not show it runs continuously or is enabled in this test configuration.
+- The mapping from this legacy XUL source to the packaged HirePro SEB 2.0.2 runtime remains unverified.
+- Whether and when such images are transmitted or retained by the online service remains unverified.
+
+Thus the current evidence is: the user-visible UI says video/audio are recorded; the public policy says live images may be collected; and legacy source has browser-window screenshot capability. Full desktop capture in this exact mock session remains unknown.
