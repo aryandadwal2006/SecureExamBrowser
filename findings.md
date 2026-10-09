@@ -60,7 +60,7 @@
 - **Not established:** Continuous screen capture or specific remote monitoring behaviour.
 
 ## Test status
-No native Windows runtime test or executable decompilation has yet been completed through this investigation session. Do not label a bypass found or disproven. Continue with audit/test-matrix.md, independently instrumenting observation channels and repeating candidate findings from a clean snapshot.
+REA static PE/CLI, member/CIL and managed/native-boundary inventory completed for the main executable, service and contracts DLL through GitHub Actions. No native Windows runtime test or full source-like C# decompilation has yet been completed. Do not label a bypass found or disproven. Continue with audit/test-matrix.md, independently instrumenting observation channels and repeating candidate findings from a clean snapshot.
 
 
 ## F-008 — Main client contains multiple security-monitoring subsystems
