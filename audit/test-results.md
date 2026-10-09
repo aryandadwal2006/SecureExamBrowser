@@ -127,3 +127,10 @@ The current HirePro privacy policy names possible video/audio/live-image, device
 - **Result:** Static review item documented; dynamic outcome pending.
 - **Evidence:** [audit/privileged-service-authorization-review.md](privileged-service-authorization-review.md); [test case T-019](test-matrix.md).
 - **Limit:** Presence of policy-management methods and a process-launch helper does not establish untrusted reachability. Endpoint ACL, authentication, allow-listing and runtime denial behaviour remain unknown.
+
+
+## R-020 — Final local identity checkpoint
+- **Result:** Pass for all files reported by the user: core SEB executable/service/configuration artifacts match the package evidence, and 11/11 reported Chromium EXE/DLL files match the nested Chromium payload.
+- **Evidence:** [audit/local-install-comparison.md](local-install-comparison.md); [audit/chromium-payload-hashes.md](chromium-payload-hashes.md); comprehensive static workflow [37926967501](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926967501).
+- **Remaining optional collection gap:** four Chromium package names were not requested by the local collector. No mismatch is known.
+- **Dynamic validation remains not run:** effective config, endpoint authorization, monitoring activation, remote receipt delivery and human observation need approved test-environment evidence.
