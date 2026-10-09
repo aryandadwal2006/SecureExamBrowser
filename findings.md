@@ -191,3 +191,13 @@ REA static PE/CLI, member/CIL and managed/native-boundary inventory completed fo
 - **Evidence:** User-provided inventory; corrected script [audit/scripts/Collect-LocalSEBInventory.ps1](audit/scripts/Collect-LocalSEBInventory.ps1).
 - **Impact:** Cannot yet determine whether the actual installed Chromium executable/DLLs match the current official package.
 - **Next action:** Run the updated read-only inventory once its Windows CI validation completes. No browser launch, config read or assessment session is needed.
+
+
+## F-024 — Chromium 135 payload hashes extracted from signed public package
+- **Status:** Observed / payload inventory complete.
+- **Observation:** Static extraction of the signed public package chain found `chrome.7z` inside the nested Chromium bootstrapper. Extracting that archive produced 86 files, including 15 EXE/DLL files. The package and nested installer were not executed.
+- **Evidence:** [Successful workflow run 37926967501](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926967501); [artifact 11613754590](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926967501/artifacts/11613754590); [audit/chromium-payload-hashes.md](audit/chromium-payload-hashes.md).
+- **Confidence:** High for hashes collected from the nested payload extracted from the current publicly signed package.
+- **Impact:** Expected hashes are now available for local Chromium 135 files, including `chrome.exe` and `chrome.dll`.
+- **Next action:** Run the corrected read-only local inventory and compare exact installed Chromium file hashes against the payload manifest. This is identity validation only, not a test of proctoring detection.
+
