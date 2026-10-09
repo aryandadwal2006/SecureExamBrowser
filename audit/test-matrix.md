@@ -65,3 +65,8 @@ The HirePro landing page indicates that the web UI launches the native applicati
 
 ## Latest completed automation
 The successful GitHub Actions run [37904465412](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37904465412) completed REA build/check/test and Windows hash/signature collection. Results and all pending runtime cases are summarized in [audit/test-results.md](test-results.md).
+
+
+## Source-level screenshot follow-up
+
+The legacy XUL source contains browser-window screenshot code and a screenshot-data handler, but activation and correspondence to the current package are unverified. This increases the importance of treating screenshot capture, webcam recording, and full-desktop capture as different test questions. A future test must use documented diagnostics and authorized session evidence; do not infer “not captured” from a missing UI notification.
