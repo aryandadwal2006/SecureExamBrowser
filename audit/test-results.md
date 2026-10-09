@@ -46,3 +46,9 @@ Run [37906017253](https://github.com/aryandadwal2006/SecureExamBrowser/actions/r
 - **Result:** Passed. The Windows job extracted the signed public SEB MSI without installation and found exact SHA-256 matches for all four examined root artifacts.
 - **Evidence:** [Workflow run 37906360710](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906360710); [component comparison artifact](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906360710/artifacts/11604692503).
 - **Limit:** This confirms correspondence to the current public installer contents, not identity of files on the user's machine. Other root-level DLLs remain to be compared.
+
+
+## R-009 — Full root-level component identity check (Windows CI)
+- **Result:** Passed. All 39 top-level repository EXE/DLL files had an exact same-named, same-SHA-256 counterpart in the extracted signed public SEB 2.0.2 MSI; zero mismatches.
+- **Evidence:** [Workflow run 37906673190](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190); [artifact 11604173812](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190/artifacts/11604173812).
+- **Limit:** This verifies repository files against the public package, not files installed on the user's laptop. The parallel REA test job was still running when this row was added.
