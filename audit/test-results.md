@@ -1,0 +1,37 @@
+# Test Results and Execution Ledger
+
+**Updated:** 2026-10-09  
+**Branch:** `redteam/monitoring-audit-2026-10-09`  
+**Scope:** Static analysis and artifact provenance only. No assessment browser, installer or target service was executed by these jobs.
+
+## Completed checks
+
+| ID | Check | Result | Evidence | What the result means |
+|---|---|---|---|---|
+| R-001 | REA dependency install/build | Pass | [CI run 37904465412](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37904465412) | Analysis tool built successfully. |
+| R-002 | REA fast types/lint checks | Pass | Same CI run | REA's fast code-quality checks passed. |
+| R-003 | REA fast unit/integration suite | Pass, with skips | Same CI run | 321 test files passed and 1 was skipped; 3,450 tests passed and 4 were skipped. These are REA tests, **not** tests of SEB's runtime security. |
+| R-004 | Managed PE/CLI inventory for app, service and contracts | Pass | [Static report artifact](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37904465412/artifacts/11603352933) | Reports created for all three artifacts without loading/executing the target binaries. |
+| R-005 | Windows SHA-256 and Authenticode status | Pass as an evidence collection step | [Windows provenance artifact](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37904465412/artifacts/11603138113) | Main `SecureExamBrowser.exe` signature validates and names Hirepro Consulting Pvt Ltd. The service executable, contract DLL and repo's Chromium installer are reported as unsigned. Unsigned status is not proof of malware. |
+| R-006 | Public landing page/privacy notice and supplied screenshots reviewed | Observed | [Platform observations](platform-observations.md) | Documents the native-app handoff, app closure warning, visible recording notice and published data categories. Not a measurement of the session's network payloads. |
+| R-007 | Static call graph review of session startup/watchers | Pass as static evidence gathering | [Static application analysis](static-application-analysis.md) | Call edges connect the session-opening path to process monitoring, prohibited-process checks, local browser communication and watcher/integrity reporting. Runtime activation remains unverified. |
+
+## Pending validation
+
+| ID | Check | Required environment/evidence | Status |
+|---|---|---|---|
+| D-001 | Verify actual installed file identity and active configuration | Authorized Windows VM; hashes/versions, loaded modules, process ancestry and config path | Not run |
+| D-002 | Confirm detector activation using a benign positive control | Disposable Windows VM with healthy independent process/session telemetry | Not run |
+| D-003 | Verify end-to-end detection/report delivery | Correlated host event, app/service log and authorized test-server receipt | Not run |
+| D-004 | Test documented device restrictions and session transitions | Disposable VM/test device and approved benign controls | Not run |
+| D-005 | Measure browser/platform recording and network event flow | Authorized mock session, permission evidence and sanitized/authorized server records | Not run |
+| D-006 | Verify integrity coverage for all loaded/shipped components | Source/CIL review plus vendor-provided expected hashes/publishers; no file tampering required | Not run |
+| D-007 | Determine whether a separate human observer is present and what that observer can see | Explicit organizer confirmation / authorized protocol documentation | Unknown |
+
+## Verdict discipline
+
+- A static type, call edge or string proves only what is present in the identified artifact.
+- Successful REA tests validate the analysis toolchain, not SEB's effectiveness.
+- An Authenticode result applies to the exact hashed repository file, not automatically to the user's downloaded/installed copy.
+- “No warning seen” is not a finding of missing telemetry unless independent capture and all required reporting channels have been validated.
+- No bypass has been reproduced, and no bypass has been disproven.
