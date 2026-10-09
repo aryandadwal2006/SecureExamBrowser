@@ -210,6 +210,7 @@ jobs:
             'SebWindowsBrowser/xul_seb/modules/SebConfig.jsm',
             'SebWindowsBrowser/xul_seb/modules/seb.jsm',
             'SebWindowsBrowser/xul_seb/config.default.json',
+            'SebWindowsBrowser/xul_seb/default.json',
             'SebWindowsBrowser/xul_seb/config.json',
             'SebWindowsBrowser/xul_seb/config.SEB22.json',
             'SebWindowsBrowser/xul_seb/chrome/content/seb/seb.xul',
@@ -217,29 +218,44 @@ jobs:
             'SebWindowsBrowser/xul_seb/chrome.manifest',
             'SebWindowsBrowser/xul_seb/defaults/preferences/seb.js'
           )
+          $sourceBlobDir = Join-Path $env:RUNNER_TEMP 'canonical-git-source-blobs'
+          New-Item -ItemType Directory -Force -Path $sourceBlobDir | Out-Null
           $sourceComparison = foreach ($relativePath in $sourceRelativePaths) {
             $sourcePath = Join-Path $root $relativePath
             if (-not (Test-Path -LiteralPath $sourcePath -PathType Leaf)) {
               [pscustomobject]@{ sourcePath = $relativePath; error = 'Source file not found'; packageCandidates = @() }
               continue
             }
-            $sourceFile = Get-Item -LiteralPath $sourcePath
-            $sourceHash = (Get-FileHash -LiteralPath $sourcePath -Algorithm SHA256).Hash.ToLowerInvariant()
-            $candidates = foreach ($file in ($allExtracted | Where-Object { $_.Name -ieq $sourceFile.Name })) {
+            # Hash the canonical Git blob, not Windows' line-ending-transformed working-tree copy.
+            $blobName = ($relativePath -replace '[\\/]', '__') + '.blob'
+            $gitBlobPath = Join-Path $sourceBlobDir $blobName
+            $gitCommand = 'git cat-file blob HEAD:' + $relativePath + ' > "' + $gitBlobPath + '"'
+            & cmd.exe /d /c $gitCommand
+            if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $gitBlobPath -PathType Leaf)) {
+              throw "Unable to read canonical Git blob for $relativePath"
+            }
+            $sourceFile = Get-Item -LiteralPath $gitBlobPath
+            $sourceHash = (Get-FileHash -LiteralPath $gitBlobPath -Algorithm SHA256).Hash.ToLowerInvariant()
+            $workingTreeFile = Get-Item -LiteralPath $sourcePath
+            $workingTreeHash = (Get-FileHash -LiteralPath $sourcePath -Algorithm SHA256).Hash.ToLowerInvariant()
+            $candidates = foreach ($file in ($allExtracted | Where-Object { $_.Name -ieq (Split-Path -Leaf $relativePath) })) {
               $h = (Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
               [pscustomobject]@{
                 packageRelativePath = $file.FullName.Substring($extractRoot.Length).TrimStart('\','/')
                 bytes = $file.Length
                 sha256 = $h
-                exactlyMatchesRepositorySource = $h -eq $sourceHash
+                exactlyMatchesCanonicalGitBlob = $h -eq $sourceHash
               }
             }
             [pscustomobject]@{
               sourcePath = $relativePath
-              sourceBytes = $sourceFile.Length
-              sourceSha256 = $sourceHash
+              canonicalGitBlobBytes = $sourceFile.Length
+              canonicalGitBlobSha256 = $sourceHash
+              windowsWorkingTreeBytes = $workingTreeFile.Length
+              windowsWorkingTreeSha256 = $workingTreeHash
+              workingTreeDiffersFromGitBlob = ($workingTreeHash -ne $sourceHash)
               packageCandidates = @($candidates)
-              exactMatchCount = @($candidates | Where-Object { $_.exactlyMatchesRepositorySource }).Count
+              exactMatchCount = @($candidates | Where-Object { $_.exactlyMatchesCanonicalGitBlob }).Count
               sameNamedPackageFileCount = @($candidates).Count
             }
           }
