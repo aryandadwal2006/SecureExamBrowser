@@ -1,0 +1,486 @@
+05-10-2026 19:43:50: --- STARTING SEB SERVICE ---
+05-10-2026 19:43:50: Initializing service host...
+05-10-2026 19:43:51: Waiting 10s before attempting to reset any changes...
+05-10-2026 19:44:01: Attempting to reset registry values...
+05-10-2026 19:44:01: Default file path: C:\Program Files (x86)\SecureExamBrowser\sebregistry.srg
+05-10-2026 19:44:01: Backup file path: C:\Program Files (x86)\SecureExamBrowser\sebregistry.new
+05-10-2026 19:44:01: No registry settings file found.
+05-10-2026 19:44:01: Attempt to reset registry was successful.
+06-10-2026 20:40:07: --- STARTING SEB SERVICE ---
+06-10-2026 20:40:07: Initializing service host...
+06-10-2026 20:40:08: Waiting 10s before attempting to reset any changes...
+06-10-2026 20:40:18: Attempting to reset registry values...
+06-10-2026 20:40:18: Default file path: C:\Program Files (x86)\SecureExamBrowser\sebregistry.srg
+06-10-2026 20:40:18: Backup file path: C:\Program Files (x86)\SecureExamBrowser\sebregistry.new
+06-10-2026 20:40:18: No registry settings file found.
+06-10-2026 20:40:18: Attempt to reset registry was successful.
+06-10-2026 20:49:37: Attempting to reset registry values...
+06-10-2026 20:49:37: No registry settings file found.
+06-10-2026 20:49:42: SID: S-1-5-21-2796813973-2858853975-1557700519-1001
+06-10-2026 20:49:42: Username: aryan
+06-10-2026 20:49:42: No registry settings file found.
+06-10-2026 20:49:42: Attempting to set new registry values...
+06-10-2026 20:49:42: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\Google\Chrome\DefaultNotificationsSetting'  old value '',  new value '2'.
+06-10-2026 20:49:42: Saved settings to default file.
+06-10-2026 20:49:42: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\Google\Chrome\DefaultNotificationsSetting' to '2'.
+06-10-2026 20:49:42: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableLockWorkstation'  old value '',  new value '1'.
+06-10-2026 20:49:42: Saved settings to default file.
+06-10-2026 20:49:42: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableLockWorkstation' to '1'.
+06-10-2026 20:49:42: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableChangePassword'  old value '',  new value '1'.
+06-10-2026 20:49:42: Saved settings to default file.
+06-10-2026 20:49:42: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableChangePassword' to '1'.
+06-10-2026 20:49:42: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableTaskMgr'  old value '',  new value '1'.
+06-10-2026 20:49:42: Saved settings to default file.
+06-10-2026 20:49:42: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableTaskMgr' to '1'.
+06-10-2026 20:49:42: Registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\HideFastUserSwitching'  old value '',  new value '1'.
+06-10-2026 20:49:42: Saved settings to default file.
+06-10-2026 20:49:42: Set registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\HideFastUserSwitching' to '1'.
+06-10-2026 20:49:42: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoLogoff'  old value '',  new value '1'.
+06-10-2026 20:49:42: Saved settings to default file.
+06-10-2026 20:49:42: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoLogoff' to '1'.
+06-10-2026 20:49:42: Registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'  old value '',  new value '1'.
+06-10-2026 20:49:42: Saved settings to default file.
+06-10-2026 20:49:42: Set registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose' to '1'.
+06-10-2026 20:49:42: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'  old value '',  new value '1'.
+06-10-2026 20:49:42: Saved settings to default file.
+06-10-2026 20:49:42: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose' to '1'.
+06-10-2026 20:49:42: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\VMware, Inc.\VMware VDM\Client\EnableShade'  old value '',  new value '0'.
+06-10-2026 20:49:42: Saved settings to default file.
+06-10-2026 20:49:42: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\VMware, Inc.\VMware VDM\Client\EnableShade' to '0'.
+06-10-2026 20:49:42: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\VMware, Inc.\VMware VDM\Client\EnableShade'  old value '',  new value 'False'.
+06-10-2026 20:49:42: Saved settings to default file.
+06-10-2026 20:49:42: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\VMware, Inc.\VMware VDM\Client\EnableShade' to 'False'.
+06-10-2026 20:49:42: Registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Utilman.exe\Debugger'  old value '',  new value '1'.
+06-10-2026 20:49:42: Saved settings to default file.
+06-10-2026 20:49:42: Set registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Utilman.exe\Debugger' to '1'.
+06-10-2026 20:49:42: Registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System\DontDisplayNetworkSelectionUI'  old value '',  new value '1'.
+06-10-2026 20:49:42: Saved settings to default file.
+06-10-2026 20:49:42: Set registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System\DontDisplayNetworkSelectionUI' to '1'.
+06-10-2026 20:49:42: Registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\NoAutoRebootWithLoggedOnUsers'  old value '',  new value '1'.
+06-10-2026 20:49:42: Saved settings to default file.
+06-10-2026 20:49:42: Set registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\NoAutoRebootWithLoggedOnUsers' to '1'.
+06-10-2026 20:49:42: Registry key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\fDenyTSConnections'  old value '1',  new value '1'.
+06-10-2026 20:49:42: Registry key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\fDenyTSConnections' already has value '1', skipping it.
+06-10-2026 20:49:43: Stopped service 'Windows Update'.
+06-10-2026 20:49:43: Set windows update to False
+06-10-2026 20:49:43: Loading settings from default file.
+06-10-2026 20:49:43: Saved settings to default file.
+06-10-2026 20:50:17: Attempting to reset registry values...
+06-10-2026 20:50:17: Loading settings from default file.
+06-10-2026 20:50:17: SID: S-1-5-21-2796813973-2858853975-1557700519-1001
+06-10-2026 20:50:17: Username: aryan
+06-10-2026 20:50:17: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\Google\Chrome\DefaultNotificationsSetting'.
+06-10-2026 20:50:17: Saved settings to default file.
+06-10-2026 20:50:17: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableLockWorkstation'.
+06-10-2026 20:50:17: Saved settings to default file.
+06-10-2026 20:50:17: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableChangePassword'.
+06-10-2026 20:50:17: Saved settings to default file.
+06-10-2026 20:50:17: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableTaskMgr'.
+06-10-2026 20:50:17: Saved settings to default file.
+06-10-2026 20:50:17: Deleted registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\HideFastUserSwitching'.
+06-10-2026 20:50:17: Saved settings to default file.
+06-10-2026 20:50:17: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoLogoff'.
+06-10-2026 20:50:17: Saved settings to default file.
+06-10-2026 20:50:17: Deleted registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'.
+06-10-2026 20:50:17: Saved settings to default file.
+06-10-2026 20:50:17: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'.
+06-10-2026 20:50:17: Saved settings to default file.
+06-10-2026 20:50:17: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\VMware, Inc.\VMware VDM\Client\EnableShade'.
+06-10-2026 20:50:17: Saved settings to default file.
+06-10-2026 20:50:17: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\VMware, Inc.\VMware VDM\Client\EnableShade'.
+06-10-2026 20:50:17: Saved settings to default file.
+06-10-2026 20:50:17: Deleted registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Utilman.exe\Debugger'.
+06-10-2026 20:50:17: Saved settings to default file.
+06-10-2026 20:50:17: Deleted registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System\DontDisplayNetworkSelectionUI'.
+06-10-2026 20:50:17: Saved settings to default file.
+06-10-2026 20:50:17: Deleted registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\NoAutoRebootWithLoggedOnUsers'.
+06-10-2026 20:50:17: Saved settings to default file.
+06-10-2026 20:50:17: Initiating group policy update...
+06-10-2026 20:50:17: Started service 'Windows Update'.
+06-10-2026 20:50:17: Set windows update to True
+06-10-2026 20:50:17: Deleted default file.
+06-10-2026 20:50:28: Updating policy...  Computer Policy update has completed successfully. User Policy update has completed successfully.
+06-10-2026 20:51:19: Attempting to reset registry values...
+06-10-2026 20:51:19: No registry settings file found.
+06-10-2026 20:51:23: SID: S-1-5-21-2796813973-2858853975-1557700519-1001
+06-10-2026 20:51:23: Username: aryan
+06-10-2026 20:51:23: No registry settings file found.
+06-10-2026 20:51:23: Attempting to set new registry values...
+06-10-2026 20:51:23: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\Google\Chrome\DefaultNotificationsSetting'  old value '',  new value '2'.
+06-10-2026 20:51:23: Saved settings to default file.
+06-10-2026 20:51:23: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\Google\Chrome\DefaultNotificationsSetting' to '2'.
+06-10-2026 20:51:23: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableLockWorkstation'  old value '',  new value '1'.
+06-10-2026 20:51:23: Saved settings to default file.
+06-10-2026 20:51:23: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableLockWorkstation' to '1'.
+06-10-2026 20:51:23: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableChangePassword'  old value '',  new value '1'.
+06-10-2026 20:51:23: Saved settings to default file.
+06-10-2026 20:51:23: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableChangePassword' to '1'.
+06-10-2026 20:51:23: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableTaskMgr'  old value '',  new value '1'.
+06-10-2026 20:51:23: Saved settings to default file.
+06-10-2026 20:51:23: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableTaskMgr' to '1'.
+06-10-2026 20:51:23: Registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\HideFastUserSwitching'  old value '',  new value '1'.
+06-10-2026 20:51:23: Saved settings to default file.
+06-10-2026 20:51:23: Set registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\HideFastUserSwitching' to '1'.
+06-10-2026 20:51:23: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoLogoff'  old value '',  new value '1'.
+06-10-2026 20:51:23: Saved settings to default file.
+06-10-2026 20:51:23: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoLogoff' to '1'.
+06-10-2026 20:51:23: Registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'  old value '',  new value '1'.
+06-10-2026 20:51:23: Saved settings to default file.
+06-10-2026 20:51:23: Set registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose' to '1'.
+06-10-2026 20:51:23: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'  old value '',  new value '1'.
+06-10-2026 20:51:23: Saved settings to default file.
+06-10-2026 20:51:23: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose' to '1'.
+06-10-2026 20:51:23: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\VMware, Inc.\VMware VDM\Client\EnableShade'  old value '',  new value '0'.
+06-10-2026 20:51:23: Saved settings to default file.
+06-10-2026 20:51:23: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\VMware, Inc.\VMware VDM\Client\EnableShade' to '0'.
+06-10-2026 20:51:23: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\VMware, Inc.\VMware VDM\Client\EnableShade'  old value '',  new value 'False'.
+06-10-2026 20:51:23: Saved settings to default file.
+06-10-2026 20:51:23: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\VMware, Inc.\VMware VDM\Client\EnableShade' to 'False'.
+06-10-2026 20:51:23: Registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Utilman.exe\Debugger'  old value '',  new value '1'.
+06-10-2026 20:51:23: Saved settings to default file.
+06-10-2026 20:51:23: Set registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Utilman.exe\Debugger' to '1'.
+06-10-2026 20:51:23: Registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System\DontDisplayNetworkSelectionUI'  old value '',  new value '1'.
+06-10-2026 20:51:23: Saved settings to default file.
+06-10-2026 20:51:23: Set registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System\DontDisplayNetworkSelectionUI' to '1'.
+06-10-2026 20:51:23: Registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\NoAutoRebootWithLoggedOnUsers'  old value '',  new value '1'.
+06-10-2026 20:51:23: Saved settings to default file.
+06-10-2026 20:51:23: Set registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\NoAutoRebootWithLoggedOnUsers' to '1'.
+06-10-2026 20:51:23: Registry key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\fDenyTSConnections'  old value '1',  new value '1'.
+06-10-2026 20:51:23: Registry key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\fDenyTSConnections' already has value '1', skipping it.
+06-10-2026 20:51:23: Stopped service 'Windows Update'.
+06-10-2026 20:51:23: Set windows update to False
+06-10-2026 20:51:23: Loading settings from default file.
+06-10-2026 20:51:23: Saved settings to default file.
+06-10-2026 23:05:17: Attempting to reset registry values...
+06-10-2026 23:05:17: Loading settings from default file.
+06-10-2026 23:05:17: SID: S-1-5-21-2796813973-2858853975-1557700519-1001
+06-10-2026 23:05:17: Username: aryan
+06-10-2026 23:05:17: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\Google\Chrome\DefaultNotificationsSetting'.
+06-10-2026 23:05:17: Saved settings to default file.
+06-10-2026 23:05:17: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableLockWorkstation'.
+06-10-2026 23:05:17: Saved settings to default file.
+06-10-2026 23:05:17: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableChangePassword'.
+06-10-2026 23:05:17: Saved settings to default file.
+06-10-2026 23:05:17: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableTaskMgr'.
+06-10-2026 23:05:17: Saved settings to default file.
+06-10-2026 23:05:17: Deleted registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\HideFastUserSwitching'.
+06-10-2026 23:05:17: Saved settings to default file.
+06-10-2026 23:05:17: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoLogoff'.
+06-10-2026 23:05:17: Saved settings to default file.
+06-10-2026 23:05:17: Deleted registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'.
+06-10-2026 23:05:17: Saved settings to default file.
+06-10-2026 23:05:17: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'.
+06-10-2026 23:05:17: Saved settings to default file.
+06-10-2026 23:05:17: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\VMware, Inc.\VMware VDM\Client\EnableShade'.
+06-10-2026 23:05:17: Saved settings to default file.
+06-10-2026 23:05:17: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\VMware, Inc.\VMware VDM\Client\EnableShade'.
+06-10-2026 23:05:17: Saved settings to default file.
+06-10-2026 23:05:17: Deleted registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Utilman.exe\Debugger'.
+06-10-2026 23:05:17: Saved settings to default file.
+06-10-2026 23:05:17: Deleted registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System\DontDisplayNetworkSelectionUI'.
+06-10-2026 23:05:17: Saved settings to default file.
+06-10-2026 23:05:17: Deleted registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\NoAutoRebootWithLoggedOnUsers'.
+06-10-2026 23:05:17: Saved settings to default file.
+06-10-2026 23:05:17: Initiating group policy update...
+06-10-2026 23:05:17: Started service 'Windows Update'.
+06-10-2026 23:05:17: Set windows update to True
+06-10-2026 23:05:17: Deleted default file.
+06-10-2026 23:05:27: Updating policy...  Computer Policy update has completed successfully. User Policy update has completed successfully.
+06-10-2026 23:07:39: Attempting to reset registry values...
+06-10-2026 23:07:39: No registry settings file found.
+06-10-2026 23:07:43: SID: S-1-5-21-2796813973-2858853975-1557700519-1001
+06-10-2026 23:07:43: Username: aryan
+06-10-2026 23:07:43: No registry settings file found.
+06-10-2026 23:07:43: Attempting to set new registry values...
+06-10-2026 23:07:43: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\Google\Chrome\DefaultNotificationsSetting'  old value '',  new value '2'.
+06-10-2026 23:07:43: Saved settings to default file.
+06-10-2026 23:07:43: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\Google\Chrome\DefaultNotificationsSetting' to '2'.
+06-10-2026 23:07:43: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableLockWorkstation'  old value '',  new value '1'.
+06-10-2026 23:07:43: Saved settings to default file.
+06-10-2026 23:07:43: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableLockWorkstation' to '1'.
+06-10-2026 23:07:43: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableChangePassword'  old value '',  new value '1'.
+06-10-2026 23:07:43: Saved settings to default file.
+06-10-2026 23:07:43: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableChangePassword' to '1'.
+06-10-2026 23:07:43: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableTaskMgr'  old value '',  new value '1'.
+06-10-2026 23:07:43: Saved settings to default file.
+06-10-2026 23:07:43: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableTaskMgr' to '1'.
+06-10-2026 23:07:43: Registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\HideFastUserSwitching'  old value '',  new value '1'.
+06-10-2026 23:07:43: Saved settings to default file.
+06-10-2026 23:07:43: Set registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\HideFastUserSwitching' to '1'.
+06-10-2026 23:07:43: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoLogoff'  old value '',  new value '1'.
+06-10-2026 23:07:43: Saved settings to default file.
+06-10-2026 23:07:43: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoLogoff' to '1'.
+06-10-2026 23:07:43: Registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'  old value '',  new value '1'.
+06-10-2026 23:07:43: Saved settings to default file.
+06-10-2026 23:07:43: Set registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose' to '1'.
+06-10-2026 23:07:43: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'  old value '',  new value '1'.
+06-10-2026 23:07:43: Saved settings to default file.
+06-10-2026 23:07:43: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose' to '1'.
+06-10-2026 23:07:43: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\VMware, Inc.\VMware VDM\Client\EnableShade'  old value '',  new value '0'.
+06-10-2026 23:07:43: Saved settings to default file.
+06-10-2026 23:07:43: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\VMware, Inc.\VMware VDM\Client\EnableShade' to '0'.
+06-10-2026 23:07:43: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\VMware, Inc.\VMware VDM\Client\EnableShade'  old value '',  new value 'False'.
+06-10-2026 23:07:43: Saved settings to default file.
+06-10-2026 23:07:43: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\VMware, Inc.\VMware VDM\Client\EnableShade' to 'False'.
+06-10-2026 23:07:43: Registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Utilman.exe\Debugger'  old value '',  new value '1'.
+06-10-2026 23:07:43: Saved settings to default file.
+06-10-2026 23:07:43: Set registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Utilman.exe\Debugger' to '1'.
+06-10-2026 23:07:43: Registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System\DontDisplayNetworkSelectionUI'  old value '',  new value '1'.
+06-10-2026 23:07:43: Saved settings to default file.
+06-10-2026 23:07:43: Set registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System\DontDisplayNetworkSelectionUI' to '1'.
+06-10-2026 23:07:43: Registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\NoAutoRebootWithLoggedOnUsers'  old value '',  new value '1'.
+06-10-2026 23:07:43: Saved settings to default file.
+06-10-2026 23:07:43: Set registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\NoAutoRebootWithLoggedOnUsers' to '1'.
+06-10-2026 23:07:43: Registry key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\fDenyTSConnections'  old value '1',  new value '1'.
+06-10-2026 23:07:43: Registry key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\fDenyTSConnections' already has value '1', skipping it.
+06-10-2026 23:07:43: Stopped service 'Windows Update'.
+06-10-2026 23:07:43: Set windows update to False
+06-10-2026 23:07:43: Loading settings from default file.
+06-10-2026 23:07:43: Saved settings to default file.
+06-10-2026 23:25:55: Attempting to reset registry values...
+06-10-2026 23:25:55: Loading settings from default file.
+06-10-2026 23:25:55: SID: S-1-5-21-2796813973-2858853975-1557700519-1001
+06-10-2026 23:25:55: Username: aryan
+06-10-2026 23:25:55: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\Google\Chrome\DefaultNotificationsSetting'.
+06-10-2026 23:25:55: Saved settings to default file.
+06-10-2026 23:25:55: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableLockWorkstation'.
+06-10-2026 23:25:55: Saved settings to default file.
+06-10-2026 23:25:55: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableChangePassword'.
+06-10-2026 23:25:55: Saved settings to default file.
+06-10-2026 23:25:55: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableTaskMgr'.
+06-10-2026 23:25:55: Saved settings to default file.
+06-10-2026 23:25:55: Deleted registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\HideFastUserSwitching'.
+06-10-2026 23:25:55: Saved settings to default file.
+06-10-2026 23:25:55: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoLogoff'.
+06-10-2026 23:25:55: Saved settings to default file.
+06-10-2026 23:25:55: Deleted registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'.
+06-10-2026 23:25:55: Saved settings to default file.
+06-10-2026 23:25:55: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'.
+06-10-2026 23:25:55: Saved settings to default file.
+06-10-2026 23:25:55: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\VMware, Inc.\VMware VDM\Client\EnableShade'.
+06-10-2026 23:25:55: Saved settings to default file.
+06-10-2026 23:25:55: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\VMware, Inc.\VMware VDM\Client\EnableShade'.
+06-10-2026 23:25:55: Saved settings to default file.
+06-10-2026 23:25:55: Deleted registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Utilman.exe\Debugger'.
+06-10-2026 23:25:55: Saved settings to default file.
+06-10-2026 23:25:55: Deleted registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System\DontDisplayNetworkSelectionUI'.
+06-10-2026 23:25:55: Saved settings to default file.
+06-10-2026 23:25:55: Deleted registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\NoAutoRebootWithLoggedOnUsers'.
+06-10-2026 23:25:55: Saved settings to default file.
+06-10-2026 23:25:55: Initiating group policy update...
+06-10-2026 23:25:55: Service 'Windows Update' is already starting / running...
+06-10-2026 23:25:55: Set windows update to True
+06-10-2026 23:25:55: Deleted default file.
+06-10-2026 23:26:06: Updating policy...  Computer Policy update has completed successfully. User Policy update has completed successfully.
+07-10-2026 16:58:44: --- STARTING SEB SERVICE ---
+07-10-2026 16:58:44: Initializing service host...
+07-10-2026 16:58:45: Waiting 10s before attempting to reset any changes...
+07-10-2026 16:58:55: Attempting to reset registry values...
+07-10-2026 16:58:55: Default file path: C:\Program Files (x86)\SecureExamBrowser\sebregistry.srg
+07-10-2026 16:58:55: Backup file path: C:\Program Files (x86)\SecureExamBrowser\sebregistry.new
+07-10-2026 16:58:55: No registry settings file found.
+07-10-2026 16:58:55: Attempt to reset registry was successful.
+08-10-2026 02:42:26: --- STARTING SEB SERVICE ---
+08-10-2026 02:42:26: Initializing service host...
+08-10-2026 02:42:27: Waiting 10s before attempting to reset any changes...
+08-10-2026 02:42:37: Attempting to reset registry values...
+08-10-2026 02:42:37: Default file path: C:\Program Files (x86)\SecureExamBrowser\sebregistry.srg
+08-10-2026 02:42:37: Backup file path: C:\Program Files (x86)\SecureExamBrowser\sebregistry.new
+08-10-2026 02:42:37: No registry settings file found.
+08-10-2026 02:42:37: Attempt to reset registry was successful.
+08-10-2026 05:11:06: --- STARTING SEB SERVICE ---
+08-10-2026 05:11:06: Initializing service host...
+08-10-2026 05:11:08: Waiting 10s before attempting to reset any changes...
+08-10-2026 05:11:18: Attempting to reset registry values...
+08-10-2026 05:11:18: Default file path: C:\Program Files (x86)\SecureExamBrowser\sebregistry.srg
+08-10-2026 05:11:18: Backup file path: C:\Program Files (x86)\SecureExamBrowser\sebregistry.new
+08-10-2026 05:11:18: No registry settings file found.
+08-10-2026 05:11:18: Attempt to reset registry was successful.
+08-10-2026 08:14:38: --- STARTING SEB SERVICE ---
+08-10-2026 08:14:38: Initializing service host...
+08-10-2026 08:14:39: Waiting 10s before attempting to reset any changes...
+08-10-2026 08:14:50: Attempting to reset registry values...
+08-10-2026 08:14:50: Default file path: C:\Program Files (x86)\SecureExamBrowser\sebregistry.srg
+08-10-2026 08:14:50: Backup file path: C:\Program Files (x86)\SecureExamBrowser\sebregistry.new
+08-10-2026 08:14:50: No registry settings file found.
+08-10-2026 08:14:50: Attempt to reset registry was successful.
+09-10-2026 10:39:32: --- STARTING SEB SERVICE ---
+09-10-2026 10:39:32: Initializing service host...
+09-10-2026 10:39:33: Waiting 10s before attempting to reset any changes...
+09-10-2026 10:39:43: Attempting to reset registry values...
+09-10-2026 10:39:43: Default file path: C:\Program Files (x86)\SecureExamBrowser\sebregistry.srg
+09-10-2026 10:39:43: Backup file path: C:\Program Files (x86)\SecureExamBrowser\sebregistry.new
+09-10-2026 10:39:43: No registry settings file found.
+09-10-2026 10:39:43: Attempt to reset registry was successful.
+09-10-2026 11:42:20: Attempting to reset registry values...
+09-10-2026 11:42:20: No registry settings file found.
+09-10-2026 11:42:25: SID: S-1-5-21-2796813973-2858853975-1557700519-1001
+09-10-2026 11:42:25: Username: aryan
+09-10-2026 11:42:25: No registry settings file found.
+09-10-2026 11:42:25: Attempting to set new registry values...
+09-10-2026 11:42:25: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\Google\Chrome\DefaultNotificationsSetting'  old value '',  new value '2'.
+09-10-2026 11:42:25: Saved settings to default file.
+09-10-2026 11:42:25: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\Google\Chrome\DefaultNotificationsSetting' to '2'.
+09-10-2026 11:42:25: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableLockWorkstation'  old value '',  new value '1'.
+09-10-2026 11:42:25: Saved settings to default file.
+09-10-2026 11:42:25: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableLockWorkstation' to '1'.
+09-10-2026 11:42:25: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableChangePassword'  old value '',  new value '1'.
+09-10-2026 11:42:25: Saved settings to default file.
+09-10-2026 11:42:25: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableChangePassword' to '1'.
+09-10-2026 11:42:25: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableTaskMgr'  old value '',  new value '1'.
+09-10-2026 11:42:25: Saved settings to default file.
+09-10-2026 11:42:25: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableTaskMgr' to '1'.
+09-10-2026 11:42:25: Registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\HideFastUserSwitching'  old value '',  new value '1'.
+09-10-2026 11:42:25: Saved settings to default file.
+09-10-2026 11:42:25: Set registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\HideFastUserSwitching' to '1'.
+09-10-2026 11:42:25: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoLogoff'  old value '',  new value '1'.
+09-10-2026 11:42:25: Saved settings to default file.
+09-10-2026 11:42:25: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoLogoff' to '1'.
+09-10-2026 11:42:25: Registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'  old value '',  new value '1'.
+09-10-2026 11:42:25: Saved settings to default file.
+09-10-2026 11:42:25: Set registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose' to '1'.
+09-10-2026 11:42:25: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'  old value '',  new value '1'.
+09-10-2026 11:42:25: Saved settings to default file.
+09-10-2026 11:42:25: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose' to '1'.
+09-10-2026 11:42:25: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\VMware, Inc.\VMware VDM\Client\EnableShade'  old value '',  new value '0'.
+09-10-2026 11:42:25: Saved settings to default file.
+09-10-2026 11:42:25: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\VMware, Inc.\VMware VDM\Client\EnableShade' to '0'.
+09-10-2026 11:42:25: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\VMware, Inc.\VMware VDM\Client\EnableShade'  old value '',  new value 'False'.
+09-10-2026 11:42:25: Saved settings to default file.
+09-10-2026 11:42:25: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\VMware, Inc.\VMware VDM\Client\EnableShade' to 'False'.
+09-10-2026 11:42:25: Registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Utilman.exe\Debugger'  old value '',  new value '1'.
+09-10-2026 11:42:25: Saved settings to default file.
+09-10-2026 11:42:25: Set registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Utilman.exe\Debugger' to '1'.
+09-10-2026 11:42:25: Registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System\DontDisplayNetworkSelectionUI'  old value '',  new value '1'.
+09-10-2026 11:42:25: Saved settings to default file.
+09-10-2026 11:42:25: Set registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System\DontDisplayNetworkSelectionUI' to '1'.
+09-10-2026 11:42:25: Registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\NoAutoRebootWithLoggedOnUsers'  old value '',  new value '1'.
+09-10-2026 11:42:25: Saved settings to default file.
+09-10-2026 11:42:25: Set registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\NoAutoRebootWithLoggedOnUsers' to '1'.
+09-10-2026 11:42:25: Registry key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\fDenyTSConnections'  old value '1',  new value '1'.
+09-10-2026 11:42:25: Registry key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\fDenyTSConnections' already has value '1', skipping it.
+09-10-2026 11:42:25: Service 'Windows Update' is already stopping / stopped...
+09-10-2026 11:42:25: Set windows update to False
+09-10-2026 11:42:25: Loading settings from default file.
+09-10-2026 11:42:25: Saved settings to default file.
+09-10-2026 11:44:16: Attempting to reset registry values...
+09-10-2026 11:44:16: Loading settings from default file.
+09-10-2026 11:44:16: SID: S-1-5-21-2796813973-2858853975-1557700519-1001
+09-10-2026 11:44:16: Username: aryan
+09-10-2026 11:44:16: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\Google\Chrome\DefaultNotificationsSetting'.
+09-10-2026 11:44:16: Saved settings to default file.
+09-10-2026 11:44:16: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableLockWorkstation'.
+09-10-2026 11:44:16: Saved settings to default file.
+09-10-2026 11:44:16: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableChangePassword'.
+09-10-2026 11:44:16: Saved settings to default file.
+09-10-2026 11:44:16: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableTaskMgr'.
+09-10-2026 11:44:16: Saved settings to default file.
+09-10-2026 11:44:16: Deleted registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\HideFastUserSwitching'.
+09-10-2026 11:44:16: Saved settings to default file.
+09-10-2026 11:44:16: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoLogoff'.
+09-10-2026 11:44:16: Saved settings to default file.
+09-10-2026 11:44:16: Deleted registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'.
+09-10-2026 11:44:16: Saved settings to default file.
+09-10-2026 11:44:16: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'.
+09-10-2026 11:44:16: Saved settings to default file.
+09-10-2026 11:44:16: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\VMware, Inc.\VMware VDM\Client\EnableShade'.
+09-10-2026 11:44:16: Saved settings to default file.
+09-10-2026 11:44:16: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\VMware, Inc.\VMware VDM\Client\EnableShade'.
+09-10-2026 11:44:16: Saved settings to default file.
+09-10-2026 11:44:16: Deleted registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Utilman.exe\Debugger'.
+09-10-2026 11:44:16: Saved settings to default file.
+09-10-2026 11:44:16: Deleted registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System\DontDisplayNetworkSelectionUI'.
+09-10-2026 11:44:16: Saved settings to default file.
+09-10-2026 11:44:16: Deleted registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\NoAutoRebootWithLoggedOnUsers'.
+09-10-2026 11:44:16: Saved settings to default file.
+09-10-2026 11:44:16: Initiating group policy update...
+09-10-2026 11:44:16: Service 'Windows Update' is already starting / running...
+09-10-2026 11:44:16: Set windows update to True
+09-10-2026 11:44:16: Deleted default file.
+09-10-2026 11:44:27: Updating policy...  Computer Policy update has completed successfully. User Policy update has completed successfully.
+09-10-2026 11:45:07: Attempting to reset registry values...
+09-10-2026 11:45:07: No registry settings file found.
+09-10-2026 11:45:13: SID: S-1-5-21-2796813973-2858853975-1557700519-1001
+09-10-2026 11:45:13: Username: aryan
+09-10-2026 11:45:13: No registry settings file found.
+09-10-2026 11:45:13: Attempting to set new registry values...
+09-10-2026 11:45:13: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\Google\Chrome\DefaultNotificationsSetting'  old value '',  new value '2'.
+09-10-2026 11:45:13: Saved settings to default file.
+09-10-2026 11:45:13: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\Google\Chrome\DefaultNotificationsSetting' to '2'.
+09-10-2026 11:45:13: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableLockWorkstation'  old value '',  new value '1'.
+09-10-2026 11:45:13: Saved settings to default file.
+09-10-2026 11:45:13: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableLockWorkstation' to '1'.
+09-10-2026 11:45:13: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableChangePassword'  old value '',  new value '1'.
+09-10-2026 11:45:13: Saved settings to default file.
+09-10-2026 11:45:13: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableChangePassword' to '1'.
+09-10-2026 11:45:13: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableTaskMgr'  old value '',  new value '1'.
+09-10-2026 11:45:13: Saved settings to default file.
+09-10-2026 11:45:13: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableTaskMgr' to '1'.
+09-10-2026 11:45:13: Registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\HideFastUserSwitching'  old value '',  new value '1'.
+09-10-2026 11:45:13: Saved settings to default file.
+09-10-2026 11:45:13: Set registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\HideFastUserSwitching' to '1'.
+09-10-2026 11:45:13: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoLogoff'  old value '',  new value '1'.
+09-10-2026 11:45:13: Saved settings to default file.
+09-10-2026 11:45:13: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoLogoff' to '1'.
+09-10-2026 11:45:13: Registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'  old value '',  new value '1'.
+09-10-2026 11:45:13: Saved settings to default file.
+09-10-2026 11:45:13: Set registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose' to '1'.
+09-10-2026 11:45:13: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'  old value '',  new value '1'.
+09-10-2026 11:45:13: Saved settings to default file.
+09-10-2026 11:45:13: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose' to '1'.
+09-10-2026 11:45:13: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\VMware, Inc.\VMware VDM\Client\EnableShade'  old value '',  new value '0'.
+09-10-2026 11:45:13: Saved settings to default file.
+09-10-2026 11:45:13: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\VMware, Inc.\VMware VDM\Client\EnableShade' to '0'.
+09-10-2026 11:45:13: Registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\VMware, Inc.\VMware VDM\Client\EnableShade'  old value '',  new value 'False'.
+09-10-2026 11:45:13: Saved settings to default file.
+09-10-2026 11:45:13: Set registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\VMware, Inc.\VMware VDM\Client\EnableShade' to 'False'.
+09-10-2026 11:45:13: Registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Utilman.exe\Debugger'  old value '',  new value '1'.
+09-10-2026 11:45:13: Saved settings to default file.
+09-10-2026 11:45:13: Set registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Utilman.exe\Debugger' to '1'.
+09-10-2026 11:45:13: Registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System\DontDisplayNetworkSelectionUI'  old value '',  new value '1'.
+09-10-2026 11:45:13: Saved settings to default file.
+09-10-2026 11:45:13: Set registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System\DontDisplayNetworkSelectionUI' to '1'.
+09-10-2026 11:45:13: Registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\NoAutoRebootWithLoggedOnUsers'  old value '',  new value '1'.
+09-10-2026 11:45:13: Saved settings to default file.
+09-10-2026 11:45:13: Set registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\NoAutoRebootWithLoggedOnUsers' to '1'.
+09-10-2026 11:45:13: Registry key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\fDenyTSConnections'  old value '1',  new value '1'.
+09-10-2026 11:45:13: Registry key 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\fDenyTSConnections' already has value '1', skipping it.
+09-10-2026 11:45:13: Stopped service 'Windows Update'.
+09-10-2026 11:45:13: Set windows update to False
+09-10-2026 11:45:13: Loading settings from default file.
+09-10-2026 11:45:13: Saved settings to default file.
+09-10-2026 11:45:21: Attempting to reset registry values...
+09-10-2026 11:45:21: Loading settings from default file.
+09-10-2026 11:45:21: SID: S-1-5-21-2796813973-2858853975-1557700519-1001
+09-10-2026 11:45:21: Username: aryan
+09-10-2026 11:45:21: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\Google\Chrome\DefaultNotificationsSetting'.
+09-10-2026 11:45:21: Saved settings to default file.
+09-10-2026 11:45:21: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableLockWorkstation'.
+09-10-2026 11:45:21: Saved settings to default file.
+09-10-2026 11:45:21: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableChangePassword'.
+09-10-2026 11:45:21: Saved settings to default file.
+09-10-2026 11:45:21: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\System\DisableTaskMgr'.
+09-10-2026 11:45:21: Saved settings to default file.
+09-10-2026 11:45:21: Deleted registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\HideFastUserSwitching'.
+09-10-2026 11:45:21: Saved settings to default file.
+09-10-2026 11:45:21: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoLogoff'.
+09-10-2026 11:45:21: Saved settings to default file.
+09-10-2026 11:45:21: Deleted registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'.
+09-10-2026 11:45:21: Saved settings to default file.
+09-10-2026 11:45:21: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\NoClose'.
+09-10-2026 11:45:21: Saved settings to default file.
+09-10-2026 11:45:21: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\VMware, Inc.\VMware VDM\Client\EnableShade'.
+09-10-2026 11:45:21: Saved settings to default file.
+09-10-2026 11:45:21: Deleted registry key 'HKEY_USERS\S-1-5-21-2796813973-2858853975-1557700519-1001\Software\Policies\VMware, Inc.\VMware VDM\Client\EnableShade'.
+09-10-2026 11:45:21: Saved settings to default file.
+09-10-2026 11:45:21: Deleted registry key 'HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Utilman.exe\Debugger'.
+09-10-2026 11:45:21: Saved settings to default file.
+09-10-2026 11:45:21: Deleted registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System\DontDisplayNetworkSelectionUI'.
+09-10-2026 11:45:21: Saved settings to default file.
+09-10-2026 11:45:21: Deleted registry key 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU\NoAutoRebootWithLoggedOnUsers'.
+09-10-2026 11:45:21: Saved settings to default file.
+09-10-2026 11:45:21: Initiating group policy update...
+09-10-2026 11:45:21: Started service 'Windows Update'.
+09-10-2026 11:45:21: Set windows update to True
+09-10-2026 11:45:21: Deleted default file.
+09-10-2026 11:45:32: Updating policy...  Computer Policy update has completed successfully. User Policy update has completed successfully.
