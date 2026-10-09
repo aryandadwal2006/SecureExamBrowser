@@ -129,3 +129,9 @@ This branch is for authorized assessment and reproducible detection-gap validati
 - [x] Confirm all 12 selected legacy source/config/startup assets exactly match files extracted from the signed public SEB MSI; see audit/legacy-source-package-comparison.md.
 - [x] Document config variability and distinguish source presence from runtime activation in audit/config-profile-analysis.md.
 - [ ] Obtain effective configuration and independently validate expected positive controls in an authorized Windows VM. No local session is available to this environment.
+
+
+## Defensive assurance pass — 2026-10-09
+- [x] Add recommendations for signed/effective configuration, fail-closed monitor lifecycle, event correlation, local IPC hardening, package integrity, privacy clarity and regression validation in audit/defensive-hardening-recommendations.md.
+- [x] Add audit/config-profile-analysis.md explaining why checked-in profiles do not establish the live assessment configuration.
+- [ ] Runtime test remains pending: requires a disposable Windows VM and an explicitly authorized mock/test tenant. Do not use CI to run the actual assessment client.
