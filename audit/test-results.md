@@ -39,4 +39,4 @@
 
 ## New provenance subtask
 
-Run [37906017253](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906017253) downloads the two current public HirePro MSI packages into a temporary Windows-runner directory, collects SHA-256 plus Authenticode signer/status for those files and the repository artifacts, and uploads one JSON report. It must not execute either installer. Result: pending at document update time.
+Run [37906017253](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906017253) downloaded both public HirePro MSI packages, collected SHA-256 plus Authenticode signer/status for those files and the repository artifacts, and uploaded the JSON report. The Windows job succeeded; the REA job was still running when this report was compiled. Results: both public MSIs have valid signatures; the repo Chromium EXE is unsigned and differs from the public Chromium MSI by hash and size. See [vendor-package-comparison.md](vendor-package-comparison.md).
