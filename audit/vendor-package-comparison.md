@@ -60,3 +60,8 @@ This supports the conclusion that the repository's complete root-level executabl
 
 
 Complete per-file table: [audit/vendor-component-hashes.md](vendor-component-hashes.md). It records all 39 repository root-level EXE/DLL filenames, lengths, SHA-256 values, extracted MSI paths, and exact-match result.
+
+
+## Canonical source/config match
+
+The source/package comparison originally produced false mismatches because Windows checkout line endings differed from the canonical Git blobs. After correcting the workflow, all 12 selected legacy XUL/source/config assets matched their package copies exactly. See [audit/legacy-source-package-comparison.md](legacy-source-package-comparison.md) and [run 37908852563](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37908852563).
