@@ -102,3 +102,10 @@ See [audit/vendor-package-comparison.md](vendor-package-comparison.md) and [F-01
 The Windows CI extraction/hash job compared every top-level repository EXE/DLL with the currently published signed SEB 2.0.2 MSI. All 39 of 39 exact hashes matched. This includes the service and contract DLLs, plus all root support libraries. It is therefore inaccurate to interpret their standalone unsigned status as evidence of tampering relative to this package. The user's installed version and the candidate-specific download remain unverified.
 
 See [audit/vendor-package-comparison.md](vendor-package-comparison.md) and [component artifact 11604173812](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190/artifacts/11604173812).
+
+
+## 11. Local IPC schema does not prove remote collection
+
+REA metadata shows that the native application's local browser message type includes categories of host/device identity, system characteristics, display/camera state, device-change summaries, process-handling outcomes, blocked-domain summaries, and health/logger status. This is enough to document a potential local information boundary, but **does not show that all fields are populated or sent to a remote platform**. The current analysis has not measured per-session payloads or received server-side events.
+
+If the organizer provides an authorized test endpoint/receipt, correlate only sanitized session events and omit personal identifiers, tokens, exact MAC/GUID values and recording contents from the repository.
