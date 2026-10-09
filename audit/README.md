@@ -26,6 +26,7 @@
 - [defensive-hardening-recommendations.md](defensive-hardening-recommendations.md) — recommended controls and authorized test cases for maintainers.
 - [scripts/README.md](scripts/README.md) — local inventory script usage, only needed if local installed-file identity must be checked.
 - [human-observation-protocol.md](human-observation-protocol.md) — controlled way to evaluate observer coverage separately from browser telemetry.
+- [privileged-service-authorization-review.md](privileged-service-authorization-review.md) — high-priority defensive review of service endpoint authorization and policy-changing operations; no vulnerability assumed.
 - [platform-observations.md](platform-observations.md) — screenshots, launch handoff, recording notice, policy scope and uncertainty.
 - [test-matrix.md](test-matrix.md) — controlled test cases and verdict rules.
 
