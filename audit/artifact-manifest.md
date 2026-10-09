@@ -1,7 +1,7 @@
 # Artifact Manifest (Repository-Level)
 
 **Updated:** 2026-10-09  
-**Source ref:** investigation branch checked out by GitHub Actions run 37900802418 (`f72960203f74a282a9186bc5f9342c1cd00ba678`); root artifacts match the branch baseline taken from `main`.  
+**Source ref:** investigation branch checked out by GitHub Actions run 37901362719 (`da3b10c1e824dc79fc631f51b43e18d7c46a560f`); root artifacts match the branch baseline taken from `main`.  
 **Purpose:** Record stable source-artifact identities before local hashing. Git blob IDs are not raw-file SHA-256 hashes.
 
 | Path | Repository size (bytes) | Git blob ID | Inspection status |
