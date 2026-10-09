@@ -154,6 +154,57 @@ jobs:
           $results | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $jsonPath -Encoding utf8
           Get-Content -LiteralPath $jsonPath
 
+      - name: Extract published MSIs without installation and compare component hashes
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          choco install lessmsi --version=2.12.9 --yes --no-progress
+          $lessmsi = (Get-Command lessmsi.exe -ErrorAction Stop).Source
+          $root = $env:GITHUB_WORKSPACE
+          $outDir = Join-Path $root 'audit-output'
+          $downloads = Join-Path $env:RUNNER_TEMP 'hirepro-published-packages'
+          $extractRoot = Join-Path $env:RUNNER_TEMP 'hirepro-extracted-packages'
+          New-Item -ItemType Directory -Force -Path $outDir, $extractRoot | Out-Null
+          $packages = @(
+            @{ name = 'Chromium_1.0.1_signed.msi'; output = (Join-Path $extractRoot 'chromium') },
+            @{ name = 'SecureExamBrowserInstaller_en_2.0.2.msi'; output = (Join-Path $extractRoot 'seb') }
+          )
+          foreach ($package in $packages) {
+            $source = Join-Path $downloads $package.name
+            New-Item -ItemType Directory -Force -Path $package.output | Out-Null
+            $destination = (Resolve-Path -LiteralPath $package.output).Path + [IO.Path]::DirectorySeparatorChar
+            & $lessmsi x $source $destination
+            if ($LASTEXITCODE -ne 0) { throw "lessmsi extraction failed for $($package.name)" }
+          }
+          $allExtracted = Get-ChildItem -LiteralPath $extractRoot -Recurse -File
+          $repoNames = @(
+            'SecureExamBrowser.exe',
+            'SebWindowsServiceWCF.exe',
+            'SEBWindowsServiceContracts.dll',
+            'hirepro-chromium-installer.exe'
+          )
+          $comparison = foreach ($name in $repoNames) {
+            $repoPath = Join-Path $root $name
+            $repoHash = if (Test-Path -LiteralPath $repoPath -PathType Leaf) { (Get-FileHash -LiteralPath $repoPath -Algorithm SHA256).Hash.ToLowerInvariant() } else { $null }
+            $candidates = foreach ($file in ($allExtracted | Where-Object { $_.Name -ieq $name })) {
+              $h = Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256
+              [pscustomobject]@{
+                packageRelativePath = $file.FullName.Substring($extractRoot.Length).TrimStart('\','/')
+                bytes = $file.Length
+                sha256 = $h.Hash.ToLowerInvariant()
+                exactlyMatchesRepositoryFile = ($repoHash -ne $null -and $h.Hash.Equals($repoHash, [StringComparison]::OrdinalIgnoreCase))
+              }
+            }
+            [pscustomobject]@{
+              repositoryPath = $name
+              repositorySha256 = $repoHash
+              packageCandidates = @($candidates)
+              anyExactHashMatch = @($candidates | Where-Object { $_.exactlyMatchesRepositoryFile }).Count -gt 0
+            }
+          }
+          $comparison | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath (Join-Path $outDir 'vendor-package-component-comparison.json') -Encoding utf8
+          Get-Content -LiteralPath (Join-Path $outDir 'vendor-package-component-comparison.json')
+
       - name: Upload Windows provenance report
         if: always()
         uses: actions/upload-artifact@v4
@@ -161,4 +212,12 @@ jobs:
           name: windows-artifact-provenance
           path: audit-output/windows-artifact-provenance.json
           if-no-files-found: error
+          retention-days: 7
+      - name: Upload public-package component comparison
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vendor-package-component-comparison
+          path: audit-output/vendor-package-component-comparison.json
+          if-no-files-found: warn
           retention-days: 7
