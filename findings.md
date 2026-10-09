@@ -122,3 +122,12 @@ REA static PE/CLI, member/CIL and managed/native-boundary inventory completed fo
 - **Impact:** The GUI executable's valid signature does not extend automatically to its neighboring service, DLL or installer. Their provenance needs separate verification.
 - **Limitation:** Unsigned does not mean malicious, and the repo's large Chromium installer has not been shown to be identical to the candidate's email-linked download.
 - **Next action:** Obtain expected vendor hashes/publishers and verify the files installed on a clean Windows VM. Do not run or patch unsigned components just to test trust.
+
+
+## F-015 — Repository Chromium installer is not yet matched to the current public vendor package
+- **Status:** Pending direct hash comparison in CI.
+- **Observation:** The repository includes `hirepro-chromium-installer.exe` (102,636,032 bytes, unsigned in the Windows signature preflight). The current generic HirePro page publicly links to `Chromium_1.0.1_signed.msi`; the Accenture-specific page has a different presentation and may differ by tenant.
+- **Evidence:** [General HirePro SEB landing page](https://securetest.hirepro.in/); [public Chromium MSI](https://securetest.hirepro.in/s3_cached/hirepro-content/hirepro/paas/Chromium_1.0.1_signed.msi); [Windows workflow](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906017253); [artifact manifest](audit/artifact-manifest.md).
+- **Confidence:** High for names/links currently published; payload relationship unknown until hash/signature comparison completes.
+- **Risk interpretation:** An unsigned repository executable deserves provenance validation, but its signature status alone does not prove malware or relevance to the user's downloaded installer.
+- **Next action:** Compare hash, signature status and file sizes for both current official MSIs versus repo artifacts. Ask the competition organizer to confirm exact expected package hashes for the candidate-specific assessment.
