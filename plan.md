@@ -93,3 +93,7 @@ For the fastest continuation, see [audit/README.md](audit/README.md), which link
 
 ## Legacy source/config checkpoint
 A corrected canonical-byte check found 12 selected legacy XUL/config/startup files in exact hash agreement with the signed public SEB MSI. See [audit/legacy-source-package-comparison.md](audit/legacy-source-package-comparison.md). Sample configuration files do not establish the effective per-session configuration; active settings and actual capture/report behavior remain pending an authorized Windows runtime test.
+
+
+## Defensive assurance checkpoint
+Recommended hardening and acceptance criteria are documented in [audit/defensive-hardening-recommendations.md](audit/defensive-hardening-recommendations.md). They focus on explicit effective configuration, detector readiness/failure semantics, authenticated IPC, event correlation, package integrity and accurate recording disclosure. They are design recommendations, not claims that those controls are currently absent.
