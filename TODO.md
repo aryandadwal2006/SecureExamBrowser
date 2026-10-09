@@ -174,3 +174,10 @@ This branch is for authorized assessment and reproducible detection-gap validati
 - [ ] Optional: hash the four remaining Chromium manifest entries not requested by the collector (chrome_wer.dll, dxcompiler.dll, dxil.dll, eventlog_provider.dll).
 - [x] Add the privileged service authorization review and new controlled assurance case T-019.
 - [ ] Run T-019 only in an authorized disposable Windows VM using a vendor-approved, non-destructive harness. Endpoint access control and command-operation authorization remain unknown; no vulnerability is asserted.
+
+
+## Demonstration-readiness checkpoint — 2026-10-09
+- [x] Estimate progress and distinguish static preparation from verified bypass evidence in audit/progress-status.md.
+- [x] Record why an idle SEB shell is not evidence about an active assessment's monitoring/reporting state.
+- [ ] Obtain organizer-approved active/test-session access and written scope before any runtime detection/reporting claims.
+- [ ] If no approved session becomes available, finalize the deliverable as a static risk assessment with runtime claims explicitly untested; do not claim a successful undetected-cheating demonstration.
