@@ -58,3 +58,13 @@ This branch is for authorized assessment and reproducible detection-gap validati
 - [x] Static artifact/member/native-boundary reports created for SecureExamBrowser.exe, SebWindowsServiceWCF.exe and SEBWindowsServiceContracts.dll; see audit/static-application-analysis.md and audit/static-service-analysis.md.
 - [ ] Create a Windows VM snapshot and establish collector health with a documented known-positive control.
 - [ ] Validate detector activation and the alert/report chain dynamically; current CI tests the REA toolchain and parses binaries, not the running exam browser.
+
+
+## Progress update — 2026-10-09 (platform flow and call-graph review)
+- [x] Reviewed user's screenshots and public HirePro Accenture SEB page; summarized launch flow and visible recording notice in audit/platform-observations.md.
+- [x] Distinguished the browser external-application prompt from a Windows UAC elevation dialog.
+- [x] Added static call-edge notes linking the SEB lifecycle to prohibited-process checks, process monitoring, local browser communication and watchdog/integrity reporting.
+- [x] Added tests T-013 to T-017 for launch provenance, policy positive controls, watchdog/report delivery and authorized recording/network observation.
+- [ ] Confirm active configuration and per-session feature activation in an isolated Windows VM.
+- [ ] Correlate host/process/device events with sanitized local logs and an authorized test-server receipt.
+- [ ] Verify installer Authenticode signature/publisher on Windows; the public guide's request to disable antivirus / override Defender needs provenance verification.
