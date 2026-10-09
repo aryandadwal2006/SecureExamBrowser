@@ -91,11 +91,11 @@ REA static PE/CLI, member/CIL and managed/native-boundary inventory completed fo
 
 ## F-011 — Main-app call edges connect monitoring routines to session lifecycle
 - **Status:** Static analysis completed / dynamic validation pending.
-- **Observation:** The exact-build call graph links `OpenSEBForm` to `CheckProhibitedProcesses`, `MonitorProcesses` and `SEBXULRunnerWebSocketServer.StartServer`. Process/display/high-data watchers reference heartbeat/tick-report methods; the executable-integrity watchdog references verification and check-status reporting.
+- **Observation:** The exact-build CIL/call graph shows `OpenSEBForm` calling `CheckIfInsideVirtualMachine`, `CheckIfRunViaRemoteConnection`, `CheckProhibitedProcesses`, `StartServer` and `MonitorProcesses`. `MonitorProcesses` references setup for process, display, foreground and high-data activity watchers. The process watchdog's timer routine references prohibited-process evaluation and enforcement calls, plus tick reporting; the display watchdog references monitor/camera enumeration; executable-integrity checking is called from startup and a watchdog path.
 - **Artifact:** `SecureExamBrowser.exe`, SHA-256 `9b7c84cb4d5be544592696177cf9ee576bc01fbbac5f1d7ba74e0676798dd38e`, MVID `704e0878-fd78-47f7-922f-49d7ed0a9f18`.
 - **Evidence:** [audit/static-application-analysis.md](audit/static-application-analysis.md); [successful REA CI run](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37901362719).
 - **Confidence:** High that these static call edges exist in the identified artifact; runtime activation and outcome unknown.
-- **Impact:** These lifecycle/reporting paths need to be included in any comprehensive coverage assessment, not just the WCF service method.
+- **Impact:** The earlier WCF-service-only model was incomplete. These lifecycle paths need controlled positive-control tests, especially around process/device policy and local-to-remote event propagation, rather than an inference based on the service's narrow SEB-process-presence check.
 - **Next action:** Validate benign documented positive controls and correlate independent Windows evidence with app/service logs and authorized endpoint receipts.
 - **Not established:** Complete detector effectiveness, event delivery for the user's session, or a bypass.
 
