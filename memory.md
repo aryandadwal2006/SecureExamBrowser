@@ -189,3 +189,11 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - 12 selected legacy XUL/config/startup assets were all exact SHA-256 matches to files inside the current signed public SEB MSI; raw result artifact 11605307704. See audit/legacy-source-package-comparison.md.
 - Configuration profile review is now in audit/config-profile-analysis.md. There are multiple sample configs and the runtime loader merges a custom config over defaults, so active settings for the candidate session remain unknown.
 - Keep screenshots/audio recording, page/navigation telemetry, host window/display monitoring, browser-window screenshot capability and full-desktop pixel capture as distinct evidence questions. Do not claim full-desktop capture or its absence without session evidence.
+
+
+## Defensive assurance plan — 2026-10-09
+- New recommendations: audit/defensive-hardening-recommendations.md.
+- Source/profile caveats: audit/config-profile-analysis.md.
+- The repository-to-vendor package identity work is complete for root EXE/DLLs (39/39) and selected legacy XUL/config files (12/12). Corrected comparison hashes canonical Git blobs, avoiding line-ending noise.
+- No actual SEB process/assessment was executed; effective session config, activation and remote reporting are not established.
+- For next GPT: start at audit/README.md, review TODO.md and audit/test-results.md. Continue with static evidence, test design and defensible hardening; do not implement concealment/suppression mechanisms.
