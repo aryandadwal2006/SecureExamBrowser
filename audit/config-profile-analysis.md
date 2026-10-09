@@ -12,28 +12,17 @@ The legacy `SebConfig.jsm` loader:
 
 This means repository sample files are not sufficient to determine what the candidate's assessment enabled. The actual process directory, configuration argument/file, externally supplied assessment configuration and merge result must be established from an authorized runtime or installation manifest. Do not treat `config.SEB22.json` or `config.full.json` as the active Accenture policy merely because they are present in the repository.
 
-## 2. Sample configuration matrix
+## 2. Configuration variability
 
-The files below are versioned repository examples, not evidence of the effective configuration during the user's session.
+The checked-in JSON files include baseline, development, server/demo and named compatibility profiles. Their values differ on process monitoring, browser messaging, server features and screenshot-related settings. They are examples, not a per-session effective configuration record.
 
-| Checked-in profile | `sebScreenshot` | `sebServerEnabled` | `monitorProcesses` | Interpretation |
-|---|---|---|---|---|
-| `config.default.json` | false | false | false | Broad baseline defaults. |
-| `config.json` | false | false | Not explicitly set in the inspected profile | Example configuration; inherits unspecified keys from defaults. |
-| `config.SEB22.json` | Not explicitly set | Not established by the inspected excerpt | true | Separate SEB 2.2-style profile with a prohibited-process list; not proven to be the exam's effective config. |
-| `config.custom.json` | false | true | false | Development/custom example; server feature enabled in this example only. |
-| `config.dev.json` | false | true | Not explicitly set in the inspected profile | Development profile, not proof of assessment behavior. |
-| `config.full.json` | false | true | Not explicitly set in the inspected profile | Full test/demo profile, not proof of assessment behavior. |
-| `config.localhost.json` | false | true | false | Local demo configuration. |
-| `config.server.json` | false | true | false | Local server/demo configuration. |
-
-Important: values omitted from a custom configuration may be inherited from the default object. Features that require a server endpoint also depend on endpoint configuration and successful initialization, not only a Boolean property.
+The loader merges a custom JSON object over `default.json`; therefore a missing field may inherit a default while an explicitly supplied field may override it. The active process directory, config source/argument and post-merge values are not established by the public repository alone.
 
 ## 3. Screenshot-source review
 
-The checked-in legacy source defines a browser-window-to-image helper in `SebScreenshot.jsm` and a screenshot-data handler in `SebServer.jsm`. It also imports and initializes the screenshot module in `seb.jsm`. A search across the checked-in `SebWindowsBrowser/xul_seb` JavaScript, XUL and HTML files did not find a direct call to `createScreenshotController`. This is a source-search observation only, not proof that a screenshot cannot occur in a particular build: dynamic call paths, generated/package differences and external configuration can affect runtime behavior.
+The checked-in legacy source defines a browser-window-to-image helper in `SebScreenshot.jsm` and a screenshot-data handler in `SebServer.jsm`; the startup module imports and initializes the screenshot module. The canonical Git blobs for these assets match the files inside the current public signed MSI; see [legacy source/package comparison](legacy-source-package-comparison.md).
 
-The default and checked-in named sample profiles shown above have `sebScreenshot` false or inherit that default. They do **not** establish the effective assessment setting, and they do not prove the browser is incapable of other capture mechanisms. The legacy function draws a supplied browser window; that fact alone is not continuous whole-desktop capture.
+Static source presence is not proof that a screenshot feature is activated for the assessment. The effective configuration, end-to-end activation, capture scope, and any transmission/retention for this specific session remain unknown. The presence of browser-window image code is also not, by itself, proof of continuous whole-desktop capture.
 
 ## 4. Evidence that would settle this correctly
 
