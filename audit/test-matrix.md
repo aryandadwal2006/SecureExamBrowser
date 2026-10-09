@@ -35,6 +35,8 @@
 | T-017 | Is recording UI/permission state consistent with the organizer's notice? | Use the approved mock assessment and ordinary camera/microphone permission flow. | Visible notices, OS permission state, authorized test-server receipt/recording indicator where provided. | Do not suppress, fake or conceal recording. Report gaps through the authorized channel. | Not run |
 | T-018 | Is integrity validation documented for every shipped/loaded component? | Compare the implementation's integrity-coverage definition with an exact, vendor-confirmed component manifest and expected hashes; do not alter binaries. | Main executable MVID/hash, service/DLL/installer identities, integrity-verification code references and vendor-supplied expected values. | A valid signature on one executable does not establish trust in neighboring components; unsigned status is not itself proof of malware. | Not run |
 
+| T-019 | Are privileged service operations restricted to the intended authenticated client? | In an authorized disposable VM, use a vendor-approved harness to exercise only documented benign operations from an authorized client and an unauthorized synthetic client. | Endpoint/binding configuration, caller identity, service/app logs, host state before/after, and an authorized test receipt if available. | Unauthorized requests must be rejected before side effects; operation reachability and access policy remain unknown until tested. | Not run |
+
 ## Per-run evidence template
 - Test ID and timestamp (ISO 8601 with timezone).
 - VM/snapshot identifier, OS build and user privilege level.
@@ -70,3 +72,8 @@ The successful GitHub Actions run [37904465412](https://github.com/aryandadwal20
 ## Source-level screenshot follow-up
 
 The legacy XUL source contains browser-window screenshot code and a screenshot-data handler, but activation and correspondence to the current package are unverified. This increases the importance of treating screenshot capture, webcam recording, and full-desktop capture as different test questions. A future test must use documented diagnostics and authorized session evidence; do not infer “not captured” from a missing UI notification.
+
+
+## Service authorization follow-up
+
+Static analysis identifies a Windows service endpoint, registry-policy management operations and a process-launch helper. Their existence does not prove an externally reachable vulnerability. T-019 is the required high-level assurance test; it must use a documented harness and non-destructive requests in a disposable VM. See [privileged-service-authorization-review.md](privileged-service-authorization-review.md).
