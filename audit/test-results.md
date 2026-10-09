@@ -58,3 +58,6 @@ Run [37906017253](https://github.com/aryandadwal2006/SecureExamBrowser/actions/r
 - **Result:** Completed as a documentation synthesis of the verified artifact inventory, call-graph relationships, package provenance and user-provided visible platform flow.
 - **Evidence:** [audit/control-map.md](control-map.md).
 - **Limit:** It is a model for test planning, not a Windows runtime test or a claim that a security gap exists.
+
+
+Complete per-file table: [audit/vendor-component-hashes.md](vendor-component-hashes.md). It records all 39 repository root-level EXE/DLL filenames, lengths, SHA-256 values, extracted MSI paths, and exact-match result.
