@@ -177,3 +177,7 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - `SebScreenshot.jsm` contains a routine which renders a supplied browser window into canvas/image data; `SebServer.jsm` has a screenshot-data handler.
 - This establishes browser-window screenshot capability in the checked-in legacy XUL source only. It does not prove active use in packaged SEB 2.0.2, continuous capture, whole desktop capture or remote upload.
 - See finding F-018 and audit/platform-observations.md.
+
+
+## Navigation
+- Start next session at [audit/README.md](audit/README.md), then review TODO.md, memory.md, findings.md, and audit/test-results.md.
