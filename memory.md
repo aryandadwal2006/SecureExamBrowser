@@ -159,3 +159,8 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 
 ## Full hash table
 - Added audit/vendor-component-hashes.md with each of the 39 root-level EXE/DLL file names, byte lengths, SHA-256, matching extracted MSI path and exact-match flag. All 39 match.
+
+
+## Local message schema scope — 2026-10-09
+- Static REA member metadata shows local native/browser `SEBXULMessage` schema categories for machine/system characteristics, display/camera and device-change state, process-handling summaries, blocked-domain summaries, and watchdog/logger health.
+- This is local schema evidence. Do not claim data reaches HirePro without a measured session payload or authorized server receipt. A declared field is not proof it was populated, sent, or retained.
