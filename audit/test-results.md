@@ -52,3 +52,9 @@ Run [37906017253](https://github.com/aryandadwal2006/SecureExamBrowser/actions/r
 - **Result:** Passed. All 39 top-level repository EXE/DLL files had an exact same-named, same-SHA-256 counterpart in the extracted signed public SEB 2.0.2 MSI; zero mismatches.
 - **Evidence:** [Workflow run 37906673190](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190); [artifact 11604173812](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190/artifacts/11604173812).
 - **Limit:** This verifies repository files against the public package, not files installed on the user's laptop. The parallel REA test job was still running when this row was added.
+
+
+## Static-control-map checkpoint
+- **Result:** Completed as a documentation synthesis of the verified artifact inventory, call-graph relationships, package provenance and user-provided visible platform flow.
+- **Evidence:** [audit/control-map.md](control-map.md).
+- **Limit:** It is a model for test planning, not a Windows runtime test or a claim that a security gap exists.
