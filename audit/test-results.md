@@ -35,3 +35,8 @@
 - An Authenticode result applies to the exact hashed repository file, not automatically to the user's downloaded/installed copy.
 - “No warning seen” is not a finding of missing telemetry unless independent capture and all required reporting channels have been validated.
 - No bypass has been reproduced, and no bypass has been disproven.
+
+
+## New provenance subtask
+
+Run [37906017253](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906017253) downloads the two current public HirePro MSI packages into a temporary Windows-runner directory, collects SHA-256 plus Authenticode signer/status for those files and the repository artifacts, and uploads one JSON report. It must not execute either installer. Result: pending at document update time.
