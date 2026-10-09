@@ -29,7 +29,8 @@ For every suspected control, trace: **signal/source → detector → decision �
 ## Workstreams
 
 ### WS0 — Preserve and identify the target
-- [x] Record repository object IDs, sizes, raw SHA-256 hashes, assembly versions/MVIDs and PE architecture for the three managed application/service artifacts (audit/artifact-manifest.md).\n- [ ] Verify Authenticode signatures and product/file-version metadata on Windows.
+- [x] Record repository object IDs, sizes, raw SHA-256 hashes, assembly versions/MVIDs and PE architecture for the three managed application/service artifacts (audit/artifact-manifest.md).
+- [ ] Verify Authenticode signatures and product/file-version metadata on Windows.
 - [ ] Identify launch chain, process tree, command-line config inputs, loaded browser runtime and active configuration.
 - [ ] Preserve original artifacts read-only; conduct experiments against copies/snapshots.
 - Exit criterion: artifact manifest and repeatable clean restore procedure exist.
@@ -39,7 +40,8 @@ For every suspected control, trace: **signal/source → detector → decision �
 - [x] Use REA managed PE/CLI inventory, member/CIL inspection and native-boundary inventory on the application, service and contract DLL.
 - [ ] Use a suitable .NET decompiler for C#-like reconstruction where needed; REA managed inspection is not a full C# decompiler.
 - [ ] Trace process/foreground observation, service commands, event tracing, registry/policy changes, configuration loading, alert reporting and IPC authentication.
-- [x] Preserve artifact hashes, MVIDs, type/method inventory sizes and coverage limitations in the audit reports.\n- [ ] Complete focused call-graph tracing of startup/configuration, enforcement and reporting relationships.
+- [x] Preserve artifact hashes, MVIDs, type/method inventory sizes and coverage limitations in the audit reports.
+- [ ] Complete focused call-graph tracing of startup/configuration, enforcement and reporting relationships.
 - Exit criterion: evidence-backed call graph with unknowns marked explicitly.
 
 ### WS2 — Browser source/config correspondence
