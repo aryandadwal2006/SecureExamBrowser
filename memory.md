@@ -258,3 +258,10 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - Defensive validation should establish endpoint binding/ACL, caller identity, strict operation allow-list, safe argument handling, authorization-denial behaviour and logging in an authorized disposable Windows VM.
 - Avoid describing/invoking undocumented service operations or altering live assessment controls.
 - Local identity status: all reported core SEB files match, and 11/11 Chromium files from second user inventory match package hashes. Four manifest names remain uncollected but optional; actual runtime config and loaded-module identity remain unknown.
+
+
+## Current overall checkpoint — 2026-10-09
+- Local file identity: all reported core SEB files and 11/11 reported Chromium binaries exactly match the examined public package by SHA-256. Four supplementary Chromium package files were not included in the inventory and remain optional.
+- Latest complete static CI is [37926967501](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926967501), which extracted the nested Chromium archive as data only and recorded all 15 package EXE/DLL hashes.
+- Added [audit/privileged-service-authorization-review.md](audit/privileged-service-authorization-review.md) and T-019. Service endpoint/policy-management and process-launch capabilities exist in static inventory; authorization/reachability are unknown. This is a review priority, not a confirmed vulnerability.
+- The remaining substantive gap is a vendor-approved, non-destructive runtime test in a disposable Windows VM / test tenant. No bypass/evasion test has been performed or claimed. Do not collect config contents, tokens, process command lines or recordings.
