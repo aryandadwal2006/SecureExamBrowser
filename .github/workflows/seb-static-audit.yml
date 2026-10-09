@@ -247,7 +247,48 @@ jobs:
           } else {
             $nestedReport.note = 'Nested Chromium installer was not found at the expected path inside the public MSI.'
           }
-          $nestedReport | ConvertTo-Json -Depth 7 | Set-Content -LiteralPath $nestedReportPath -Encoding utf8
+          # The outer installer may contain a second-level .7z payload. Extract it as data only,
+          # then hash browser executables/DLLs without launching any extracted program.
+          $innerArchiveResults = @()
+          $innerBinaries = @()
+          if ($nestedReport.extractionAttempted -and $sevenZipPath -and (Test-Path -LiteralPath $sevenZipPath -PathType Leaf)) {
+            $innerArchives = Get-ChildItem -LiteralPath $nestedOutput -Recurse -File -Filter '*.7z' -ErrorAction SilentlyContinue
+            foreach ($archive in $innerArchives) {
+              $innerOutput = Join-Path $env:RUNNER_TEMP ('hirepro-chromium-payload-' + $archive.BaseName)
+              New-Item -ItemType Directory -Force -Path $innerOutput | Out-Null
+              $null = & $sevenZipPath x $archive.FullName "-o$innerOutput" -y -bd 2>&1
+              $innerExit = $LASTEXITCODE
+              $innerFiles = Get-ChildItem -LiteralPath $innerOutput -Recurse -File -ErrorAction SilentlyContinue
+              $innerBinaryFiles = @($innerFiles | Where-Object { $_.Extension.ToLowerInvariant() -in @('.exe', '.dll') })
+              $innerBinaries += @(
+                foreach ($file in $innerBinaryFiles) {
+                  $signature = Get-AuthenticodeSignature -LiteralPath $file.FullName
+                  [pscustomobject]@{
+                    archive = $archive.Name
+                    relativePath = $file.FullName.Substring($innerOutput.Length).TrimStart('\','/')
+                    fileName = $file.Name
+                    bytes = $file.Length
+                    sha256 = (Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+                    signatureStatus = $signature.Status.ToString()
+                    signerSubject = if ($signature.SignerCertificate) { $signature.SignerCertificate.Subject } else { $null }
+                    signerThumbprint = if ($signature.SignerCertificate) { $signature.SignerCertificate.Thumbprint } else { $null }
+                  }
+                }
+              )
+              $innerArchiveResults += [pscustomobject]@{
+                archive = $archive.Name
+                archiveBytes = $archive.Length
+                archiveSha256 = (Get-FileHash -LiteralPath $archive.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+                exitCode = $innerExit
+                extractedFileCount = @($innerFiles).Count
+                extractedBinaryCount = @($innerBinaryFiles).Count
+                outputDirectory = $innerOutput
+              }
+            }
+          }
+          $nestedReport.innerArchiveResults = @($innerArchiveResults)
+          $nestedReport.innerArchiveBinaries = @($innerBinaries)
+          $nestedReport | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $nestedReportPath -Encoding utf8
           Get-Content -LiteralPath $nestedReportPath
 
           $allExtracted = Get-ChildItem -LiteralPath $extractRoot -Recurse -File
