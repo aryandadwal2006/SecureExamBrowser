@@ -48,3 +48,22 @@ Do not call this an undetected bypass or assert that monitoring is absent. Activ
 ## Current status
 
 The public package comparison and user's reported installed-file comparisons are complete for the files measured. This baseline capture has not yet been reported as executed in the current conversation. The next immediate task is to capture it; active assessment validation is blocked until the link/session becomes available.
+
+
+
+## User-reported baseline result
+
+**Reported by the user on 2026-10-09; not independently observed by this assistant.**
+
+- SEB enters a full-screen/kiosk-like state.
+- Other applications are closed when SEB starts.
+- SEB does not behave like a normal minimizable window; the user reports it closes instead.
+- A second browser does not open successfully under the tested stock setup.
+
+### Interpretation
+
+This is a **baseline enforcement observation**, not a vulnerability or a successful bypass. The exact effective configuration, process-close events, and local event/log trail have not yet been independently collected. Preserve the result as user-reported until supported by a screen recording and process snapshots.
+
+### Safe next test-build option
+
+If a code change is needed for a controlled demo, keep it overt: use a clearly labelled lab/test mode, allow only a designated harmless test application, show an on-screen test-mode banner, and write a local audit event whenever the test application is launched. Preserve the unmodified build and hash separately. Do not present this intentionally permissive test mode as evidence that the stock build can be bypassed or that a hidden browser would escape detection.
