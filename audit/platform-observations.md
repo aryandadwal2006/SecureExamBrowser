@@ -95,3 +95,10 @@ See also [vendor package comparison](vendor-package-comparison.md), which has ex
 A Windows runner extracted the current public SEB 2.0.2 MSI without installation. The app EXE, service EXE, contract DLL and repository Chromium bootstrapper are each exact SHA-256 matches to files inside that signed MSI. This resolves the earlier concern about those particular unsigned standalone files: their bytes are present in an authenticated vendor package. The user's local install still needs independent hashes to establish that it came from the same package.
 
 See [audit/vendor-package-comparison.md](vendor-package-comparison.md) and [F-017](../findings.md).
+
+
+## 10. Full package component comparison
+
+The Windows CI extraction/hash job compared every top-level repository EXE/DLL with the currently published signed SEB 2.0.2 MSI. All 39 of 39 exact hashes matched. This includes the service and contract DLLs, plus all root support libraries. It is therefore inaccurate to interpret their standalone unsigned status as evidence of tampering relative to this package. The user's installed version and the candidate-specific download remain unverified.
+
+See [audit/vendor-package-comparison.md](vendor-package-comparison.md) and [component artifact 11604173812](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190/artifacts/11604173812).
