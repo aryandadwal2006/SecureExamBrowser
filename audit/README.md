@@ -21,6 +21,8 @@
 - [artifact-manifest.md](artifact-manifest.md) — artifact SHA-256, versions, MVIDs, PE/CLI facts.
 - [vendor-package-comparison.md](vendor-package-comparison.md) — public installer signature and package comparison.
 - [vendor-component-hashes.md](vendor-component-hashes.md) — full exact hash/path table for all 39 root-level EXE/DLL files.
+- [legacy-source-package-comparison.md](legacy-source-package-comparison.md) — canonical Git blob hashes for 12 selected legacy XUL/config assets, all matched against the signed MSI.
+- [config-profile-analysis.md](config-profile-analysis.md) — configuration source-selection logic and capture-evidence limitations.
 - [platform-observations.md](platform-observations.md) — screenshots, launch handoff, recording notice, policy scope and uncertainty.
 - [test-matrix.md](test-matrix.md) — controlled test cases and verdict rules.
 
