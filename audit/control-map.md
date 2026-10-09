@@ -90,3 +90,7 @@ The committed legacy `SebScreenshot.jsm` implements a browser-window-to-canvas i
 The corrected Windows workflow compared canonical Git object bytes, not CRLF-transformed checkout bytes. All 12 selected legacy XUL source/config assets matched the current public signed MSI exactly. See [audit/legacy-source-package-comparison.md](legacy-source-package-comparison.md).
 
 The repository has multiple sample configuration files with differing feature settings; the effective assessment configuration is not in evidence. Static screenshot-related source and public recording policy cannot alone establish session-specific screen-pixel capture, activation or transmission. Keep the runtime conclusion as unknown.
+
+
+## Defensive recommendations
+A practical hardening/assurance checklist is available in [audit/defensive-hardening-recommendations.md](defensive-hardening-recommendations.md). It proposes signed effective configuration, explicit detector health, event correlation, authenticated IPC, package manifests and accurate privacy disclosure. These are recommended controls; the current evidence is insufficient to state they are absent.
