@@ -72,3 +72,8 @@ The current HirePro privacy policy names possible video/audio/live-image, device
 - **Correction:** The first attempt hashed Windows working-tree copies with CRLF conversion; the corrected job hashes canonical Git blobs. The apparent initial mismatches were a line-ending artifact, not a source/package mismatch.
 - **Evidence:** [Run 37908852563](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37908852563); [artifact 11605307704](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37908852563/artifacts/11605307704); [audit/legacy-source-package-comparison.md](legacy-source-package-comparison.md).
 - **Limit:** File identity supports static source review; it does not establish active config or runtime behavior.
+
+
+## R-011 — Source/config interpretation and hardening review
+- **Result:** Documentation checkpoint complete. The active config selection/merge semantics and the limits of sample profiles are recorded in [config-profile-analysis.md](config-profile-analysis.md); proposed defensive controls and test acceptance criteria are in [defensive-hardening-recommendations.md](defensive-hardening-recommendations.md).
+- **Limit:** This creates no new runtime evidence. The assessment's effective config and event path remain unknown.
