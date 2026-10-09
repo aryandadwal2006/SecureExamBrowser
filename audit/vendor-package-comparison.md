@@ -48,3 +48,12 @@ Raw machine-readable evidence: [component comparison artifact, ID 11604692503](h
 Broaden the same read-only extraction/hash comparison to all root-level EXE/DLL files and compare the user's installed versions only if the user later authorizes and provides local hashes. No installed package or target executable has been run by this workflow.
 
 **No malware conclusion is made from these results.**
+
+
+## Complete root-level component match (2026-10-09)
+
+The broadened Windows comparison enumerated **all 39 top-level `.exe` and `.dll` files** in the repository and compared each raw SHA-256 digest against same-named files extracted from the publicly signed SEB 2.0.2 MSI. **All 39 matched exactly; zero had a missing or mismatched package candidate.** This includes every support DLL found at repository root, not just the four primary files.
+
+Evidence: [comparison artifact 11604173812](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190/artifacts/11604173812). The JSON report records each repository digest, matching package path, packaged file digest and boolean match result. The Windows provenance job completed successfully; the parallel REA test job was still running when this addendum was drafted.
+
+This supports the conclusion that the repository's complete root-level executable/DLL set is an exact extraction of the contents of the current public, Authenticode-valid SEB MSI. It does not prove that the user's installed files or candidate-specific link resolve to this same package.
