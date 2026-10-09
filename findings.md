@@ -201,3 +201,13 @@ REA static PE/CLI, member/CIL and managed/native-boundary inventory completed fo
 - **Impact:** Expected hashes are now available for local Chromium 135 files, including `chrome.exe` and `chrome.dll`.
 - **Next action:** Run the corrected read-only local inventory and compare exact installed Chromium file hashes against the payload manifest. This is identity validation only, not a test of proctoring detection.
 
+
+
+## F-025 — Installed Chromium files reported by user match official nested payload
+- **Status:** 11/11 reported files matched; four additional manifest entries were not included in the local report.
+- **Observation:** The user's second read-only inventory reports the same SHA-256 values and byte lengths for `chrome.exe`, `chrome.dll`, `chrome_elf.dll`, `chrome_pwa_launcher.exe`, `chrome_proxy.exe`, `d3dcompiler_47.dll`, `libEGL.dll`, `libGLESv2.dll`, `notification_helper.exe`, `vk_swiftshader.dll` and `vulkan-1.dll) as the Chromium 135.0.7049.96 payload extracted from the public vendor-signed MSI chain.
+- **Evidence:** User-provided inventory; [audit/chromium-payload-hashes.md](audit/chromium-payload-hashes.md); [audit/local-install-comparison.md](audit/local-install-comparison.md).
+- **Confidence:** High for the 11 reported files, based on exact digest equality.
+- **Impact:** The installed Chromium executable and its key browser/graphics libraries reported in the inventory match the examined package. Their standalone unsigned status does not imply tampering when the bytes match the official package payload.
+- **Limitations:** `chrome_wer.dll`, `dxcompiler.dll`, `dxil.dll` and `eventlog_provider.dll` from the 15-file package manifest were not reported by the current inventory. This does not imply they are missing from the machine; the collector was not configured to search for all four.
+- **Next action:** If exhaustive installed-file identity matters, perform a read-only search/hash of those four filenames. No assessment launch or configuration-content collection is needed.
