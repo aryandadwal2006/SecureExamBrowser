@@ -61,11 +61,12 @@ foreach ($key in $uninstallPaths) {
 }
 
 $files = [System.Collections.Generic.List[System.IO.FileInfo]]::new()
+$filePaths = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
 foreach ($root in $roots) {
     Get-ChildItem -LiteralPath $root -File -Recurse -ErrorAction SilentlyContinue |
         Where-Object { $targetNames -contains $_.Name } |
         ForEach-Object {
-            if (-not ($files | Where-Object { $_.FullName -eq $PSItem.FullName })) { $files.Add($_) }
+            if ($filePaths.Add($_.FullName)) { $files.Add($_) }
         }
 }
 
