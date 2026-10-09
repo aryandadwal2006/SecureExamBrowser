@@ -66,3 +66,10 @@ Use a test VM and a synthetic or explicitly authorized test session only.
 - Confirm the browser's recording/consent UI and observable permissions without attempting to suppress recording.
 - Record server-side and human-observation coverage as separate unknowns unless there is independent evidence.
 - Do not treat absence of a warning, an event in one local log, or a single screenshot as proof that no other monitoring channel collected data.
+
+
+## 7. Installer provenance finding
+
+A Windows CI preflight reports the repository's `SecureExamBrowser.exe` as Authenticode-valid with signer `Hirepro Consulting Pvt Ltd`. In contrast, the checked-out service executable, contracts DLL and `hirepro-chromium-installer.exe` are not digitally signed according to that check. This is a reason to request trusted expected hashes/publishers and inspect the installed file set; it is not proof that an unsigned component is malicious. The repository's large Chromium installer is not proven to be the exact file downloaded from the email link.
+
+See [audit/artifact-manifest.md](artifact-manifest.md) and [F-014 in findings.md](../findings.md).
