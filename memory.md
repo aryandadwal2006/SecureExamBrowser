@@ -89,7 +89,7 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 
 ## Current Windows provenance check — 2026-10-09
 - Added a Windows GitHub Actions job that computes raw SHA-256 and captures Authenticode signature status, signer subject/issuer/thumbprint and certificate dates for SecureExamBrowser.exe, SebWindowsServiceWCF.exe, SEBWindowsServiceContracts.dll and hirepro-chromium-installer.exe. It does not execute them.
-- Workflow run: https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37904465412; status was in progress when noted. Update this memory and audit/artifact-manifest.md once the artifact is available.
+- Workflow run completed successfully: https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37904465412. Windows artifact ID 11603138113 has been downloaded/reviewed and its findings recorded in audit/artifact-manifest.md and findings.md.
 
 
 ## Windows signature preflight results — 2026-10-09
@@ -99,3 +99,9 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - SEBWindowsServiceContracts.dll: SHA-256 `60309b30499bbe98f98e1cc07cdc5379c34bafd1172ac2f8f8f5e8384250a2e5`; NotSigned.
 - hirepro-chromium-installer.exe in the repo: SHA-256 `1b3c640153c82eb40074e4bf55877a90ea5f2ea3d426e5de4eddc0c4bc09ea16`; NotSigned. Do not assume this is identical to the invite-linked file.
 - Unsigned status alone is not proof of malware. Next: request expected vendor hashes/publishers; compare exact installed files in an isolated VM; keep AV enabled unless vendor IT gives a verified, narrow exception.
+
+
+## Latest combined run verified — 2026-10-09
+- Both static REA audit and Windows signature/hash jobs succeeded in workflow run 37904465412.
+- Latest REA tests: 321 test files passed, 1 skipped; 3,450 tests passed, 4 skipped.
+- The test ledger is audit/test-results.md. These results do not include a live SEB runtime/proctoring test; those cases remain pending.
