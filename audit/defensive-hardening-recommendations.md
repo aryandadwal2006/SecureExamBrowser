@@ -98,3 +98,8 @@ For each test, capture artifact hashes, active configuration digest, VM snapshot
 ## 8. Limits
 
 This audit did not run SEB or a live assessment. These items are proposed assurance controls, not findings that a particular vulnerability exists. No evasion/bypass has been reproduced or ruled out by static analysis.
+
+
+## 9. Privileged service authorization
+
+The exact-build static analysis identifies a Windows service endpoint, registry/policy operations, and a process-launch helper. This is a review priority, **not a finding of exploitable access**. Verify endpoint binding and access controls, authenticated caller identity, strict operation allow-listing, safe argument handling and audit trails in an authorized disposable VM. See [privileged-service-authorization-review.md](privileged-service-authorization-review.md).
