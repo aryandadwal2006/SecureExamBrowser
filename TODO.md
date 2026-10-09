@@ -12,17 +12,17 @@ Statuses: [x] done, [ ] not done, [?] blocked/needs evidence.
 - [x] Read root competition README and REA README / managed-code analysis docs.
 - [x] Inspect relevant legacy XUL modules, configs and service log.
 - [x] Draft persistent plan, TODO, memory, architecture and initial findings documents.
-- [ ] Verify audit files are visible on GitHub and branch head is correct.
+- [x] Verify audit files are visible on GitHub and branch head is correct.
 
 ## Target identification
-- [ ] Obtain a clean checkout/artifact set without executing the large installer.
-- [ ] Record hashes, versions, signatures and PE architecture for application, service, contracts DLL, runtime and relevant libraries.
+- [ ] Obtain a clean checkout/artifact set without executing the large installer. The container cannot resolve GitHub DNS; continue through an authorized local Windows analysis host if needed.
+- [ ] Record local SHA-256 hashes, versions, signatures and PE architecture. Repository Git blob IDs are documented in audit/artifact-manifest.md but are not file SHA-256 hashes.
 - [ ] Determine launch chain, child processes, loaded modules, active config path and runtime version.
 - [ ] Snapshot a clean VM and establish restore procedure.
 
 ## Static analysis
 - [ ] Build REA from its own folder in a separate workspace; record environment and test output.
-- [ ] Run managed artifact/member/native-boundary inspection on each admitted .NET artifact.
+- [x] Perform read-only PE/CLI metadata triage on the service and contracts DLL; selected service CIL bodies were decoded in-memory. Full REA build and complete inspection remain pending.
 - [ ] Decompile selected managed methods where needed and bind findings to exact SHA-256/MVID/method identities.
 - [ ] Trace process and foreground observation, process lineage, ETW/Event Log, registry policy, enforcement, IPC and alert/report paths.
 - [ ] Confirm or reject correspondence between legacy XUL sources and supplied Windows build.
@@ -49,3 +49,4 @@ Statuses: [x] done, [ ] not done, [?] blocked/needs evidence.
 
 ## Scope note
 This branch is for authorized assessment and reproducible detection-gap validation. It will not contain a one-click stealth toggle, alarm-suppression patch, log tampering, or operational procedures for hiding prohibited activity from a live invigilator or remote proctor.
+\n## Progress update — 2026-10-09\n- Read-only static check of service PE/CLI and selected CIL methods completed; see audit/static-service-analysis.md.\n- Main SecureExamBrowser.exe remains unanalyzed because the connected GitHub file path returned an empty base64 body for this larger binary.\n- No Windows runtime tests have run; do not report a bypass found or disproven.\n
