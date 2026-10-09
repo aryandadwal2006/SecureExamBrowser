@@ -71,3 +71,9 @@ This branch is for authorized assessment and reproducible detection-gap validati
 
 - [x] Add a Windows-only CI job to hash the shipped executables/installer and inspect Authenticode publisher/status without executing binaries.
 - [ ] Review Windows provenance output from workflow run [37904465412](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37904465412); do not infer trustworthiness from a filename alone.
+
+
+## Progress update — 2026-10-09 (Windows provenance)
+- [x] Windows-only hash/signature job completed for the four repository artifacts; see audit/artifact-manifest.md and finding F-014.
+- [ ] Obtain/verify expected signer/hash for unsigned service, contract DLL and repo Chromium installer; absence of a signature is not a malware verdict.
+- [ ] Confirm whether the repository's large Chromium installer matches any file delivered by the email invitation; currently unverified.
