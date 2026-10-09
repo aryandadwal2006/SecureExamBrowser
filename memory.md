@@ -105,3 +105,12 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - Both static REA audit and Windows signature/hash jobs succeeded in workflow run 37904465412.
 - Latest REA tests: 321 test files passed, 1 skipped; 3,450 tests passed, 4 skipped.
 - The test ledger is audit/test-results.md. These results do not include a live SEB runtime/proctoring test; those cases remain pending.
+
+
+## Official package identity comparison — 2026-10-09
+- General current page https://securetest.hirepro.in/ says to install both Chromium and SEB and links to:
+  - https://securetest.hirepro.in/s3_cached/hirepro-content/hirepro/paas/Chromium_1.0.1_signed.msi
+  - https://securetest.hirepro.in/s3_cached/hirepro-content/hirepro/paas/SecureExamBrowserInstaller_en_2.0.2.msi
+- The /accenture/ page differs and displays the SEB download + launch handoff. Current tenant/version differences are possible.
+- Repo `hirepro-chromium-installer.exe` is a distinct filename/extension and unsigned. Don't equate it to the public signed MSI or to the candidate's installer unless hashes prove that relationship.
+- Updated Windows workflow run 37906017253 downloads public MSI files and gathers SHA-256/Authenticode without executing; check its artifact/result before reporting a conclusion.
