@@ -156,5 +156,7 @@ This branch is for authorized assessment and reproducible detection-gap validati
 ## User inventory follow-up — 2026-10-09
 - [x] Compare reported installed core SEB file hashes against the repository/public MSI; all reported core files match.
 - [x] Explain service .config package/Git byte difference as CRLF working-tree transformation: installed 186-byte file matches package/Windows copy.
-- [ ] Get a hash for actual installed Chromium browser executable and selected runtime DLLs; first report did not include chrome.exe.
+- [ ] Get a hash for actual installed Chromium browser executable and selected runtime DLLs; first report did not include chrome.exe. Corrected collector targets are in audit/scripts/Collect-LocalSEBInventory.ps1; verify blob ID 7dfc24f0a862c38058f67422bdb6276db4d5ef8d before use.
 - [ ] Effective assessment config/runtime telemetry remains unknown; no configuration contents or process arguments should be collected for the next inventory.
+
+- [x] Add an all-binary inventory for the extracted public Chromium and SEB MSIs (artifact 11614615520). This inventories package payloads only and does not execute them.
