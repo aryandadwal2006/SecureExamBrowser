@@ -48,7 +48,16 @@ Do not assume a bypass exists. Do not modify main. Scope excludes a one-click st
 - InitializeHost creates a NetNamedPipeBinding and has the endpoint string net.pipe://localhost/SebWindowsServiceWCF/service. Runtime auth semantics still need verification.
 - Service types include RegistryService and CommandExecutor; registry policy values are preserved and reset, and CommandExecutor uses ProcessStartInfo/Process.Start. Caller/argument validation remains to be traced.
 - Supporting notes: audit/static-service-analysis.md and audit/artifact-manifest.md.
-- The main SecureExamBrowser.exe could not be read through the connector's base64 route (returned empty content at 1.92 MB). The local container could not resolve github.com, so no clone/build/Windows runtime test ran.
+- Initially the GitHub file connector returned an empty base64 body for the ~1.92 MB main exe, and the local container could not resolve github.com. This was resolved for static inspection by adding .github/workflows/seb-static-audit.yml; GitHub Actions successfully checked out the branch and produced full REA reports for all three managed artifacts. This did not perform Windows runtime testing.
+
+## Main application static analysis and CI verification — 2026-10-09
+- Successful workflow: https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37900802418
+- Result: complete; REA dependency install, build, fast check and fast tests succeeded. Tests: 321 files passed, 1 skipped; 3,450 passed, 4 skipped. These are REA/toolchain tests, not tests of SecureExamBrowser's runtime.
+- Downloadable artifact: Actions artifact ID 11602131772, `seb-static-analysis`.
+- Main exe: 1,924,120 bytes, SHA-256 `9b7c84cb4d5be544592696177cf9ee576bc01fbbac5f1d7ba74e0676798dd38e`; assembly 2.0.2.0; MVID `704e0878-fd78-47f7-922f-49d7ed0a9f18`; target .NET Framework 4.5.2; metadata coverage complete; 377 types, 2,212 methods, 17,867 call edges, 126 P/Invoke declarations, 273 native-implementation indicators (indicators aren't proof of resolved native semantics).
+- Main app type inventory contains candidate subsystems for process startup/process handling, process/foreground/display/window watchdogs, prohibited-process handling, clipboard/network-activity checks, screen sharing/desktop/camera/VM, executable integrity and watchdog/log health.
+- Service exe SHA-256 `a2ac4fd12eaa38ffd8f422b20eef68bae8f7b44b91ababfe7447ef2fc9c6ac57`; assembly 2.2.0.0; MVID `aea1abb8-cb61-45e8-9b75-81f72e71d848`. Contracts DLL SHA-256 `60309b30499bbe98f98e1cc07cdc5379c34bafd1172ac2f8f8f5e8384250a2e5`; assembly 2.2.0.0; MVID `e7845311-4100-4832-b088-bb4dea31ed85`.
+- Static component presence does not establish active configuration, reliable detection, remote reporting or absence of gaps. The full summary and limits are in audit/static-application-analysis.md and audit/artifact-manifest.md.
 
 ## First next steps
 1. Verify branch head and audit files.
@@ -66,4 +75,4 @@ Do not assume a bypass exists. Do not modify main. Scope excludes a one-click st
 - False negative: only after an event occurred, expected detection coverage is defined, independent capture is healthy and the expected detection/reporting event is absent.
 - Not observed is not the same as not collected unless channel completeness is verified.
 
-See plan.md, TODO.md, findings.md, audit/architecture.md and audit/test-matrix.md.
+See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, audit/static-application-analysis.md, audit/static-service-analysis.md and audit/artifact-manifest.md.
