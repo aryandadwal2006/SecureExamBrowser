@@ -152,3 +152,19 @@ REA static PE/CLI, member/CIL and managed/native-boundary inventory completed fo
 - **Limitations:** This is source-level evidence. The exact correspondence to the packaged 2.0.2 client, the handler's activation, whether it is used during this test, image destination, and any whole-desktop capture are unverified.
 - **Interpretation:** Do not claim “no screenshots” simply because the online page's policy does not explicitly list continuous screen recording; also do not claim continuous full-desktop capture from this code alone.
 - **Next action:** Resolve source/runtime correspondence and use organizer-authorized session evidence to determine actual collection behavior. No suppression or concealment patch is part of this audit.
+
+
+## F-019 — Selected legacy browser/config assets match the signed public MSI
+- **Status:** Exact byte match confirmed.
+- **Observation:** A corrected Windows CI comparison read canonical Git blob bytes (avoiding CRLF-transformed Windows working files) and found all 12 selected XUL modules, startup files, manifests and sample configs exactly match same-named files extracted from the current signed public SEB 2.0.2 MSI.
+- **Evidence:** [Workflow run 37908852563](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37908852563); [source/package artifact 11605307704](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37908852563/artifacts/11605307704); [audit/legacy-source-package-comparison.md](audit/legacy-source-package-comparison.md).
+- **Confidence:** High for the 12 selected files in the current public MSI and repository Git ref.
+- **Impact:** These checked-in source assets are suitable evidence for static review of the corresponding package files.
+- **Limitations:** This does not show which configuration was loaded in the candidate's specific session or prove any runtime branch was active.
+
+## F-020 — Effective assessment configuration and screen-capture behavior remain unknown
+- **Status:** Open / runtime evidence required.
+- **Observation:** The repository contains multiple example/default configurations with different settings. The configuration loader merges a custom configuration with defaults; checked-in examples are not a session-specific config dump. Screenshot-related source code exists, but source presence alone does not prove activation, capture scope, upload, or retention.
+- **Evidence:** [audit/config-profile-analysis.md](audit/config-profile-analysis.md); [audit/platform-observations.md](audit/platform-observations.md); [audit/legacy-source-package-comparison.md](audit/legacy-source-package-comparison.md).
+- **Conclusion:** Current evidence does not establish continuous full-desktop capture or prove its absence during the user's mock test. Webcam/audio recording disclosure, page/navigation telemetry, native window/display monitoring, browser-window image capture and desktop-pixel capture must remain separate questions.
+- **Next action:** Obtain effective configuration and use authorized, observable positive controls in a disposable Windows VM; correlate only permitted event/log/server receipts. No concealment or suppression changes are part of this plan.
