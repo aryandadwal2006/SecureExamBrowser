@@ -57,3 +57,10 @@ The current generic HirePro page links to `Chromium_1.0.1_signed.msi` and `Secur
 The current generic HirePro page publicly links to signed Chromium and SEB installer MSIs. Windows CI downloaded both without executing them. See [audit/vendor-package-comparison.md](vendor-package-comparison.md) for exact sizes, SHA-256 digests and Authenticode results.
 
 The repository `hirepro-chromium-installer.exe` (SHA-256 `1b3c640153c82eb40074e4bf55877a90ea5f2ea3d426e5de4eddc0c4bc09ea16`) is unsigned and is **not byte-identical** to the current public `Chromium_1.0.1_signed.msi` (SHA-256 `946557de73da7aaccda17f9b1af63716492058069cfd6bdd709a825f7666d67f`). No malware conclusion follows from this mismatch; the actual user-downloaded/installed file remains unverified.
+
+
+## Signed MSI payload cross-check
+
+Read-only extraction of the currently published `SecureExamBrowserInstaller_en_2.0.2.msi` shows that four examined root files are exact SHA-256 matches to the package's files: `SecureExamBrowser.exe`, `SebWindowsServiceWCF.exe`, `SEBWindowsServiceContracts.dll`, and `hirepro-chromium-installer.exe`. See [audit/vendor-package-comparison.md](vendor-package-comparison.md) and [artifact 11604692503](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906360710/artifacts/11604692503).
+
+This explains why three components report `NotSigned` individually: they are package-contained files rather than standalone signed files. The current public SEB MSI itself reports a valid HirePro signature. The user's actual installed file set remains unverified.
