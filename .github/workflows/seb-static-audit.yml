@@ -201,6 +201,51 @@ jobs:
           $comparison | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath (Join-Path $outDir 'vendor-package-component-comparison.json') -Encoding utf8
           Get-Content -LiteralPath (Join-Path $outDir 'vendor-package-component-comparison.json')
 
+          # Compare selected legacy XUL source/config files against the full extracted package.
+          # This determines source/package correspondence only; it does not execute these files.
+          $sourceRelativePaths = @(
+            'SebWindowsBrowser/xul_seb/modules/SebScreenshot.jsm',
+            'SebWindowsBrowser/xul_seb/modules/SebServer.jsm',
+            'SebWindowsBrowser/xul_seb/modules/SebHost.jsm',
+            'SebWindowsBrowser/xul_seb/modules/SebConfig.jsm',
+            'SebWindowsBrowser/xul_seb/modules/seb.jsm',
+            'SebWindowsBrowser/xul_seb/config.default.json',
+            'SebWindowsBrowser/xul_seb/config.json',
+            'SebWindowsBrowser/xul_seb/config.SEB22.json',
+            'SebWindowsBrowser/xul_seb/chrome/content/seb/seb.xul',
+            'SebWindowsBrowser/xul_seb/chrome/content/seb/message_socket.html',
+            'SebWindowsBrowser/xul_seb/chrome.manifest',
+            'SebWindowsBrowser/xul_seb/defaults/preferences/seb.js'
+          )
+          $sourceComparison = foreach ($relativePath in $sourceRelativePaths) {
+            $sourcePath = Join-Path $root $relativePath
+            if (-not (Test-Path -LiteralPath $sourcePath -PathType Leaf)) {
+              [pscustomobject]@{ sourcePath = $relativePath; error = 'Source file not found'; packageCandidates = @() }
+              continue
+            }
+            $sourceFile = Get-Item -LiteralPath $sourcePath
+            $sourceHash = (Get-FileHash -LiteralPath $sourcePath -Algorithm SHA256).Hash.ToLowerInvariant()
+            $candidates = foreach ($file in ($allExtracted | Where-Object { $_.Name -ieq $sourceFile.Name })) {
+              $h = (Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+              [pscustomobject]@{
+                packageRelativePath = $file.FullName.Substring($extractRoot.Length).TrimStart('\','/')
+                bytes = $file.Length
+                sha256 = $h
+                exactlyMatchesRepositorySource = $h -eq $sourceHash
+              }
+            }
+            [pscustomobject]@{
+              sourcePath = $relativePath
+              sourceBytes = $sourceFile.Length
+              sourceSha256 = $sourceHash
+              packageCandidates = @($candidates)
+              exactMatchCount = @($candidates | Where-Object { $_.exactlyMatchesRepositorySource }).Count
+              sameNamedPackageFileCount = @($candidates).Count
+            }
+          }
+          $sourceComparison | ConvertTo-Json -Depth 7 | Set-Content -LiteralPath (Join-Path $outDir 'legacy-source-package-comparison.json') -Encoding utf8
+          Get-Content -LiteralPath (Join-Path $outDir 'legacy-source-package-comparison.json')
+
       - name: Upload Windows provenance report
         if: always()
         uses: actions/upload-artifact@v4
@@ -215,5 +260,13 @@ jobs:
         with:
           name: vendor-package-component-comparison
           path: audit-output/vendor-package-component-comparison.json
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Upload legacy source/package comparison
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: legacy-source-package-comparison
+          path: audit-output/legacy-source-package-comparison.json
           if-no-files-found: warn
           retention-days: 7
