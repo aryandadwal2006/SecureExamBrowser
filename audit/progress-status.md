@@ -18,7 +18,7 @@ These percentages are milestone-based estimates, not calculated from TODO checkb
 **Overall investigation-preparation estimate: approximately 60–65%.**  
 **Judge-ready proof that cheating succeeds undetected: 0% verified.**
 
-The remaining work is not mainly more file hashing or documentation. It is controlled runtime evidence.
+The immediate pre-finals task is a documented client-only baseline capture, now specified in [organizer-scope-and-baseline-demo.md](organizer-scope-and-baseline-demo.md). Active-session validation remains blocked until the organizer supplies the assessment link/session. More hashing is not the main remaining task.
 
 ## What has been completed
 
@@ -49,6 +49,8 @@ Do not label an idle-shell observation as a successful bypass. It can be recorde
 
 If the organizer cannot provide a mock/authorized active session, the final report must say runtime evasion remains untested. Static evidence may motivate a vulnerability hypothesis; it cannot substitute for reproducible demonstration.
 
-## Current user action
+## Organizer scope update (user-reported, 2026-10-09)
 
-**No additional local commands are required right now.** The installed-file identity checks already returned useful results. The next meaningful input is organizer authorization/access to an appropriate test session, not more routine inventory output.
+The organizer reportedly said the pre-finals gate is a baseline-check demonstration, with no server-side monitoring at this stage and no assessment link available for vulnerability testing before the finals. This is user-relayed scope, not independently verified technical evidence. See [organizer-scope-and-baseline-demo.md](organizer-scope-and-baseline-demo.md).
+
+The next immediate action is to capture normal SEB startup, the actual inactive landing-page state, process identity and ordinary local logs, then present the result with the session state clearly marked **inactive / no assessment loaded**. This can satisfy a baseline-documentation task but cannot prove an active-session bypass or establish absence of monitoring. No more file inventory is needed unless the installed build changes.
