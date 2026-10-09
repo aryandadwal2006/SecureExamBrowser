@@ -106,3 +106,7 @@ browser/test page          process/device/integrity/watchdog paths
 The diagram is a working model, not proof that every arrow executed in this mock-test session. The browser handoff prompt is not the same as Windows UAC. The recording notice and the published HirePro privacy policy establish a separate platform recording layer, but per-session network receipts and human-review details are unknown.
 
 See [audit/platform-observations.md](platform-observations.md) and [audit/static-application-analysis.md](static-application-analysis.md).
+
+
+## Consolidated control model
+See [audit/control-map.md](control-map.md) for the control-family inventory, expected evidence chain, and remaining validation requirements. The root binary set has been confirmed to match the current public signed SEB MSI, but active runtime settings and online-server behavior remain unknown.
