@@ -75,3 +75,18 @@ REA's method-level call-edge inventory provides more than type-name evidence. In
 - The client has device/desktop methods related to Bluetooth, multiple displays, virtual-machine/remote-connection checks and camera enumeration. Their existence does not establish which conditions the HirePro assessment enables.
 
 This evidence updates the static architecture but does not identify a verified false negative. See [platform observations](platform-observations.md).
+
+
+## Session-lifecycle call-path detail (selected CIL)
+
+The method bodies give a more specific static relationship for the process/device controls:
+
+- `SebWindowsClientForm.OpenSEBForm` calls `CheckIfInsideVirtualMachine`, `CheckIfRunViaRemoteConnection`, `CheckProhibitedProcesses`, `StartServer` and `MonitorProcesses`. The same method includes service-policy checks and session/desktop setup.
+- `SebWindowsClientForm.MonitorProcesses` references setup methods for the process watchdog, display watchdog, foreground watchdog and high-data-sending-process watcher/handler.
+- `ProcessWatchDog.CheckRunningProcessesTimer_Elapsed` references process-cache collection, prohibited-process evaluation, overlay-process detection, tick-start/tick-end reporting and a prohibited-process handling routine. This shows an implemented enforcement path, not merely a UI label. Whether all branches are reachable for a specific effective config is still untested.
+- `DisplayWatchDog.CheckDisplaysTimer_Elapsed` references multiple monitor-enumeration approaches and camera enumeration, along with event-handling paths. The existence of these methods does not identify the exact test setting that activated them.
+- `SebWindowsClientForm.ManageAdditionalDevices` calls `StopBlueTooth`, `IsMultiple` and `IsExternalCameraAttached`.
+- `SebWindowsClientMain.InitSEBDesktop` references clipboard cleanup and shell/desktop setup methods.
+- `SebWindowsClientMain.Main` invokes `RunCheckNow`; the executable-integrity watchdog's start and timer paths invoke the same check routine.
+
+All points above are call-edge/CIL observations from the specific SHA-256/MVID recorded in the artifact manifest. They do not demonstrate a successful/failed runtime test, complete remote reporting, or a vulnerability. The benign Windows validation cases remain pending.
