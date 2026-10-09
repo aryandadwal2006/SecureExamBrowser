@@ -101,3 +101,7 @@ Recommended hardening and acceptance criteria are documented in [audit/defensive
 
 ## Human-observation track
 The human-observation layer is documented in [audit/human-observation-protocol.md](audit/human-observation-protocol.md). Actual validation requires an authorized mock session with organizer approval; no such in-room exercise has been performed.
+
+
+## Local inventory checkpoint
+The user's read-only report shows the installed SEB core EXE/service/DLL and bundled Chromium bootstrapper match the current public signed package by SHA-256. One remaining local identity gap is the actual Chromium browser executable: the first collector used `Chromium.exe` rather than `chrome.exe`. The updated collector now includes `chrome.exe` and key runtime DLLs; rerun after Windows CI syntax validation. No assessment run is required.
