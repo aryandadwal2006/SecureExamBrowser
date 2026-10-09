@@ -173,7 +173,7 @@ jobs:
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
-          choco install lessmsi --version=2.12.9 --yes --no-progress
+          choco install lessmsi --yes --no-progress
           $lessmsi = (Get-Command lessmsi.exe -ErrorAction Stop).Source
           $root = $env:GITHUB_WORKSPACE
           $outDir = Join-Path $root 'audit-output'
