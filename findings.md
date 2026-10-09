@@ -168,3 +168,26 @@ REA static PE/CLI, member/CIL and managed/native-boundary inventory completed fo
 - **Evidence:** [audit/config-profile-analysis.md](audit/config-profile-analysis.md); [audit/platform-observations.md](audit/platform-observations.md); [audit/legacy-source-package-comparison.md](audit/legacy-source-package-comparison.md).
 - **Conclusion:** Current evidence does not establish continuous full-desktop capture or prove its absence during the user's mock test. Webcam/audio recording disclosure, page/navigation telemetry, native window/display monitoring, browser-window image capture and desktop-pixel capture must remain separate questions.
 - **Next action:** Obtain effective configuration and use authorized, observable positive controls in a disposable Windows VM; correlate only permitted event/log/server receipts. No concealment or suppression changes are part of this plan.
+
+
+## F-021 — Reported installed SEB core files match current signed public installer
+- **Status:** Confirmed from user-provided read-only inventory.
+- **Observation:** SHA-256 for the installed main EXE, service EXE, contracts DLL, bundled Chromium bootstrapper, three XUL JSON configuration assets and main EXE .config match the already verified repository/public MSI artifacts. The installed main EXE reports Authenticode Valid and the expected Hirepro signer.
+- **Evidence:** User-provided inventory in this conversation; [audit/local-install-comparison.md](audit/local-install-comparison.md); [all root component hashes](audit/vendor-component-hashes.md).
+- **Confidence:** High for the file hashes actually included in the inventory.
+- **Impact:** No mismatch was found among the reported SEB core files. Their individual unsigned status on some components is not suspicious relative to the current signed vendor MSI.
+- **Limitations:** The first inventory version did not search for the common Chromium executable name `chrome.exe`, so installed Chromium binary/DLL identity is not yet established. The effective assessment configuration and dynamic behavior remain unknown.
+
+## F-022 — Installed service .config corresponds to the MSI package copy
+- **Status:** Confirmed / benign line-ending difference explained.
+- **Observation:** User's `SebWindowsServiceWCF.exe.config` SHA-256 `1941d2f8e171d75d35b6c400992c5cd87899e8315fc4b1149f412cd199e1a3fa` matches the extracted public MSI copy and Windows checkout copy (186 bytes). The canonical Git blob is 180 bytes; Windows checkout converts line endings, resulting in the same 186-byte package copy.
+- **Evidence:** [Canonical source/package CI artifact 11614120932](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37925572215/artifacts/11614120932); [audit/local-install-comparison.md](audit/local-install-comparison.md).
+- **Confidence:** High for these measured byte lengths and digests.
+- **Impact:** This specific difference is consistent with line-ending transformation during Windows packaging/checkout, not unexplained tampering.
+
+## F-023 — Installed Chromium browser binary still needs identification
+- **Status:** Open / limited-inventory gap.
+- **Observation:** The local report scanned known roots but the first inventory script searched for `Chromium.exe`, not the common `chrome.exe` and associated runtime DLL names. No actual Chromium browser binary hash was returned.
+- **Evidence:** User-provided inventory; corrected script [audit/scripts/Collect-LocalSEBInventory.ps1](audit/scripts/Collect-LocalSEBInventory.ps1).
+- **Impact:** Cannot yet determine whether the actual installed Chromium executable/DLLs match the current official package.
+- **Next action:** Run the updated read-only inventory once its Windows CI validation completes. No browser launch, config read or assessment session is needed.
