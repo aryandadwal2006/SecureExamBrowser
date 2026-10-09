@@ -46,7 +46,7 @@ Statuses: [x] done, [ ] not done, [?] blocked/needs evidence.
 - [x] Update findings.md with static evidence, confidence and limits.
 - [x] Update memory.md after material discoveries.
 - [x] Update this TODO after each work session.
-- [ ] Produce final report with build identity, test matrix, verified findings, limitations and defensive remediations.
+- [x] Produce current static report and execution ledger in audit/static-application-analysis.md, audit/static-service-analysis.md, audit/test-results.md and findings.md. Runtime validation remains pending.
 
 ## Scope note
 This branch is for authorized assessment and reproducible detection-gap validation. It will not contain a one-click stealth toggle, alarm-suppression patch, log tampering, or operational procedures for hiding prohibited activity from a live invigilator or remote proctor.
@@ -70,10 +70,18 @@ This branch is for authorized assessment and reproducible detection-gap validati
 - [ ] Verify installer Authenticode signature/publisher on Windows; the public guide's request to disable antivirus / override Defender needs provenance verification.
 
 - [x] Add a Windows-only CI job to hash the shipped executables/installer and inspect Authenticode publisher/status without executing binaries.
-- [ ] Review Windows provenance output from workflow run [37904465412](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37904465412); do not infer trustworthiness from a filename alone.
+- [x] Review Windows provenance output from workflow run [37904465412](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37904465412); primary EXE signature is valid, service/contract/installer are unsigned; see audit/artifact-manifest.md.
 
 
 ## Progress update — 2026-10-09 (Windows provenance)
 - [x] Windows-only hash/signature job completed for the four repository artifacts; see audit/artifact-manifest.md and finding F-014.
 - [ ] Obtain/verify expected signer/hash for unsigned service, contract DLL and repo Chromium installer; absence of a signature is not a malware verdict.
 - [ ] Confirm whether the repository's large Chromium installer matches any file delivered by the email invitation; currently unverified.
+
+
+## Progress update — latest automation (2026-10-09)
+- [x] Both jobs in [workflow run 37904465412](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37904465412) succeeded.
+- [x] REA fast suite on the latest run: 321 test files passed, 1 skipped; 3,450 tests passed, 4 skipped.
+- [x] Windows provenance artifact collected; exact hash/signer states are recorded in audit/artifact-manifest.md.
+- [x] Consolidated automated/pending results in audit/test-results.md.
+- [ ] Perform approved Windows VM positive-control tests; this is the main remaining execution gap.
