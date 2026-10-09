@@ -94,3 +94,8 @@ The repository has multiple sample configuration files with differing feature se
 
 ## Defensive recommendations
 A practical hardening/assurance checklist is available in [audit/defensive-hardening-recommendations.md](defensive-hardening-recommendations.md). It proposes signed effective configuration, explicit detector health, event correlation, authenticated IPC, package manifests and accurate privacy disclosure. These are recommended controls; the current evidence is insufficient to state they are absent.
+
+
+## Human observation
+
+Human observation is an independent layer and cannot be established from client code, a browser log or a generic privacy policy. The controlled validation protocol is in [audit/human-observation-protocol.md](human-observation-protocol.md). It requires an approved mock setup and separates observer outcomes from host/client/server telemetry.
