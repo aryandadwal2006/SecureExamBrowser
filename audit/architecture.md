@@ -70,3 +70,39 @@ REA's complete managed metadata inventory of `SecureExamBrowser.exe` (assembly 2
 This broadens the architecture hypothesis: the main client itself contains candidate observation/enforcement layers; the service's `IsSebRunning` check is only one narrow lifecycle/recovery behaviour. Do not infer the main client is bypassable or fully effective from type names alone. Runtime activation, active configuration, event delivery and online-server telemetry remain unverified.
 
 The exact artifact identity, counts and evidence limits are in [audit/static-application-analysis.md](static-application-analysis.md). The REA CI workflow run completed static inspection, but did not execute the exam browser.
+
+
+## Layered launch / proctoring path (updated 2026-10-09)
+
+The screenshots and public HirePro Accenture landing page add the following high-level path:
+
+```text
+email/invitation URL
+       |
+       v
+HirePro web assessment + launch button
+       |
+       v
+browser external-application confirmation
+       |
+       v
+SecureExamBrowser.exe / Windows service / embedded browser
+       |                         |
+       | local IPC/message bus    | host policy + monitoring lifecycle
+       v                         v
+browser/test page          process/device/integrity/watchdog paths
+       |                         |
+       +-----------+-------------+
+                   |
+           logs/authorized report path
+                   |
+          HirePro/customer systems
+                   |
+      video/audio + server-side review
+                   |
+        possible independent human review
+```
+
+The diagram is a working model, not proof that every arrow executed in this mock-test session. The browser handoff prompt is not the same as Windows UAC. The recording notice and the published HirePro privacy policy establish a separate platform recording layer, but per-session network receipts and human-review details are unknown.
+
+See [audit/platform-observations.md](platform-observations.md) and [audit/static-application-analysis.md](static-application-analysis.md).
