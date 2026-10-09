@@ -251,3 +251,10 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - Report is recorded in audit/local-install-comparison.md and finding F-025.
 - Four of 15 manifest entries were not collected because script target list omits them: chrome_wer.dll, dxcompiler.dll, dxil.dll, eventlog_provider.dll. No mismatch has been observed; these four are simply unverified.
 - Main SEB EXE, service/DLL, bootstrapper and listed config assets from first report also matched package artifacts. Current primary installed-file identity question is closed for all reported files; effective session config and runtime control behavior remain unknown.
+
+
+## Privileged service review track — 2026-10-09
+- Added audit/privileged-service-authorization-review.md and test case T-019. Static metadata confirms service endpoint registration, registry/policy operations and a process-launch helper, but this is not evidence of unauthorized reachability or exploitability.
+- Defensive validation should establish endpoint binding/ACL, caller identity, strict operation allow-list, safe argument handling, authorization-denial behaviour and logging in an authorized disposable Windows VM.
+- Avoid describing/invoking undocumented service operations or altering live assessment controls.
+- Local identity status: all reported core SEB files match, and 11/11 Chromium files from second user inventory match package hashes. Four manifest names remain uncollected but optional; actual runtime config and loaded-module identity remain unknown.
