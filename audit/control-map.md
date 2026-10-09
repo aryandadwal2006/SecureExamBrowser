@@ -83,3 +83,10 @@ These are not equivalent to continuous capture of the entire desktop. Host-side 
 ## Legacy screenshot capability (source-level qualification)
 
 The committed legacy `SebScreenshot.jsm` implements a browser-window-to-canvas image operation, and `SebServer.jsm` has a screenshot-data message handler. This supports the existence of a browser-window screenshot capability in those sources. It does **not** establish continuous whole-desktop capture, remote transmission in the supplied build, or source-to-binary correspondence. Keep these separate from the UI's webcam/microphone recording notice and the platform's page/visibility telemetry.
+
+
+## Config and source/package checkpoint (2026-10-09)
+
+The corrected Windows workflow compared canonical Git object bytes, not CRLF-transformed checkout bytes. All 12 selected legacy XUL source/config assets matched the current public signed MSI exactly. See [audit/legacy-source-package-comparison.md](legacy-source-package-comparison.md).
+
+The repository has multiple sample configuration files with differing feature settings; the effective assessment configuration is not in evidence. Static screenshot-related source and public recording policy cannot alone establish session-specific screen-pixel capture, activation or transmission. Keep the runtime conclusion as unknown.
