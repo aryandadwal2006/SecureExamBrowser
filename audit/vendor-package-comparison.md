@@ -80,3 +80,8 @@ Notable entries:
 - The signed Chromium MSI contains `Chromium/chromium-135-0-7049-96.exe` (102,636,032 bytes, SHA-256 `1b3c640153c82eb40074e4bf55877a90ea5f2ea3d426e5de4eddc0c4bc09ea16`), exactly the same bytes as the `hirepro-chromium-installer.exe` in the signed SEB package and the user's installed inventory. This unsigned embedded EXE is authenticated by its enclosing signed installer.
 - The SEB MSI contains `Special Folder/HPBootstrap/HPReadyBootstrap.exe`, with a valid Hirepro Consulting Pvt Ltd Authenticode signature.
 - The MSI extraction contains packaged binaries, not the nested Chromium installer's post-install layout. Therefore the user's actual `chrome.exe` and runtime DLL hashes still need to be collected separately.
+
+
+## Nested-installer follow-up status
+
+A first 7-Zip archive attempt on the signed package's nested Chromium installer returned exit code 0 but no directly extracted EXE/DLL files; non-binary filenames were not recorded, so no conclusion was made. The next workflow adds a complete extracted-file listing. One attempt failed before extraction because the pinned Chocolatey `lessmsi` package version was unavailable; that pin has been removed and a retry was queued. Previously established file hashes/signatures remain unchanged.
