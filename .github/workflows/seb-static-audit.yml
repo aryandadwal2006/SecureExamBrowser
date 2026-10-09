@@ -210,23 +210,37 @@ jobs:
               $null = & $sevenZipPath x $nestedInstaller "-o$nestedOutput" -y -bd 2>&1
               $nestedExitCode = $LASTEXITCODE
               $nestedReport.exitCode = $nestedExitCode
-              $nestedBinaries = Get-ChildItem -LiteralPath $nestedOutput -Recurse -File -ErrorAction SilentlyContinue | Where-Object { $_.Extension.ToLowerInvariant() -in @('.exe', '.dll') } | Sort-Object FullName
+              $nestedFiles = Get-ChildItem -LiteralPath $nestedOutput -Recurse -File -ErrorAction SilentlyContinue | Sort-Object FullName
+              $nestedReport.extractedFileCount = @($nestedFiles).Count
+              $nestedReport.extractedFilesTruncated = (@($nestedFiles).Count -gt 300)
+              $nestedReport.extractedFiles = @(
+                foreach ($file in ($nestedFiles | Select-Object -First 300)) {
+                  $hash = (Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+                  [pscustomobject]@{
+                    relativePath = $file.FullName.Substring($nestedOutput.Length).TrimStart('\','/')
+                    fileName = $file.Name
+                    extension = $file.Extension
+                    bytes = $file.Length
+                    sha256 = $hash
+                  }
+                }
+              )
+              $nestedBinaries = @($nestedFiles | Where-Object { $_.Extension.ToLowerInvariant() -in @('.exe', '.dll') })
               $nestedReport.extractedBinaries = @(
                 foreach ($file in $nestedBinaries) {
-                  $hash = (Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
                   $signature = Get-AuthenticodeSignature -LiteralPath $file.FullName
                   [pscustomobject]@{
                     relativePath = $file.FullName.Substring($nestedOutput.Length).TrimStart('\','/')
                     fileName = $file.Name
                     bytes = $file.Length
-                    sha256 = $hash
+                    sha256 = (Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
                     signatureStatus = $signature.Status.ToString()
                     signerSubject = if ($signature.SignerCertificate) { $signature.SignerCertificate.Subject } else { $null }
                     signerThumbprint = if ($signature.SignerCertificate) { $signature.SignerCertificate.Thumbprint } else { $null }
                   }
                 }
               )
-              $nestedReport.note = if ($nestedExitCode -eq 0) { 'Archive extraction succeeded. Extracted contents were hashed and not executed.' } else { 'Archive extractor returned a non-zero exit code. Any files produced were inventoried; installer was not executed.' }
+              $nestedReport.note = if ($nestedExitCode -eq 0) { 'Archive extraction succeeded. Extracted file metadata/hashes were collected; no extracted file or installer was executed.' } else { 'Archive extractor returned a non-zero exit code. Any files produced were inventoried; installer was not executed.' }
             } else {
               $nestedReport.note = '7-Zip executable unavailable; nested installer not extracted or executed.'
             }
