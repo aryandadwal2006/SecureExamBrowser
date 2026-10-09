@@ -66,7 +66,7 @@ The HirePro landing page indicates that the web UI launches the native applicati
 
 
 ## Latest completed automation
-The successful GitHub Actions run [37904465412](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37904465412) completed REA build/check/test and Windows hash/signature collection. Results and all pending runtime cases are summarized in [audit/test-results.md](test-results.md).
+The latest completed comprehensive run [37926967501](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926967501) completed REA build/check/test, Windows hash/signature review, full package EXE/DLL inventory, and nested Chromium payload extraction. The user has since provided local hashes; all 11 Chromium files reported match the extracted package. Dynamic monitoring/authorization cases in this matrix remain not run.
 
 
 ## Source-level screenshot follow-up
