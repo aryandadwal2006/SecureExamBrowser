@@ -114,3 +114,6 @@ This branch is for authorized assessment and reproducible detection-gap validati
 
 - [x] Add a privacy-scope caveat for local native/browser message-schema fields: schema presence does not prove remote collection.
 - [ ] If authorized server-side receipts become available, correlate sanitized event IDs with the local observation chain, without collecting secrets/recordings.
+
+- [x] Document current published privacy-policy claims separately from unverified full-desktop capture/session-specific telemetry in audit/platform-observations.md and audit/control-map.md.
+- [ ] Only claim actual screen capture if supported by a concrete call path and/or authorized runtime evidence; keep current status unknown.
