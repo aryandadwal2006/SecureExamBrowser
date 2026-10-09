@@ -177,26 +177,22 @@ jobs:
             if ($LASTEXITCODE -ne 0) { throw "lessmsi extraction failed for $($package.name)" }
           }
           $allExtracted = Get-ChildItem -LiteralPath $extractRoot -Recurse -File
-          $repoNames = @(
-            'SecureExamBrowser.exe',
-            'SebWindowsServiceWCF.exe',
-            'SEBWindowsServiceContracts.dll',
-            'hirepro-chromium-installer.exe'
-          )
-          $comparison = foreach ($name in $repoNames) {
-            $repoPath = Join-Path $root $name
-            $repoHash = if (Test-Path -LiteralPath $repoPath -PathType Leaf) { (Get-FileHash -LiteralPath $repoPath -Algorithm SHA256).Hash.ToLowerInvariant() } else { $null }
+          $repoFiles = Get-ChildItem -LiteralPath $root -File | Where-Object { $_.Extension.ToLowerInvariant() -in @('.exe', '.dll') } | Sort-Object Name
+          $comparison = foreach ($repoFile in $repoFiles) {
+            $name = $repoFile.Name
+            $repoHash = (Get-FileHash -LiteralPath $repoFile.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
             $candidates = foreach ($file in ($allExtracted | Where-Object { $_.Name -ieq $name })) {
               $h = Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256
               [pscustomobject]@{
                 packageRelativePath = $file.FullName.Substring($extractRoot.Length).TrimStart('\','/')
                 bytes = $file.Length
                 sha256 = $h.Hash.ToLowerInvariant()
-                exactlyMatchesRepositoryFile = ($repoHash -ne $null -and $h.Hash.Equals($repoHash, [StringComparison]::OrdinalIgnoreCase))
+                exactlyMatchesRepositoryFile = $h.Hash.Equals($repoHash, [StringComparison]::OrdinalIgnoreCase)
               }
             }
             [pscustomobject]@{
               repositoryPath = $name
+              repositoryBytes = $repoFile.Length
               repositorySha256 = $repoHash
               packageCandidates = @($candidates)
               anyExactHashMatch = @($candidates | Where-Object { $_.exactlyMatchesRepositoryFile }).Count -gt 0
