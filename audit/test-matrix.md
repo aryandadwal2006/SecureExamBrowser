@@ -28,6 +28,11 @@
 | T-010 | Are logs sensitive or incomplete? | Inspect logs from ordinary test flows and startup/shutdown. | Log paths, access controls, redacted content and tracing settings. | Never export credentials, auth tokens, personal data or real exam records. | Not run |
 | T-011 | What online monitoring is independently visible? | In an authorized test session, inventory delivered scripts, permissions, endpoints and available event records. | Browser network export, script hashes, permission prompts and authorized server logs. | List inaccessible server-side logic and separate agents as unknown. | Not run |
 | T-012 | Is a finding reproducible? | Restore snapshot and repeat candidate finding under documented conditions. | Manifest, raw timestamps, logs and VM/config identifiers. | Repeatability requires the same prerequisites and observable result. | Not run |
+| T-013 | Is the launch handoff bound to the intended assessment? | Use the authorized test link and record the browser external-application prompt plus the target app/process identity. | Browser origin, prompt text, process tree, exact executable hash and sanitized launch/config identifiers. | Distinguish a browser protocol prompt from UAC; do not store personal session tokens. | Not run |
+| T-014 | Are documented process/device restrictions active? | Use benign, approved positive controls for app closure and advertised device/desktop requirements in a disposable VM. | Independent Windows process/device/session telemetry, app/service logs and UI results. | Do not infer coverage from a warning alone; do not alter or suppress controls to hide activity. | Not run |
+| T-015 | Do watchdog and integrity events reach their intended sinks? | Use only the vendor's documented benign positive-control event and supported diagnostics. | Detector status, watchdog heartbeat/tick markers, integrity-check outcome, local log and authorized test endpoint receipt. | A missing UI warning is not a pass; verify collector health and end-to-end receipt. | Not run |
+| T-016 | What data is actually transmitted in the authorized test session? | In a dedicated test session, capture only permitted client/network evidence and compare it with public notices. | Redacted network metadata, script hashes, client logs and organizer-provided server event IDs. | Separate schema/policy descriptions from measured payloads; never export credentials or recording contents into the repo. | Not run |
+| T-017 | Is recording UI/permission state consistent with the organizer's notice? | Use the approved mock assessment and ordinary camera/microphone permission flow. | Visible notices, OS permission state, authorized test-server receipt/recording indicator where provided. | Do not suppress, fake or conceal recording. Report gaps through the authorized channel. | Not run |
 
 ## Per-run evidence template
 - Test ID and timestamp (ISO 8601 with timezone).
@@ -50,3 +55,8 @@
 - **False negative:** use only when the stimulus definitely occurred, coverage is expected, independent capture is healthy and the expected detection/reporting event is absent.
 
 A concealment toggle and intentional suppression of alerts/telemetry are outside this matrix.
+
+
+## Evidence from the user's public-page/screenshot review
+
+The HirePro landing page indicates that the web UI launches the native application through an explicit browser confirmation and warns that SEB closes other applications. The screenshots also show a video/audio recording notice. These observations motivated T-013 through T-017; they are not outcomes of executed tests. See [audit/platform-observations.md](platform-observations.md).
