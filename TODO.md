@@ -163,3 +163,7 @@ This branch is for authorized assessment and reproducible detection-gap validati
 
 - [x] Updated CI run [37925812683](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37925812683) passed both jobs: REA fast test/static scan and Windows artifact provenance/package inventory; current local collector parses successfully.
 - [ ] Rerun updated inventory to record hashes of installed `chrome.exe`, `chrome.dll` and runtime DLLs. Verified collector blob: `7dfc24f0a862c38058f67422bdb6276db4d5ef8d`.
+
+- [x] Explore nested Chromium installer with 7-Zip without executing it; initial extraction returned exit code 0 but no EXE/DLL results.
+- [x] Record and fix a CI tooling failure where Chocolatey could not resolve pinned lessmsi 2.12.9; the workflow now installs the currently available package version instead.
+- [ ] Verify the rerun [37926726531](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926726531), currently queued when this note was written.
