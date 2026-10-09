@@ -96,3 +96,8 @@ The current HirePro privacy policy names possible video/audio/live-image, device
 - **Evidence:** [Run 37925812683](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37925812683); [artifact 11614615520](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37925812683/artifacts/11614615520).
 - **Observation:** The Chromium package's `chromium-135-0-7049-96.exe` has the same size/SHA-256 as the user's `hirepro-chromium-installer.exe` and is contained in a signed MSI.
 - **Limit:** The package contains a nested installer, not its post-install `chrome.exe`; installed browser binary identity remains pending.
+
+
+## R-015 — Latest integrated static/provenance run
+- **Result:** Pass. Both jobs completed successfully in [workflow run 37925812683](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37925812683). This includes REA build/check/test, binary static inspection, PowerShell parser validation, package extraction, component hashing and full EXE/DLL inventory of the public MSIs.
+- **Limit:** No target binary was executed. The user's installed `chrome.exe`/runtime DLL hash remains pending.
