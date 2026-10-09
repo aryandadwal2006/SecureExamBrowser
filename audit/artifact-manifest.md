@@ -50,3 +50,10 @@ Recommended follow-up: ask the competition/employer/vendor for expected hashes a
 ## Published-package comparison in progress
 
 The current generic HirePro page links to `Chromium_1.0.1_signed.msi` and `SecureExamBrowserInstaller_en_2.0.2.msi`. A new Windows CI job is downloading those exact public URLs and recording their size, SHA-256, Authenticode status and signer alongside the repository artifacts. See [run 37906017253](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906017253). Until that comparison finishes, the repository's `hirepro-chromium-installer.exe` must not be described as the same artifact as the published Chromium MSI.
+
+
+## Direct comparison with current public packages
+
+The current generic HirePro page publicly links to signed Chromium and SEB installer MSIs. Windows CI downloaded both without executing them. See [audit/vendor-package-comparison.md](vendor-package-comparison.md) for exact sizes, SHA-256 digests and Authenticode results.
+
+The repository `hirepro-chromium-installer.exe` (SHA-256 `1b3c640153c82eb40074e4bf55877a90ea5f2ea3d426e5de4eddc0c4bc09ea16`) is unsigned and is **not byte-identical** to the current public `Chromium_1.0.1_signed.msi` (SHA-256 `946557de73da7aaccda17f9b1af63716492058069cfd6bdd709a825f7666d67f`). No malware conclusion follows from this mismatch; the actual user-downloaded/installed file remains unverified.
