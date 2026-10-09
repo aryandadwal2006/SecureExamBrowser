@@ -114,3 +114,10 @@ The current HirePro privacy policy names possible video/audio/live-image, device
 - **Result:** Pass. The Windows job extracted the vendor MSI without installation, extracted the nested Chromium bootstrapper archive as data, and then extracted its `chrome.7z` payload. The inner extraction returned exit code 0 and contained 86 files, including 15 EXE/DLL files; none were run.
 - **Evidence:** [Workflow run 37926967501](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926967501); [artifact 11613754590](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926967501/artifacts/11613754590); [hash manifest](chromium-payload-hashes.md).
 - **Limit:** Installed Chromium binary hashes remain unmeasured until the corrected local collector is run.
+
+
+## R-018 — Installed Chromium binary comparison (user-provided report)
+- **Result:** Pass for the 11 reported Chromium EXE/DLL files. The local SHA-256 values and byte counts exactly match the extracted public Chromium 135.0.7049.96 payload.
+- **Evidence:** User's second inventory; [audit/local-install-comparison.md](local-install-comparison.md); [audit/chromium-payload-hashes.md](chromium-payload-hashes.md).
+- **Limit:** Four packaged binary names were not requested by the local collector and are unverified. This is a collection-scope gap, not a detected mismatch.
+- **Security boundary:** File identity does not prove effective assessment settings, monitor activation, remote telemetry receipt or human-observer coverage.
