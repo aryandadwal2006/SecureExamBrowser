@@ -90,4 +90,6 @@ This branch is for authorized assessment and reproducible detection-gap validati
 ## Progress update — 2026-10-09 (official package identity)
 - [x] Verified that the current generic HirePro SEB page publicly links a separate Chromium 1.0.1 MSI and Secure Exam Browser 2.0.2 MSI.
 - [x] Added a Windows CI comparison job for the public MSI packages and repository artifacts; it downloads and inspects but does not execute them.
-- [ ] Review run [37906017253](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906017253) and record whether the published MSI hashes/signatures match any repository artifact.
+- [x] Review Windows artifact from run [37906017253](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906017253); the public MSIs are signed, while the repo Chromium EXE is unsigned and differs by hash/size.
+
+- [ ] Compare the contents/embedded file manifest of the signed public SEB MSI to repository app/service/DLL hashes without installing it.
