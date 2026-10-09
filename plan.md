@@ -118,3 +118,7 @@ The high-level service endpoint/policy-management review is recorded in [audit/p
 
 ## Current execution gap
 Repository and installed-file provenance checks are complete for all reported files; the latest static package workflow succeeded. The remaining substantive evidence is dynamic behavior: effective config, loaded modules, endpoint authorization, monitor-health events, remote receipt correlation and human-observer coverage. These require an approved disposable Windows VM and mock assessment. See T-001–T-019 in [audit/test-matrix.md](audit/test-matrix.md).
+
+
+## Progress checkpoint
+See [audit/progress-status.md](audit/progress-status.md) for the current milestone-based completion estimate and the evidence required before making a runtime detection claim. An idle shell is not proof of behaviour in an active assessment. The next meaningful dependency is organizer-approved test-session access, not more file inventory.
