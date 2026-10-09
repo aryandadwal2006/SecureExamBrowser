@@ -22,16 +22,29 @@ The public signed packages were downloaded from the exact URLs linked by the cur
 
 Both validate under Windows Authenticode with signer thumbprint `B522BE129C67224D25A7566A9F293E5C256CC143` and signer subject `CN=Hirepro Consulting Pvt Ltd`.
 
+## Signed package content comparison
+
+The Windows runner extracted the public SEB MSI using the `lessmsi` file-extraction utility; the MSI was not installed or executed. The extracted package contains all four repository artifacts below with exact SHA-256 matches:
+
+| Repository artifact | Package path | Exact SHA-256 match? |
+|---|---|---|
+| `SecureExamBrowser.exe` | `seb\\SourceDir\\SecureExamBrowser.exe` | Yes |
+| `SebWindowsServiceWCF.exe` | `seb\\SourceDir\\SebWindowsServiceWCF.exe` | Yes |
+| `SEBWindowsServiceContracts.dll` | `seb\\SourceDir\\SEBWindowsServiceContracts.dll` | Yes |
+| `hirepro-chromium-installer.exe` | `seb\\SourceDir\\hirepro-chromium-installer.exe` | Yes |
+
+Raw machine-readable evidence: [component comparison artifact, ID 11604692503](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906360710/artifacts/11604692503). The parent MSI has a valid Authenticode signature from Hirepro Consulting Pvt Ltd. Therefore these exact bytes were included in the authenticated published package inspected here. This does **not** prove the user's installed files came from that package, but it materially resolves the question of whether the repository artifacts are arbitrary injected files.
+
 ## Interpretation
 
-1. The repository's `hirepro-chromium-installer.exe` differs in extension, size and SHA-256 from the current public signed Chromium MSI. The two files are **not the same file**.
-2. The current public Chromium and SEB MSIs have valid Authenticode signatures from Hirepro Consulting Pvt Ltd.
-3. The repository service EXE and contracts DLL do not have embedded Authenticode signatures. That alone does not make them unsafe; a trusted signed installer can legitimately contain unsigned component files.
-4. The repository's `SecureExamBrowser.exe` independently validates and has the same signer thumbprint as the published MSIs, but this does not prove its file contents are identical to the executable inside the current MSI.
-5. We have not inspected the actual file downloaded by the user from their candidate-specific link. The public generic page and Accenture-specific page may surface different packages/configurations.
+1. The repository's `hirepro-chromium-installer.exe` differs from the separately downloadable current Chromium MSI, but it is included byte-for-byte inside the signed SEB 2.0.2 MSI as a component file.
+2. Both currently published MSIs have valid Authenticode signatures from Hirepro Consulting Pvt Ltd.
+3. The service EXE and contracts DLL do not have embedded Authenticode signatures as standalone files, but the exact repository bytes are present in the signed SEB MSI. Their unsigned standalone status is therefore not, on its own, a sign of tampering.
+4. The repository's main EXE both validates standalone and matches the file in the signed MSI.
+5. The actual installed files on the user's laptop remain unverified; a candidate-specific or older package could differ.
 
 ## Recommended next check
 
-Obtain the exact installed file paths, hashes, and version data from the user's system and compare with vendor-provided expected values. In a lab, inspect the signed MSI's package manifest/components and compare contained file hashes without installing or executing the packages. Ask HirePro/employer support to confirm the intended publisher/hash for the service and contract DLL if the expected values are not documented.
+Broaden the same read-only extraction/hash comparison to all root-level EXE/DLL files and compare the user's installed versions only if the user later authorizes and provides local hashes. No installed package or target executable has been run by this workflow.
 
 **No malware conclusion is made from these results.**
