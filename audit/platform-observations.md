@@ -85,3 +85,6 @@ The current general HirePro SEB landing page, [https://securetest.hirepro.in/](h
 The Accenture-specific landing page at [https://securetest.hirepro.in/accenture/](https://securetest.hirepro.in/accenture/) currently displays a SEB download and the launch handoff, but the generic site displays both packages. The instructions also vary by tenant: the public Windows install iframe says the Chromium MSI may be shared with the candidate.
 
 The repository contains `hirepro-chromium-installer.exe`, which has a different extension and filename from the currently linked `Chromium_1.0.1_signed.msi`. This is not enough to identify it as the same payload or a malicious file; the next workflow downloads the public MSIs and compares their SHA-256 and Authenticode metadata with the checked-out artifacts. It never executes the packages.
+
+
+See also [vendor package comparison](vendor-package-comparison.md), which has exact SHA-256 and Authenticode results from downloaded public packages.
