@@ -166,4 +166,5 @@ This branch is for authorized assessment and reproducible detection-gap validati
 
 - [x] Explore nested Chromium installer with 7-Zip without executing it; initial extraction returned exit code 0 but no EXE/DLL results.
 - [x] Record and fix a CI tooling failure where Chocolatey could not resolve pinned lessmsi 2.12.9; the workflow now installs the currently available package version instead.
-- [ ] Verify the rerun [37926726531](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926726531), currently queued when this note was written.
+- [x] Verify the retry [37926726531](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926726531) succeeded; it identified chrome.7z inside the nested installer.
+- [x] Extract nested chrome.7z as data; 86 files found, 15 EXE/DLL hashes recorded in audit/chromium-payload-hashes.md.
