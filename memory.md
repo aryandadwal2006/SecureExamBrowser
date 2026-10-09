@@ -265,3 +265,12 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - Latest complete static CI is [37926967501](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926967501), which extracted the nested Chromium archive as data only and recorded all 15 package EXE/DLL hashes.
 - Added [audit/privileged-service-authorization-review.md](audit/privileged-service-authorization-review.md) and T-019. Service endpoint/policy-management and process-launch capabilities exist in static inventory; authorization/reachability are unknown. This is a review priority, not a confirmed vulnerability.
 - The remaining substantive gap is a vendor-approved, non-destructive runtime test in a disposable Windows VM / test tenant. No bypass/evasion test has been performed or claimed. Do not collect config contents, tokens, process command lines or recordings.
+
+
+## Progress and demo readiness — 2026-10-09
+- New summary: audit/progress-status.md.
+- Estimate: 60–65% of investigation/preparation complete; verified demonstration that cheating succeeds undetected is 0% (not reproduced). These are milestone estimates, not a TODO checkbox ratio.
+- Identity: 39/39 root EXE/DLL and 12/12 selected source/config assets match current public SEB MSI; user's reported core components and 11/11 Chromium files match package hashes.
+- Static review: major monitoring/control families mapped; sample configuration loader/merge behavior documented. Effective per-session config, service endpoint authorization, runtime activation, server receipt and human observation remain unknown.
+- An idle SEB shell saying "no tests available" can only support an inactive-state baseline; it cannot establish whether browser launches are detected during an active assessment.
+- No further local command requested. Next meaningful prerequisite is competition organizer authorization for a defined active/mock test session. If unavailable, final result must be labelled static assessment/runtime untested.
