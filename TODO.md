@@ -101,3 +101,9 @@ This branch is for authorized assessment and reproducible detection-gap validati
 - [x] Compared all 39 root-level EXE/DLL files to the signed public SEB 2.0.2 MSI extracted without installation: 39 exact hash matches, zero mismatches.
 - [x] Both jobs in [workflow run 37906673190](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190) completed successfully.
 - [ ] Only runtime identity/control validation remains; repository-to-vendor package provenance is established for the current public SEB MSI snapshot.
+
+
+## Progress update — 2026-10-09 (static control map)
+- [x] Consolidated session startup, process/device/watchdog/integrity, local IPC, log/reporting, online-proctoring and human-observation layers in audit/control-map.md.
+- [x] Prioritized remaining checks by required evidence and clearly separated static evidence from runtime assumptions.
+- [ ] Continue static validation of configuration and message/data-flow relationships without constructing a suppression or concealment patch.
