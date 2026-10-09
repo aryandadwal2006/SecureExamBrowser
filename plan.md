@@ -86,3 +86,6 @@ The user-provided screenshots and HirePro public page have been documented in au
 
 ## Static control map
 The system-level map is now consolidated in [audit/control-map.md](audit/control-map.md), including each control family, observable/expected output, unverified runtime behavior, and prioritized validation steps. The static phase can be deepened through configuration/data-flow inspection; Windows runtime claims remain blocked pending a disposable lab.
+
+
+For the fastest continuation, see [audit/README.md](audit/README.md), which links the evidence and summarizes the static/provenance results and remaining runtime blockers.
