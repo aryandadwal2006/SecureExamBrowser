@@ -4,6 +4,8 @@
 **Latest completed CI evidence:** [Run 37906673190](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190)  
 **Current phase:** Static analysis and provenance complete; authorized Windows runtime validation pending.
 
+- [progress-status.md](progress-status.md) — completion estimates, completed work, limits and requirements for a credible demonstration.
+
 ## Start here
 
 1. [plan.md](../plan.md) — investigation sequence and decision gates.
