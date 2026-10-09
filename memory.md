@@ -210,3 +210,11 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - Added audit/human-observation-protocol.md: a controlled mock-session protocol for measuring observer response and inter-reviewer agreement, keeping software telemetry and human observation separate.
 - Actual observer presence/coverage in the user's session remains unknown. This cannot be inferred from static binary inspection.
 - Do not provide or implement techniques for hiding prohibited conduct from an observer; use pre-approved test events in a mock setup and report missed detections to the organizer.
+
+
+## User local inventory received — 2026-10-09
+- The user supplied metadata/hash report; see audit/local-install-comparison.md for the comparison.
+- Exact matches: SecureExamBrowser.exe (valid signer), SebWindowsServiceWCF.exe, SEBWindowsServiceContracts.dll, hirepro-chromium-installer.exe, xul_seb/config.json, config.SEB22.json, default.json, SecureExamBrowser.exe.config. Service WCF .config is exact match to extracted MSI/Windows checkout bytes (186 bytes); canonical Git blob is 180 bytes because CRLF conversion explains the size/hash difference.
+- Authenticode UnknownError on JSON/XML config files is not a useful signature assessment; use SHA-256 for text configuration. Do not treat it as a malware indicator.
+- The first local script omitted `chrome.exe` and common dependency names despite searching Chromium roots. Script now adds chrome.exe, chrome.dll and key runtime DLLs. Need rerun only after current workflow validates it.
+- The user's installed core SEB files match the current public signed MSI; no mismatch found in reported hashes. Actual Chromium executable, effective assessment configuration and runtime capture/report behavior still unknown.
