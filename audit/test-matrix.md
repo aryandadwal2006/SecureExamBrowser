@@ -33,6 +33,7 @@
 | T-015 | Do watchdog and integrity events reach their intended sinks? | Use only the vendor's documented benign positive-control event and supported diagnostics. | Detector status, watchdog heartbeat/tick markers, integrity-check outcome, local log and authorized test endpoint receipt. | A missing UI warning is not a pass; verify collector health and end-to-end receipt. | Not run |
 | T-016 | What data is actually transmitted in the authorized test session? | In a dedicated test session, capture only permitted client/network evidence and compare it with public notices. | Redacted network metadata, script hashes, client logs and organizer-provided server event IDs. | Separate schema/policy descriptions from measured payloads; never export credentials or recording contents into the repo. | Not run |
 | T-017 | Is recording UI/permission state consistent with the organizer's notice? | Use the approved mock assessment and ordinary camera/microphone permission flow. | Visible notices, OS permission state, authorized test-server receipt/recording indicator where provided. | Do not suppress, fake or conceal recording. Report gaps through the authorized channel. | Not run |
+| T-018 | Is integrity validation documented for every shipped/loaded component? | Compare the implementation's integrity-coverage definition with an exact, vendor-confirmed component manifest and expected hashes; do not alter binaries. | Main executable MVID/hash, service/DLL/installer identities, integrity-verification code references and vendor-supplied expected values. | A valid signature on one executable does not establish trust in neighboring components; unsigned status is not itself proof of malware. | Not run |
 
 ## Per-run evidence template
 - Test ID and timestamp (ISO 8601 with timezone).
@@ -60,3 +61,7 @@ A concealment toggle and intentional suppression of alerts/telemetry are outside
 ## Evidence from the user's public-page/screenshot review
 
 The HirePro landing page indicates that the web UI launches the native application through an explicit browser confirmation and warns that SEB closes other applications. The screenshots also show a video/audio recording notice. These observations motivated T-013 through T-017; they are not outcomes of executed tests. See [audit/platform-observations.md](platform-observations.md).
+
+
+## Latest completed automation
+The successful GitHub Actions run [37904465412](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37904465412) completed REA build/check/test and Windows hash/signature collection. Results and all pending runtime cases are summarized in [audit/test-results.md](test-results.md).
