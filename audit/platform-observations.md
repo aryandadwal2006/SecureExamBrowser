@@ -88,3 +88,10 @@ The repository contains `hirepro-chromium-installer.exe`, which has a different 
 
 
 See also [vendor package comparison](vendor-package-comparison.md), which has exact SHA-256 and Authenticode results from downloaded public packages.
+
+
+## 9. Signed-package component check
+
+A Windows runner extracted the current public SEB 2.0.2 MSI without installation. The app EXE, service EXE, contract DLL and repository Chromium bootstrapper are each exact SHA-256 matches to files inside that signed MSI. This resolves the earlier concern about those particular unsigned standalone files: their bytes are present in an authenticated vendor package. The user's local install still needs independent hashes to establish that it came from the same package.
+
+See [audit/vendor-package-comparison.md](vendor-package-comparison.md) and [F-017](../findings.md).
