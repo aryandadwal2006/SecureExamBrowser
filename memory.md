@@ -76,3 +76,13 @@ Do not assume a bypass exists. Do not modify main. Scope excludes a one-click st
 - Not observed is not the same as not collected unless channel completeness is verified.
 
 See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, audit/static-application-analysis.md, audit/static-service-analysis.md and audit/artifact-manifest.md.
+
+
+## HirePro/Accenture platform evidence added — 2026-10-09
+- User supplied email/browser/test screenshots. They were not committed because they contain candidate/assessment information.
+- The public landing page is https://securetest.hirepro.in/accenture/ and matches the general launch sequence. The exact email short URL https://a.hirepro.in/d1INrdCM did not resolve in the retrieval session; don't claim its specific redirect was verified. Never store the opaque `data=` token from the candidate URL.
+- Screenshot dialog saying `securetest.hirepro.in wants to open this application` is the browser's external-app/protocol handoff prompt, not itself a Windows UAC prompt.
+- The running mock-test UI is labelled Secure Exam Browser 2.0.2 and visibly states video/audio are recorded and reviewed for integrity. Public HirePro privacy policy (updated 2026-01-13) says proctored services may collect video/audio/live images, device information, IP/derived location, assessment performance, page/link usage and technical data; for customer/partner assessments, HirePro processes data under the customer's instructions.
+- Public page states supported OS/admin rights/Chrome requirements and says other applications should close; it also asks users to disable antivirus and says to choose “More Info” / “Run Anyway” if Defender warns. Treat this as an informational supply-chain caution, not evidence of malware; verify signer/hash with the organizer or vendor and do not leave protection disabled globally.
+- Static main-exe call edges now mapped at a high level: OpenSEBForm references CheckProhibitedProcesses, MonitorProcesses and SEBXULRunnerWebSocketServer.StartServer; ProcessWatchDog and other watchdogs reference tick/heartbeat reporting; ExeIntegrityWatchDog references VerifyCurrentExe and check-status reporting; logger paths reference zipped-log upload. SEBXULMessage schema includes device/system-information fields. All are static observations, not proof that the current session used each path.
+- See audit/platform-observations.md, audit/static-application-analysis.md, findings.md and test cases T-013–T-017 in audit/test-matrix.md.
