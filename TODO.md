@@ -160,3 +160,6 @@ This branch is for authorized assessment and reproducible detection-gap validati
 - [ ] Effective assessment config/runtime telemetry remains unknown; no configuration contents or process arguments should be collected for the next inventory.
 
 - [x] Add an all-binary inventory for the extracted public Chromium and SEB MSIs (artifact 11614615520). This inventories package payloads only and does not execute them.
+
+- [x] Updated CI run [37925812683](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37925812683) passed both jobs: REA fast test/static scan and Windows artifact provenance/package inventory; current local collector parses successfully.
+- [ ] Rerun updated inventory to record hashes of installed `chrome.exe`, `chrome.dll` and runtime DLLs. Verified collector blob: `7dfc24f0a862c38058f67422bdb6276db4d5ef8d`.
