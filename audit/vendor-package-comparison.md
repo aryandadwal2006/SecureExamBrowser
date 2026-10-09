@@ -70,3 +70,13 @@ The source/package comparison originally produced false mismatches because Windo
 ## Local installed-file check
 
 The user-provided inventory's SEB main EXE, service EXE, contracts DLL and bundled Chromium bootstrapper hashes match the files already found in the current public signed SEB MSI. The reported configs also match the canonical/package copy, with a known CRLF normalization for the service `.exe.config`. Details: [audit/local-install-comparison.md](local-install-comparison.md). The actual installed Chromium browser executable was not included in the first inventory and remains open.
+
+
+## Complete EXE/DLL inventory from extracted public packages
+
+The updated Windows CI run [37925812683](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37925812683) inventories every EXE/DLL it finds in both extracted public MSIs, including their relative package paths, sizes, SHA-256 and Authenticode metadata. The report is [artifact 11614615520](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37925812683/artifacts/11614615520).
+
+Notable entries:
+- The signed Chromium MSI contains `Chromium/chromium-135-0-7049-96.exe` (102,636,032 bytes, SHA-256 `1b3c640153c82eb40074e4bf55877a90ea5f2ea3d426e5de4eddc0c4bc09ea16`), exactly the same bytes as the `hirepro-chromium-installer.exe` in the signed SEB package and the user's installed inventory. This unsigned embedded EXE is authenticated by its enclosing signed installer.
+- The SEB MSI contains `Special Folder/HPBootstrap/HPReadyBootstrap.exe`, with a valid Hirepro Consulting Pvt Ltd Authenticode signature.
+- The MSI extraction contains packaged binaries, not the nested Chromium installer's post-install layout. Therefore the user's actual `chrome.exe` and runtime DLL hashes still need to be collected separately.
