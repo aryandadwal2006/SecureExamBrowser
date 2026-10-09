@@ -105,3 +105,7 @@ The human-observation layer is documented in [audit/human-observation-protocol.m
 
 ## Local inventory checkpoint
 The user's read-only report shows the installed SEB core EXE/service/DLL and bundled Chromium bootstrapper match the current public signed package by SHA-256. One remaining local identity gap is the actual Chromium browser executable: the first collector used `Chromium.exe` rather than `chrome.exe`. The updated collector now includes `chrome.exe` and key runtime DLLs; rerun after Windows CI syntax validation. No assessment run is required.
+
+
+## Updated local identity checkpoint
+The second user-provided inventory has exact hash matches for all 11 Chromium EXE/DLL files it reported, including `chrome.exe` and `chrome.dll`, against the signed package's nested Chromium payload. See [audit/local-install-comparison.md](audit/local-install-comparison.md). Four additional package manifest entries were not targeted by the collector and remain unchecked; no mismatch has been identified. Runtime policy/configuration and proctoring behavior remain a separate, unresolved evidence question.
