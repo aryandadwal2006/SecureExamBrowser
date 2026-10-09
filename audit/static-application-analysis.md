@@ -2,8 +2,8 @@
 
 **Updated:** 2026-10-09  
 **Target:** `SecureExamBrowser.exe` on the investigation branch's checked-out repository snapshot  
-**Analysis path:** GitHub Actions workflow `SEB static artifact audit`, run 37900802418  
-**Evidence artifact:** [Workflow run and downloadable report](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37900802418)  
+**Analysis path:** GitHub Actions workflow `SEB static artifact audit`, run 37901362719  
+**Evidence artifact:** [Workflow run and downloadable report](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37901362719)  
 **Method:** REA managed PE/CLI inspection and CIL member analysis; target code was not executed.
 
 ## Artifact identity
