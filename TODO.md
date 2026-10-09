@@ -17,8 +17,8 @@ Statuses: [x] done, [ ] not done, [?] blocked/needs evidence.
 ## Target identification
 - [x] Obtain a clean automated checkout/artifact set through GitHub Actions without executing the large installer; the action analyzed the supplied files from a clean runner checkout.
 - [x] Record raw SHA-256, assembly versions, MVIDs, PE architecture and managed metadata for all three managed artifacts in audit/artifact-manifest.md.
-- [ ] Verify Authenticode status and exact runtime/loaded-module identity in a Windows VM.
-- [ ] Determine launch chain, child processes, loaded modules, active config path and runtime version.
+- [ ] Verify process tree, loaded-module identity and effective runtime configuration in an authorized Windows VM; file hashes alone do not establish loaded modules.
+- [ ] In an authorized Windows VM, establish launch chain, child processes, loaded modules, active config path and effective runtime configuration.
 - [ ] Snapshot a clean VM and establish restore procedure.
 
 ## Static analysis
@@ -76,7 +76,7 @@ This branch is for authorized assessment and reproducible detection-gap validati
 ## Progress update — 2026-10-09 (Windows provenance)
 - [x] Windows-only hash/signature job completed for the four repository artifacts; see audit/artifact-manifest.md and finding F-014.
 - [x] Match service, contract DLL and repo Chromium bootstrapper byte-for-byte to files extracted from the signed public SEB MSI; see audit/vendor-package-comparison.md. Their standalone unsigned status alone is not evidence of tampering.
-- [ ] Confirm whether the repository's large Chromium installer matches any file delivered by the email invitation; currently unverified.
+- [ ] Candidate-link delivery provenance is not independently captured. Installed bootstrapper and repository file match the public signed MSI payload; do not request session tokens or share the candidate URL.
 
 
 ## Progress update — latest automation (2026-10-09)
@@ -141,31 +141,36 @@ This branch is for authorized assessment and reproducible detection-gap validati
 - [x] Workflow run [37908852563](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37908852563) succeeded on both jobs, including corrected canonical Git blob comparison.
 - [x] Add a read-only local inventory script at audit/scripts/Collect-LocalSEBInventory.ps1. It collects only hashes/file metadata/signature status and avoids reading config contents, process arguments, tokens, logs or recordings.
 - [x] Add a Windows PowerShell parser check so the local inventory script is syntax-validated but not run in CI.
-- [ ] Local inventory is not yet needed for further static review. Only request it if the next phase must confirm the user's installed copy against the public package.
+- [x] Use the read-only local inventory when needed to confirm installed core SEB files against the public package.
 
-- [x] Prepare a safe local-file inventory script for a future installed-file identity check; syntax parser passed on Windows CI. It has not been run on the user's machine.
-- [x] Document exact usage in audit/scripts/README.md. Do not ask the user to run it until local installed-file identity becomes the next required evidence.
+- [x] Prepare and run a safe local file inventory; user-provided reports confirm installed core SEB files and 11/11 reported Chromium payload binaries match package hashes.
+- [x] Document exact usage in audit/scripts/README.md and verify the collector's hash before running it.
 
 - [x] Define an authorized, controlled human-observation validation protocol that separates observer reports from browser/host/server evidence in audit/human-observation-protocol.md.
 - [ ] Execute that protocol only in an approved mock environment with organizer approval and consent; no live test has been run.
 
 - [x] Verify full workflow run [37909760671](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37909760671) completed successfully: PowerShell parser pass, REA build/check/test and static package inspection pass.
-- [ ] If local identity must be verified, ask the user to run the read-only inventory on their installed copy; no such local data is required for this completed static phase.
+- [x] Obtain and compare the user's local inventory; the primary file-identity question is closed for all reported files.
 
 
 ## User inventory follow-up — 2026-10-09
 - [x] Compare reported installed core SEB file hashes against the repository/public MSI; all reported core files match.
 - [x] Explain service .config package/Git byte difference as CRLF working-tree transformation: installed 186-byte file matches package/Windows copy.
-- [ ] Get a hash for actual installed Chromium browser executable and selected runtime DLLs; first report did not include chrome.exe. Corrected collector targets are in audit/scripts/Collect-LocalSEBInventory.ps1; verify blob ID 7dfc24f0a862c38058f67422bdb6276db4d5ef8d before use.
+- [x] Compare installed chrome.exe and selected runtime DLLs against extracted vendor payload; 11/11 reported Chromium files match.
 - [ ] Effective assessment config/runtime telemetry remains unknown; no configuration contents or process arguments should be collected for the next inventory.
 
 - [x] Add an all-binary inventory for the extracted public Chromium and SEB MSIs (artifact 11614615520). This inventories package payloads only and does not execute them.
 
 - [x] Updated CI run [37925812683](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37925812683) passed both jobs: REA fast test/static scan and Windows artifact provenance/package inventory; current local collector parses successfully.
 - [x] Compare installed `chrome.exe`, `chrome.dll`, `chrome_elf.dll` and other reported Chromium binaries against the official nested payload: 11/11 reported files match (see audit/local-install-comparison.md).
-- [ ] Optional completeness check: collect hashes for `chrome_wer.dll`, `dxcompiler.dll`, `dxil.dll`, and `eventlog_provider.dll`; the collector did not target these four names.
+- [ ] Optional completeness check: collect hashes for `chrome_wer.dll`, `dxcompiler.dll`, `dxil.dll`, and `eventlog_provider.dll`; these four names were not included in the local inventory.
 
 - [x] Explore nested Chromium installer with 7-Zip without executing it; initial extraction returned exit code 0 but no EXE/DLL results.
 - [x] Record and fix a CI tooling failure where Chocolatey could not resolve pinned lessmsi 2.12.9; the workflow now installs the currently available package version instead.
 - [x] Verify the retry [37926726531](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926726531) succeeded; it identified chrome.7z inside the nested installer.
 - [x] Extract nested chrome.7z as data; 86 files found, 15 EXE/DLL hashes recorded in audit/chromium-payload-hashes.md.
+
+- [x] Compare all 11 Chromium EXE/DLL files present in the second user inventory to audit/chromium-payload-hashes.md; all matched exactly.
+- [ ] Optional: hash the four remaining Chromium manifest entries not requested by the collector (chrome_wer.dll, dxcompiler.dll, dxil.dll, eventlog_provider.dll).
+- [x] Add the privileged service authorization review and new controlled assurance case T-019.
+- [ ] Run T-019 only in an authorized disposable Windows VM using a vendor-approved, non-destructive harness. Endpoint access control and command-operation authorization remain unknown; no vulnerability is asserted.
