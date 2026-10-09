@@ -237,3 +237,10 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - Workflow [37926409653](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926409653) succeeded and the nested 7-Zip step returned exit code 0 but found no extracted EXE/DLLs (artifact 11613924578). That first report did not list non-binary files, so extraction behavior is not understood yet.
 - New attempt added complete filename/size/hash listing for up to 300 extracted files. Workflow [37926598648](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926598648) failed before extraction because Chocolatey could not resolve pinned `lessmsi` 2.12.9 on that runner. The workflow pin was removed in commit 116c3e47; rerun [37926726531](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926726531) was queued at this note.
 - Core local inventory result remains valid; the only needed local rerun is to collect `chrome.exe` and key DLL hashes via the corrected collector (blob ID `7dfc24f0a862c38058f67422bdb6276db4d5ef8d`).
+
+
+## Chromium payload hashes now available — 2026-10-09
+- Latest successful two-job CI run: https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926967501.
+- Nested Chromium installer unpacking: `chromium-135-0-7049-96.exe` produced `chrome.7z`; 7-Zip extracted the nested archive with exit code 0, yielding 86 files and 15 EXE/DLLs, no execution. Evidence artifact 11613754590.
+- Full key binary hash manifest: audit/chromium-payload-hashes.md. Expected `chrome.exe` SHA-256 `12f2e3b2e818060ed6828bd2bd6fc0de69385e3d1c5a9906a2c3cd1c3cd585e7`; expected `chrome.dll` SHA-256 `7e1fbae4bb981688ed226c613b2a655534fff3da3e5b043dd0e8db7b8ec4846b`; expected `chrome_elf.dll` SHA-256 `28a47a61c8eb57ab4c7815fc7900776ec8574c45283c127d53a20ea85eca0528`.
+- Need local collector rerun with verified blob `7dfc24f0a862c38058f67422bdb6276db4d5ef8d` to compare installed browser files. The initial report confirmed core SEB package identity but omitted the Chromium browser executable.
