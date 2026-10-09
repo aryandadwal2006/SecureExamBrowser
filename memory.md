@@ -140,3 +140,10 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - Result: 39 of 39 exact SHA-256 matches to same-named files extracted from the current public signed SEB 2.0.2 MSI; zero missing/mismatched files.
 - This materially corrects the earlier standalone signature concern: root service/DLL/Chromium components are unsigned individually, but the exact bytes are in an Authenticode-valid vendor MSI. No evidence of injected root-level binaries was found by this comparison.
 - User's installed files and candidate-specific asset are still unknown, and no target executable was run.
+
+
+## Latest CI run consolidated — 2026-10-09
+- Workflow run https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190 completed successfully; both jobs succeeded.
+- REA built, fast checks/tests passed, and all three managed target artifacts were statically inspected. Latest run's fast suite result is same as preceding run: 321 files passed / 1 skipped; 3,450 tests passed / 4 skipped.
+- Windows job downloaded the current public HirePro MSIs, verified Authenticode + SHA-256, extracted the public SEB MSI with lessmsi without installing it, and compared all 39 root-level EXE/DLL files to the package. 39/39 exact matches, 0 mismatches.
+- The package comparison confirms repository root-level components correspond exactly to the public signed installer. It does not verify the user's local install or behavior of a running assessment.
