@@ -132,3 +132,11 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - Thus, although service EXE, contract DLL and Chromium EXE are not signed individually, they are identical to files inside the currently published, Authenticode-valid SEB MSI. Do not describe their unsigned status by itself as suspicious.
 - Remaining: broaden match to all top-level DLLs; local installed file identity still unknown.
 - Updated report: audit/vendor-package-comparison.md; finding F-017.
+
+
+## Full root dependency match confirmed — 2026-10-09
+- Latest Windows comparison run: https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190
+- Artifact 11604173812 includes hashes and paths for all repository root-level EXE/DLLs.
+- Result: 39 of 39 exact SHA-256 matches to same-named files extracted from the current public signed SEB 2.0.2 MSI; zero missing/mismatched files.
+- This materially corrects the earlier standalone signature concern: root service/DLL/Chromium components are unsigned individually, but the exact bytes are in an Authenticode-valid vendor MSI. No evidence of injected root-level binaries was found by this comparison.
+- User's installed files and candidate-specific asset are still unknown, and no target executable was run.
