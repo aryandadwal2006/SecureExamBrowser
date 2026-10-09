@@ -85,3 +85,9 @@ This branch is for authorized assessment and reproducible detection-gap validati
 - [x] Windows provenance artifact collected; exact hash/signer states are recorded in audit/artifact-manifest.md.
 - [x] Consolidated automated/pending results in audit/test-results.md.
 - [ ] Perform approved Windows VM positive-control tests; this is the main remaining execution gap.
+
+
+## Progress update — 2026-10-09 (official package identity)
+- [x] Verified that the current generic HirePro SEB page publicly links a separate Chromium 1.0.1 MSI and Secure Exam Browser 2.0.2 MSI.
+- [x] Added a Windows CI comparison job for the public MSI packages and repository artifacts; it downloads and inspects but does not execute them.
+- [ ] Review run [37906017253](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906017253) and record whether the published MSI hashes/signatures match any repository artifact.
