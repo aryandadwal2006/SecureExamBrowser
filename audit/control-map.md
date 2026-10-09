@@ -78,3 +78,8 @@ For session-specific data flow, only use authorized test-session network metadat
 HirePro's public privacy policy states potential collection of video/audio and live images, device/browser data, pages accessed and links clicked, and gives preventing navigation away from the test window and detecting suspicious activity as service purposes. In the screenshots, the running SEB UI explicitly says video/audio are being recorded.
 
 These are not equivalent to continuous capture of the entire desktop. Host-side display monitoring, browser visibility/navigation events, webcam imagery and desktop pixel capture are separate mechanisms. Current evidence establishes the first three only at a high-level code/policy/UI level; full-desktop capture in this particular session remains **unknown**. No assumption about absence of other platform-side or human observation should be made.
+
+
+## Legacy screenshot capability (source-level qualification)
+
+The committed legacy `SebScreenshot.jsm` implements a browser-window-to-canvas image operation, and `SebServer.jsm` has a screenshot-data message handler. This supports the existence of a browser-window screenshot capability in those sources. It does **not** establish continuous whole-desktop capture, remote transmission in the supplied build, or source-to-binary correspondence. Keep these separate from the UI's webcam/microphone recording notice and the platform's page/visibility telemetry.
