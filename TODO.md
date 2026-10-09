@@ -68,3 +68,6 @@ This branch is for authorized assessment and reproducible detection-gap validati
 - [ ] Confirm active configuration and per-session feature activation in an isolated Windows VM.
 - [ ] Correlate host/process/device events with sanitized local logs and an authorized test-server receipt.
 - [ ] Verify installer Authenticode signature/publisher on Windows; the public guide's request to disable antivirus / override Defender needs provenance verification.
+
+- [x] Add a Windows-only CI job to hash the shipped executables/installer and inspect Authenticode publisher/status without executing binaries.
+- [ ] Review Windows provenance output from workflow run [37904465412](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37904465412); do not infer trustworthiness from a filename alone.
