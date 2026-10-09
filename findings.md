@@ -211,3 +211,12 @@ REA static PE/CLI, member/CIL and managed/native-boundary inventory completed fo
 - **Impact:** The installed Chromium executable and its key browser/graphics libraries reported in the inventory match the examined package. Their standalone unsigned status does not imply tampering when the bytes match the official package payload.
 - **Limitations:** `chrome_wer.dll`, `dxcompiler.dll`, `dxil.dll` and `eventlog_provider.dll` from the 15-file package manifest were not reported by the current inventory. This does not imply they are missing from the machine; the collector was not configured to search for all four.
 - **Next action:** If exhaustive installed-file identity matters, perform a read-only search/hash of those four filenames. No assessment launch or configuration-content collection is needed.
+
+
+## F-026 — Privileged service operations require authorization assurance
+- **Status:** Review priority; exploitability unknown.
+- **Observation:** Exact-build static metadata shows a service host/endpoint registration path, registry-policy management methods and a helper that starts a process and captures output. This establishes that sensitive service capabilities exist in the binary, not that an untrusted caller can access them.
+- **Evidence:** Latest `seb-static-analysis` artifact from [workflow run 37926967501](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37926967501); [audit/static-service-analysis.md](audit/static-service-analysis.md); [audit/privileged-service-authorization-review.md](audit/privileged-service-authorization-review.md).
+- **Confidence:** High for the existence of these static members/call paths; low/unknown for external reachability, authorization and runtime behaviour.
+- **Impact:** Maintainers should verify local endpoint security, caller identity, strict operation allow-listing, process argument provenance and fail-closed denial.
+- **Next action:** Run T-019 with a vendor-approved harness in a disposable Windows VM. Do not infer a vulnerability from method names alone and do not invoke undocumented operations against a live assessment.
