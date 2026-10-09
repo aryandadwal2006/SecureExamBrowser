@@ -164,3 +164,10 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 ## Local message schema scope — 2026-10-09
 - Static REA member metadata shows local native/browser `SEBXULMessage` schema categories for machine/system characteristics, display/camera and device-change state, process-handling summaries, blocked-domain summaries, and watchdog/logger health.
 - This is local schema evidence. Do not claim data reaches HirePro without a measured session payload or authorized server receipt. A declared field is not proof it was populated, sent, or retained.
+
+
+## Online telemetry versus screen capture distinction — 2026-10-09
+- Current HirePro policy says services may collect video/audio, captured live images, IP/derived location, device/browser info, pages/links and assessment data; purposes include preventing navigation away from the test window and detecting suspicious activity. Sources: https://hirepro.in/privacy-policy/ and https://securetest.hirepro.in/.
+- User screenshots explicitly show video/audio recording notice.
+- Do NOT claim the entire desktop is continuously captured based only on that policy or the local display watchdog. Webcam imagery, page/visibility telemetry, host display state and desktop pixel capture are different things.
+- Actual full-screen capture for this session: unknown pending call path/runtime evidence.
