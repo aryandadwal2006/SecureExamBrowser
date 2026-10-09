@@ -2,9 +2,13 @@
 
 **Working branch:** `redteam/monitoring-audit-2026-10-09`  
 **Latest completed CI evidence:** [Run 37906673190](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190)  
-**Current phase:** Static analysis and provenance complete; authorized Windows runtime validation pending.
+**Current phase:** Static analysis and provenance complete; client-only inactive-shell baseline capture is the immediate task. Active-assessment validation is blocked until the organizer supplies the link/session.
 
 - [progress-status.md](progress-status.md) — completion estimates, completed work, limits and requirements for a credible demonstration.
+
+## Current pre-finals scope
+
+- [organizer-scope-and-baseline-demo.md](organizer-scope-and-baseline-demo.md) — organizer-stated limits and a client-only baseline capture procedure. The current inactive shell is not evidence of active-session detection behavior.
 
 ## Start here
 
@@ -38,7 +42,7 @@
 - The public SEB 2.0.2 MSI validates under Authenticode as signed by Hirepro Consulting Pvt Ltd.
 - The Windows runner extracted that MSI without installing it and found exact SHA-256 matches for all 39 root-level repository EXE/DLL files; zero mismatches.
 - The user-visible mock-assessment UI states video/audio are recorded. The public policy lists potential proctoring data categories. Legacy source includes browser-window screenshot capability, but packaged source correspondence and session-specific screenshot/full-desktop capture remain unknown.
-- No SEB runtime test has run; no bypass has been reproduced or ruled out. A read-only local inventory script is prepared but not needed for further static work.
+- No active-assessment runtime test has run; no bypass has been reproduced or ruled out. Organizer-stated pre-finals scope is limited to a baseline client demonstration; see organizer-scope-and-baseline-demo.md. A read-only local inventory script is prepared but not needed for further static work.
 
 ## Reproducibility and scope
 
