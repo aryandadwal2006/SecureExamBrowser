@@ -244,3 +244,10 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - Nested Chromium installer unpacking: `chromium-135-0-7049-96.exe` produced `chrome.7z`; 7-Zip extracted the nested archive with exit code 0, yielding 86 files and 15 EXE/DLLs, no execution. Evidence artifact 11613754590.
 - Full key binary hash manifest: audit/chromium-payload-hashes.md. Expected `chrome.exe` SHA-256 `12f2e3b2e818060ed6828bd2bd6fc0de69385e3d1c5a9906a2c3cd1c3cd585e7`; expected `chrome.dll` SHA-256 `7e1fbae4bb981688ed226c613b2a655534fff3da3e5b043dd0e8db7b8ec4846b`; expected `chrome_elf.dll` SHA-256 `28a47a61c8eb57ab4c7815fc7900776ec8574c45283c127d53a20ea85eca0528`.
 - Need local collector rerun with verified blob `7dfc24f0a862c38058f67422bdb6276db4d5ef8d` to compare installed browser files. The initial report confirmed core SEB package identity but omitted the Chromium browser executable.
+
+
+## Second local inventory received — Chromium hash result
+- User supplied updated report with 20 files. 11 Chromium EXE/DLL entries were present, and all 11 exact size/SHA-256 values match the official Chromium 135.0.7049.96 inner payload: chrome.exe, chrome.dll, chrome_elf.dll, chrome_pwa_launcher.exe, chrome_proxy.exe, d3dcompiler_47.dll, libEGL.dll, libGLESv2.dll, notification_helper.exe, vk_swiftshader.dll, vulkan-1.dll.
+- Report is recorded in audit/local-install-comparison.md and finding F-025.
+- Four of 15 manifest entries were not collected because script target list omits them: chrome_wer.dll, dxcompiler.dll, dxil.dll, eventlog_provider.dll. No mismatch has been observed; these four are simply unverified.
+- Main SEB EXE, service/DLL, bootstrapper and listed config assets from first report also matched package artifacts. Current primary installed-file identity question is closed for all reported files; effective session config and runtime control behavior remain unknown.
