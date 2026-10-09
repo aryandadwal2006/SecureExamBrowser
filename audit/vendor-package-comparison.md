@@ -65,3 +65,8 @@ Complete per-file table: [audit/vendor-component-hashes.md](vendor-component-has
 ## Canonical source/config match
 
 The source/package comparison originally produced false mismatches because Windows checkout line endings differed from the canonical Git blobs. After correcting the workflow, all 12 selected legacy XUL/source/config assets matched their package copies exactly. See [audit/legacy-source-package-comparison.md](legacy-source-package-comparison.md) and [run 37908852563](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37908852563).
+
+
+## Local installed-file check
+
+The user-provided inventory's SEB main EXE, service EXE, contracts DLL and bundled Chromium bootstrapper hashes match the files already found in the current public signed SEB MSI. The reported configs also match the canonical/package copy, with a known CRLF normalization for the service `.exe.config`. Details: [audit/local-install-comparison.md](local-install-comparison.md). The actual installed Chromium browser executable was not included in the first inventory and remains open.
