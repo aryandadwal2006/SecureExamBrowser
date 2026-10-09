@@ -40,3 +40,6 @@
 ## Reproducibility and scope
 
 Static target analysis did not load or execute the binaries. The MSI was extracted for file-hash comparison only. Do not treat a static method/type name as proof of runtime behavior. Any future dynamic test should be conducted in an authorized disposable Windows VM with independent telemetry and a documented positive control; keep all remote/server/human-observation claims separately evidenced.
+
+
+Latest successful CI: [run 37925812683](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37925812683). Remaining local evidence: installed Chromium executable/DLL hashes only; SEB core component hashes from the initial inventory match the current signed package.
