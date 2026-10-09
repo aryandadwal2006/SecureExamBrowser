@@ -34,3 +34,10 @@ The signed public package contains a nested Chromium bootstrapper (`chromium-135
 - The corrected collector has been prepared and its PowerShell parser step succeeded in Windows CI. A second inventory is needed to compare installed `chrome.exe`, `chrome.dll`, `chrome_elf.dll` and related files to these hashes.
 - The standalone unsigned status of Chromium EXE/DLL files is not, on its own, evidence of tampering; the nested payload was contained within the vendor-signed package chain. Two DLLs in this manifest (`d3dcompiler_47.dll` and `dxil.dll`) individually validate under Authenticode.
 - Exact file equality only validates package identity, not runtime safety or whether proctoring controls detect a particular event.
+
+
+## User-installed copy comparison
+
+The user's second inventory reports exact size/SHA-256 matches for 11 package files: `chrome.exe`, `chrome.dll`, `chrome_elf.dll`, `chrome_pwa_launcher.exe`, `chrome_proxy.exe`, `d3dcompiler_47.dll`, `libEGL.dll`, `libGLESv2.dll`, `notification_helper.exe`, `vk_swiftshader.dll`, and `vulkan-1.dll`. These results are recorded in [audit/local-install-comparison.md](local-install-comparison.md).
+
+Four other files in this 15-file package inventory—`chrome_wer.dll`, `dxcompiler.dll`, `dxil.dll`, and `eventlog_provider.dll`—were not included in the local report and remain unchecked. No claim is made that they are absent or modified.
