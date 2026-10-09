@@ -16,15 +16,15 @@ Statuses: [x] done, [ ] not done, [?] blocked/needs evidence.
 
 ## Target identification
 - [ ] Obtain a clean checkout/artifact set without executing the large installer. The container cannot resolve GitHub DNS; continue through an authorized local Windows analysis host if needed.
-- [ ] Record local SHA-256 hashes, versions, signatures and PE architecture. Repository Git blob IDs are documented in audit/artifact-manifest.md but are not file SHA-256 hashes.
+- [ ] Verify signatures and local runtime identity; SHA-256, assembly versions, MVIDs and PE metadata from static analysis are recorded in audit/artifact-manifest.md.
 - [ ] Determine launch chain, child processes, loaded modules, active config path and runtime version.
 - [ ] Snapshot a clean VM and establish restore procedure.
 
 ## Static analysis
 - [ ] Build REA from its own folder in a separate workspace; record environment and test output.
 - [x] Perform read-only PE/CLI metadata triage on the service and contracts DLL; selected service CIL bodies were decoded in-memory. Full REA build and complete inspection remain pending.
-- [ ] Decompile selected managed methods where needed and bind findings to exact SHA-256/MVID/method identities.
-- [ ] Trace process and foreground observation, process lineage, ETW/Event Log, registry policy, enforcement, IPC and alert/report paths.
+- [x] Run exact-build member/CIL static inventory and record SHA-256/MVID in audit/static-application-analysis.md and audit/static-service-analysis.md. Full source-like C# decompilation remains optional/pending.
+- [x] Initial static inventory confirms process/watchdog, foreground/window/display, integrity/health and log-protection component groups; detailed lifecycle and report-path mapping remains open.
 - [ ] Confirm or reject correspondence between legacy XUL sources and supplied Windows build.
 
 ## Dynamic validation in an isolated lab
@@ -50,3 +50,8 @@ Statuses: [x] done, [ ] not done, [?] blocked/needs evidence.
 ## Scope note
 This branch is for authorized assessment and reproducible detection-gap validation. It will not contain a one-click stealth toggle, alarm-suppression patch, log tampering, or operational procedures for hiding prohibited activity from a live invigilator or remote proctor.
 \n## Progress update — 2026-10-09\n- Read-only static check of service PE/CLI and selected CIL methods completed; see audit/static-service-analysis.md.\n- Main SecureExamBrowser.exe remains unanalyzed because the connected GitHub file path returned an empty base64 body for this larger binary.\n- No Windows runtime tests have run; do not report a bypass found or disproven.\n
+## Progress update — 2026-10-09 (REA CI)
+- [x] Add .github/workflows/seb-static-audit.yml; GitHub Actions run 37900802418 succeeded.
+- [x] Download and inspect the static report artifact; update F-008/F-009 in findings.md.
+- [ ] Create Windows VM snapshot and run a benign known-positive control.
+- [ ] Validate detector activation and alert/report flow dynamically; current tests do not run SEB or test a bypass.
