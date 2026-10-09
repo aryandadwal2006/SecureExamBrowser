@@ -1,0 +1,51 @@
+# Audit TODO
+
+**Last updated:** 2026-10-09  
+**Branch:** redteam/monitoring-audit-2026-10-09
+
+Statuses: [x] done, [ ] not done, [?] blocked/needs evidence.
+
+## Repository reconnaissance
+- [x] Confirm repository and default branch.
+- [x] Create a separate investigation branch; leave main untouched.
+- [x] Inventory root artifacts and map rea-main.
+- [x] Read root competition README and REA README / managed-code analysis docs.
+- [x] Inspect relevant legacy XUL modules, configs and service log.
+- [x] Draft persistent plan, TODO, memory, architecture and initial findings documents.
+- [ ] Verify audit files are visible on GitHub and branch head is correct.
+
+## Target identification
+- [ ] Obtain a clean checkout/artifact set without executing the large installer.
+- [ ] Record hashes, versions, signatures and PE architecture for application, service, contracts DLL, runtime and relevant libraries.
+- [ ] Determine launch chain, child processes, loaded modules, active config path and runtime version.
+- [ ] Snapshot a clean VM and establish restore procedure.
+
+## Static analysis
+- [ ] Build REA from its own folder in a separate workspace; record environment and test output.
+- [ ] Run managed artifact/member/native-boundary inspection on each admitted .NET artifact.
+- [ ] Decompile selected managed methods where needed and bind findings to exact SHA-256/MVID/method identities.
+- [ ] Trace process and foreground observation, process lineage, ETW/Event Log, registry policy, enforcement, IPC and alert/report paths.
+- [ ] Confirm or reject correspondence between legacy XUL sources and supplied Windows build.
+
+## Dynamic validation in an isolated lab
+- [ ] Establish a known-positive instrumentation/control case.
+- [ ] Capture independent process/session telemetry before, during and after a synthetic exam session.
+- [ ] Run benign cases in audit/test-matrix.md and align raw timestamps.
+- [ ] Investigate mismatches between OS events, UI, service log and authorized test-server records.
+- [ ] Repeat candidate findings after restoring a clean snapshot.
+- [ ] Mark unsupported tests and unavailable channels explicitly instead of treating them as passes.
+
+## Online and human-observation boundaries
+- [ ] Inventory client code and requests only in an authorized test session.
+- [ ] Map observable visibility/focus, page lifecycle, permissions, screenshots/camera and network events where applicable.
+- [ ] Document server-side and independent-agent behaviour that cannot be observed.
+- [ ] Record a visual-observation assessment without implementing concealment or telemetry suppression.
+
+## Findings and reporting
+- [ ] Update findings.md with evidence IDs and confidence.
+- [ ] Update memory.md after material discoveries.
+- [ ] Update this TODO after each work session.
+- [ ] Produce final report with build identity, test matrix, verified findings, limitations and defensive remediations.
+
+## Scope note
+This branch is for authorized assessment and reproducible detection-gap validation. It will not contain a one-click stealth toggle, alarm-suppression patch, log tampering, or operational procedures for hiding prohibited activity from a live invigilator or remote proctor.
