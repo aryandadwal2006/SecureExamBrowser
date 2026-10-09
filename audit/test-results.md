@@ -80,6 +80,6 @@ The current HirePro privacy policy names possible video/audio/live-image, device
 
 
 ## R-012 — Local inventory script syntax (Windows CI)
-- **Result:** PowerShell parser step passed; the script was not executed by CI.
-- **Evidence:** [Workflow run 37909760671](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37909760671).
+- **Result:** PowerShell parser step passed and both jobs in the workflow completed successfully. The script itself was not executed by CI.
+- **Evidence:** [Successful workflow run 37909760671](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37909760671).
 - **Limit:** This validates script syntax only. It does not inventory the user's machine and does not test SEB runtime behavior.
