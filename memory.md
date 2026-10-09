@@ -218,3 +218,10 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - Authenticode UnknownError on JSON/XML config files is not a useful signature assessment; use SHA-256 for text configuration. Do not treat it as a malware indicator.
 - The first local script omitted `chrome.exe` and common dependency names despite searching Chromium roots. Script now adds chrome.exe, chrome.dll and key runtime DLLs. Need rerun only after current workflow validates it.
 - The user's installed core SEB files match the current public signed MSI; no mismatch found in reported hashes. Actual Chromium executable, effective assessment configuration and runtime capture/report behavior still unknown.
+
+
+## Package binary inventory and second local check
+- Updated CI run: https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37925812683; package binary inventory artifact ID 11614615520.
+- The separately published Chromium MSI contains `Chromium/chromium-135-0-7049-96.exe`, 102,636,032 bytes, SHA-256 `1b3c640153c82eb40074e4bf55877a90ea5f2ea3d426e5de4eddc0c4bc09ea16`, exactly the user's installed/repo `hirepro-chromium-installer.exe` hash. The packaged nested installer is unsigned itself but is contained within the validly signed MSI.
+- That MSI extraction does not include post-install `chrome.exe` layout. Updated the local collector to include `chrome.exe`, `chrome.dll` and common runtime dependencies. Current script blob ID: `7dfc24f0a862c38058f67422bdb6276db4d5ef8d`.
+- Need one more local inventory run only to confirm installed Chromium binaries; do not collect active config contents or run any target software.
