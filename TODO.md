@@ -92,4 +92,5 @@ This branch is for authorized assessment and reproducible detection-gap validati
 - [x] Added a Windows CI comparison job for the public MSI packages and repository artifacts; it downloads and inspects but does not execute them.
 - [x] Review Windows artifact from run [37906017253](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906017253); the public MSIs are signed, while the repo Chromium EXE is unsigned and differs by hash/size.
 
-- [ ] Compare the contents/embedded file manifest of the signed public SEB MSI to repository app/service/DLL hashes without installing it.
+- [x] Extract the signed public SEB MSI without installing it and compare hashes for app EXE, service EXE, contracts DLL, and bundled Chromium EXE. All four match exact package payload files.\n- [ ] Expand the comparison to every top-level EXE/DLL before concluding all dependencies match.
+
