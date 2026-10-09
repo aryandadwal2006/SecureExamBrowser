@@ -24,6 +24,7 @@
 - [legacy-source-package-comparison.md](legacy-source-package-comparison.md) — canonical Git blob hashes for 12 selected legacy XUL/config assets, all matched against the signed MSI.
 - [config-profile-analysis.md](config-profile-analysis.md) — configuration source-selection logic and capture-evidence limitations.
 - [defensive-hardening-recommendations.md](defensive-hardening-recommendations.md) — recommended controls and authorized test cases for maintainers.
+- [scripts/README.md](scripts/README.md) — local inventory script usage, only needed if local installed-file identity must be checked.
 - [platform-observations.md](platform-observations.md) — screenshots, launch handoff, recording notice, policy scope and uncertainty.
 - [test-matrix.md](test-matrix.md) — controlled test cases and verdict rules.
 
@@ -33,7 +34,7 @@
 - The public SEB 2.0.2 MSI validates under Authenticode as signed by Hirepro Consulting Pvt Ltd.
 - The Windows runner extracted that MSI without installing it and found exact SHA-256 matches for all 39 root-level repository EXE/DLL files; zero mismatches.
 - The user-visible mock-assessment UI states video/audio are recorded. The public policy lists potential proctoring data categories. Legacy source includes browser-window screenshot capability, but packaged source correspondence and session-specific screenshot/full-desktop capture remain unknown.
-- No SEB runtime test has run; no bypass has been reproduced or ruled out.
+- No SEB runtime test has run; no bypass has been reproduced or ruled out. A read-only local inventory script is prepared but not needed for further static work.
 
 ## Reproducibility and scope
 
