@@ -25,8 +25,8 @@ Statuses: [x] done, [ ] not done, [?] blocked/needs evidence.
 - [x] Build REA in GitHub Actions using rea-main/.nvmrc and the pinned lockfile; build and fast checks passed.
 - [x] Perform read-only PE/CLI metadata triage on the service and contracts DLL, then run REA artifact/member/native-boundary inspection on the main app, service and contracts DLL.
 - [x] Run exact-build member/CIL static inventory and record SHA-256/MVID in audit/static-application-analysis.md and audit/static-service-analysis.md. Full source-like C# decompilation remains optional/pending.
-- [x] Initial static inventory confirms process/watchdog, foreground/window/display, integrity/health and log-protection component groups; detailed lifecycle and report-path mapping remains open.
-- [ ] Confirm or reject correspondence between legacy XUL sources and supplied Windows build.
+- [x] Initial inventory and selected lifecycle/call paths are documented in audit/static-application-analysis.md and audit/control-map.md; effective runtime activation/reporting remains pending.
+- [x] Confirm selected legacy XUL sources/config/startup files correspond exactly to the current signed public MSI; see audit/legacy-source-package-comparison.md.
 
 ## Dynamic validation in an isolated lab
 - [ ] Establish a known-positive instrumentation/control case.
@@ -67,7 +67,7 @@ This branch is for authorized assessment and reproducible detection-gap validati
 - [x] Added tests T-013 to T-017 for launch provenance, policy positive controls, watchdog/report delivery and authorized recording/network observation.
 - [ ] Confirm active configuration and per-session feature activation in an isolated Windows VM.
 - [ ] Correlate host/process/device events with sanitized local logs and an authorized test-server receipt.
-- [ ] Verify installer Authenticode signature/publisher on Windows; the public guide's request to disable antivirus / override Defender needs provenance verification.
+- [x] Verify Authenticode for current public SEB/Chromium MSIs; both are validly signed by Hirepro Consulting Pvt Ltd. Keep antivirus enabled and confirm any candidate-specific package with the organizer.
 
 - [x] Add a Windows-only CI job to hash the shipped executables/installer and inspect Authenticode publisher/status without executing binaries.
 - [x] Review Windows provenance output from workflow run [37904465412](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37904465412); primary EXE signature is valid, service/contract/installer are unsigned; see audit/artifact-manifest.md.
@@ -75,7 +75,7 @@ This branch is for authorized assessment and reproducible detection-gap validati
 
 ## Progress update — 2026-10-09 (Windows provenance)
 - [x] Windows-only hash/signature job completed for the four repository artifacts; see audit/artifact-manifest.md and finding F-014.
-- [ ] Obtain/verify expected signer/hash for unsigned service, contract DLL and repo Chromium installer; absence of a signature is not a malware verdict.
+- [x] Match service, contract DLL and repo Chromium bootstrapper byte-for-byte to files extracted from the signed public SEB MSI; see audit/vendor-package-comparison.md. Their standalone unsigned status alone is not evidence of tampering.
 - [ ] Confirm whether the repository's large Chromium installer matches any file delivered by the email invitation; currently unverified.
 
 
@@ -100,13 +100,13 @@ This branch is for authorized assessment and reproducible detection-gap validati
 ## Progress update — 2026-10-09 (full package comparison)
 - [x] Compared all 39 root-level EXE/DLL files to the signed public SEB 2.0.2 MSI extracted without installation: 39 exact hash matches, zero mismatches.
 - [x] Both jobs in [workflow run 37906673190](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906673190) completed successfully.
-- [ ] Only runtime identity/control validation remains; repository-to-vendor package provenance is established for the current public SEB MSI snapshot.
+- [x] Repository-to-vendor package provenance is established for the current public SEB MSI snapshot (39/39 root EXE/DLL and 12/12 selected XUL/config assets match). Runtime identity/control validation is the remaining execution gap.
 
 
 ## Progress update — 2026-10-09 (static control map)
 - [x] Consolidated session startup, process/device/watchdog/integrity, local IPC, log/reporting, online-proctoring and human-observation layers in audit/control-map.md.
 - [x] Prioritized remaining checks by required evidence and clearly separated static evidence from runtime assumptions.
-- [ ] Continue static validation of configuration and message/data-flow relationships without constructing a suppression or concealment patch.
+- [x] Review available legacy configuration/source and map message/reporting paths at a high level; see audit/config-profile-analysis.md and audit/control-map.md. Effective per-session settings remain unknown.
 
 
 ## Hash manifest
@@ -119,7 +119,7 @@ This branch is for authorized assessment and reproducible detection-gap validati
 - [ ] Only claim actual screen capture if supported by a concrete call path and/or authorized runtime evidence; keep current status unknown.
 
 - [x] Inspect legacy screenshot module and screenshot-related message handler; record as source-level capability with correspondence/activation unknown (F-018).
-- [ ] Resolve legacy XUL-to-package correspondence and any actual screenshot behavior only via authorized runtime/organizer evidence.
+- [x] Resolve selected legacy XUL source-to-package correspondence: 12 of 12 selected assets exact match. Actual session screenshot activation/scope remains unknown and requires authorized runtime evidence.
 
 - [x] Add audit/README.md as the navigation index for continuation.
 
@@ -135,3 +135,10 @@ This branch is for authorized assessment and reproducible detection-gap validati
 - [x] Add recommendations for signed/effective configuration, fail-closed monitor lifecycle, event correlation, local IPC hardening, package integrity, privacy clarity and regression validation in audit/defensive-hardening-recommendations.md.
 - [x] Add audit/config-profile-analysis.md explaining why checked-in profiles do not establish the live assessment configuration.
 - [ ] Runtime test remains pending: requires a disposable Windows VM and an explicitly authorized mock/test tenant. Do not use CI to run the actual assessment client.
+
+
+## Latest progress — 2026-10-09 (canonical source + local inventory prep)
+- [x] Workflow run [37908852563](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37908852563) succeeded on both jobs, including corrected canonical Git blob comparison.
+- [x] Add a read-only local inventory script at audit/scripts/Collect-LocalSEBInventory.ps1. It collects only hashes/file metadata/signature status and avoids reading config contents, process arguments, tokens, logs or recordings.
+- [x] Add a Windows PowerShell parser check so the local inventory script is syntax-validated but not run in CI.
+- [ ] Local inventory is not yet needed for further static review. Only request it if the next phase must confirm the user's installed copy against the public package.
