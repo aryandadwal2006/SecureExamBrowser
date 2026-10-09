@@ -79,3 +79,36 @@ REA static PE/CLI, member/CIL and managed/native-boundary inventory completed fo
 - **Test output:** 321 test files passed, 1 skipped; 3,450 tests passed, 4 skipped. This validates the REA toolchain and its tests, not SecureExamBrowser's runtime security.
 - **Evidence:** [Run and artifact](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37901362719).
 - **Next action:** Review the uploaded static reports, then perform isolated Windows runtime validation.
+
+
+## F-010 — HirePro launch prompt and recording notice are separate platform layers
+- **Status:** Observed / platform-specific behaviour documented; per-session capture not verified.
+- **Evidence:** User-supplied screenshots show the browser asking permission to open Secure Exam Browser, the running client labelled 2.0.2 and a UI notice that video/audio are recorded for integrity review. The public HirePro Accenture SEB page independently documents the launch handoff and warns that SEB closes running applications and the test cannot be left without exiting.
+- **References:** [HirePro Accenture SEB page](https://securetest.hirepro.in/accenture/); [HirePro privacy policy](https://hirepro.in/privacy-policy/); detailed notes in [audit/platform-observations.md](audit/platform-observations.md).
+- **Confidence:** High for visible screenshot/public-page text; unknown for actual camera/microphone data flow, remote alert rules and human review in this individual session.
+- **Interpretation:** The “Open Secure Exam Browser?” dialog in the screenshot is a browser external-application launch prompt, not by itself a Windows UAC privilege-elevation dialog.
+- **Not established:** That accepting or dismissing that prompt affects other detectors or human observation.
+
+## F-011 — Main-app call edges connect monitoring routines to session lifecycle
+- **Status:** Static analysis completed / dynamic validation pending.
+- **Observation:** The exact-build call graph links `OpenSEBForm` to `CheckProhibitedProcesses`, `MonitorProcesses` and `SEBXULRunnerWebSocketServer.StartServer`. Process/display/high-data watchers reference heartbeat/tick-report methods; the executable-integrity watchdog references verification and check-status reporting.
+- **Artifact:** `SecureExamBrowser.exe`, SHA-256 `9b7c84cb4d5be544592696177cf9ee576bc01fbbac5f1d7ba74e0676798dd38e`, MVID `704e0878-fd78-47f7-922f-49d7ed0a9f18`.
+- **Evidence:** [audit/static-application-analysis.md](audit/static-application-analysis.md); [successful REA CI run](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37901362719).
+- **Confidence:** High that these static call edges exist in the identified artifact; runtime activation and outcome unknown.
+- **Impact:** These lifecycle/reporting paths need to be included in any comprehensive coverage assessment, not just the WCF service method.
+- **Next action:** Validate benign documented positive controls and correlate independent Windows evidence with app/service logs and authorized endpoint receipts.
+- **Not established:** Complete detector effectiveness, event delivery for the user's session, or a bypass.
+
+## F-012 — Published privacy policy includes proctoring recordings and device/session data
+- **Status:** Public-policy observation; data use in this specific assessment not independently measured.
+- **Observation:** HirePro's privacy policy lists video/audio recording and captured live images through proctored assessments, device information, IP address/derived location, assessment performance, pages accessed and links clicked among possible service data. It describes processing on behalf of a customer/partner under that party's instructions.
+- **Evidence:** [HirePro privacy policy](https://hirepro.in/privacy-policy/), updated 13 January 2026; [audit/platform-observations.md](audit/platform-observations.md).
+- **Next action:** Keep platform and local-app observations separate; ask the assessment organizer for the specific session's notice, retention and contact for data-processing questions.
+- **Not established:** Which optional collection categories were enabled for this session or who reviewed the footage.
+
+## F-013 — Installer guidance asks users to disable antivirus / override Defender warning
+- **Status:** Informational supply-chain caution, not a malware finding.
+- **Observation:** The public HirePro Accenture SEB landing page lists antivirus disabled as an installation requirement and instructs users to choose “More Info” / “Run Anyway” if Windows Defender warns during installation.
+- **Evidence:** [Public installation guide](https://securetest.hirepro.in/accenture/).
+- **Risk:** Broadly disabling protection or overriding a warning without verifying artifact provenance increases endpoint risk.
+- **Recommendation:** Independently verify publisher/signature and request an official hash or confirmation from the employer/HirePro if provenance is unclear. This observation alone does not show the installer is malicious.
