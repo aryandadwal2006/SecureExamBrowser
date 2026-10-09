@@ -171,3 +171,9 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - User screenshots explicitly show video/audio recording notice.
 - Do NOT claim the entire desktop is continuously captured based only on that policy or the local display watchdog. Webcam imagery, page/visibility telemetry, host display state and desktop pixel capture are different things.
 - Actual full-screen capture for this session: unknown pending call path/runtime evidence.
+
+
+## Legacy screenshot-code note — 2026-10-09
+- `SebScreenshot.jsm` contains a routine which renders a supplied browser window into canvas/image data; `SebServer.jsm` has a screenshot-data handler.
+- This establishes browser-window screenshot capability in the checked-in legacy XUL source only. It does not prove active use in packaged SEB 2.0.2, continuous capture, whole desktop capture or remote upload.
+- See finding F-018 and audit/platform-observations.md.
