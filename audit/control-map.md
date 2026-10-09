@@ -64,3 +64,10 @@ The key measurement is the first point at which expected evidence disappears. An
 5. **Platform-specific notice:** collect only permitted, redacted network metadata from an authorized mock session and distinguish client-visible telemetry from server-only rules.
 
 No bypass has been reproduced or ruled out. The control map is intended to turn static leads into a measurable, defensive test plan.
+
+
+## Local message-schema privacy note
+
+The statically inspected `SEBXULMessage` class has a schema with categories of fields for host/device identity and characteristics, display/camera state, device-change counts, process-handling summaries, blocked-domain summaries, watcher health and logger health. This is schema-level evidence only: it does not establish that every field is populated, that every message is sent in a given session, or that the local native/browser IPC message is forwarded to HirePro. The current analysis cannot infer that server-side collection occurs just because a field exists in this local message class.
+
+For session-specific data flow, only use authorized test-session network metadata and organizer-provided server receipt IDs. Do not infer “uploaded” from “field declared.”
