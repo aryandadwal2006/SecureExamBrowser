@@ -122,3 +122,10 @@ This branch is for authorized assessment and reproducible detection-gap validati
 - [ ] Resolve legacy XUL-to-package correspondence and any actual screenshot behavior only via authorized runtime/organizer evidence.
 
 - [x] Add audit/README.md as the navigation index for continuation.
+
+
+## Progress update — 2026-10-09 (canonical XUL source comparison)
+- [x] Fix Windows source/package comparison to hash canonical Git blobs rather than CRLF-transformed worktree files.
+- [x] Confirm all 12 selected legacy source/config/startup assets exactly match files extracted from the signed public SEB MSI; see audit/legacy-source-package-comparison.md.
+- [x] Document config variability and distinguish source presence from runtime activation in audit/config-profile-analysis.md.
+- [ ] Obtain effective configuration and independently validate expected positive controls in an authorized Windows VM. No local session is available to this environment.
