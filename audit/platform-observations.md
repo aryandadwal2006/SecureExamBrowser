@@ -73,3 +73,15 @@ Use a test VM and a synthetic or explicitly authorized test session only.
 A Windows CI preflight reports the repository's `SecureExamBrowser.exe` as Authenticode-valid with signer `Hirepro Consulting Pvt Ltd`. In contrast, the checked-out service executable, contracts DLL and `hirepro-chromium-installer.exe` are not digitally signed according to that check. This is a reason to request trusted expected hashes/publishers and inspect the installed file set; it is not proof that an unsigned component is malicious. The repository's large Chromium installer is not proven to be the exact file downloaded from the email link.
 
 See [audit/artifact-manifest.md](artifact-manifest.md) and [F-014 in findings.md](../findings.md).
+
+
+## 8. Distinguish public package variants
+
+The current general HirePro SEB landing page, [https://securetest.hirepro.in/](https://securetest.hirepro.in/), says to install both Chromium and Secure Exam Browser and links to these publicly hosted packages:
+
+- [Chromium 1.0.1 MSI](https://securetest.hirepro.in/s3_cached/hirepro-content/hirepro/paas/Chromium_1.0.1_signed.msi)
+- [Secure Exam Browser 2.0.2 MSI](https://securetest.hirepro.in/s3_cached/hirepro-content/hirepro/paas/SecureExamBrowserInstaller_en_2.0.2.msi)
+
+The Accenture-specific landing page at [https://securetest.hirepro.in/accenture/](https://securetest.hirepro.in/accenture/) currently displays a SEB download and the launch handoff, but the generic site displays both packages. The instructions also vary by tenant: the public Windows install iframe says the Chromium MSI may be shared with the candidate.
+
+The repository contains `hirepro-chromium-installer.exe`, which has a different extension and filename from the currently linked `Chromium_1.0.1_signed.msi`. This is not enough to identify it as the same payload or a malicious file; the next workflow downloads the public MSIs and compares their SHA-256 and Authenticode metadata with the checked-out artifacts. It never executes the packages.
