@@ -83,3 +83,9 @@ The current HirePro privacy policy names possible video/audio/live-image, device
 - **Result:** PowerShell parser step passed and both jobs in the workflow completed successfully. The script itself was not executed by CI.
 - **Evidence:** [Successful workflow run 37909760671](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37909760671).
 - **Limit:** This validates script syntax only. It does not inventory the user's machine and does not test SEB runtime behavior.
+
+
+## R-013 — User-provided installed-file inventory compared to package manifest
+- **Result:** Core reported file hashes match existing repository/public MSI evidence: main EXE, service EXE, contracts DLL, bundled Chromium bootstrapper, `config.json`, `config.SEB22.json`, `default.json`, main EXE .config and service .config package copy.
+- **Evidence:** [audit/local-install-comparison.md](local-install-comparison.md); [current public package comparison](vendor-package-comparison.md).
+- **Limit:** First inventory script did not search for `chrome.exe`; the installed Chromium browser executable and associated runtime DLLs remain unmeasured. The inventory did not reveal effective session configuration or runtime behavior.
