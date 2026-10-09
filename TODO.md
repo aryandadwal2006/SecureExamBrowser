@@ -162,7 +162,8 @@ This branch is for authorized assessment and reproducible detection-gap validati
 - [x] Add an all-binary inventory for the extracted public Chromium and SEB MSIs (artifact 11614615520). This inventories package payloads only and does not execute them.
 
 - [x] Updated CI run [37925812683](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37925812683) passed both jobs: REA fast test/static scan and Windows artifact provenance/package inventory; current local collector parses successfully.
-- [ ] Rerun updated inventory to record hashes of installed `chrome.exe`, `chrome.dll` and runtime DLLs. Verified collector blob: `7dfc24f0a862c38058f67422bdb6276db4d5ef8d`.
+- [x] Compare installed `chrome.exe`, `chrome.dll`, `chrome_elf.dll` and other reported Chromium binaries against the official nested payload: 11/11 reported files match (see audit/local-install-comparison.md).
+- [ ] Optional completeness check: collect hashes for `chrome_wer.dll`, `dxcompiler.dll`, `dxil.dll`, and `eventlog_provider.dll`; the collector did not target these four names.
 
 - [x] Explore nested Chromium installer with 7-Zip without executing it; initial extraction returned exit code 0 but no EXE/DLL results.
 - [x] Record and fix a CI tooling failure where Chocolatey could not resolve pinned lessmsi 2.12.9; the workflow now installs the currently available package version instead.
