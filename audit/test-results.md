@@ -77,3 +77,9 @@ The current HirePro privacy policy names possible video/audio/live-image, device
 ## R-011 — Source/config interpretation and hardening review
 - **Result:** Documentation checkpoint complete. The active config selection/merge semantics and the limits of sample profiles are recorded in [config-profile-analysis.md](config-profile-analysis.md); proposed defensive controls and test acceptance criteria are in [defensive-hardening-recommendations.md](defensive-hardening-recommendations.md).
 - **Limit:** This creates no new runtime evidence. The assessment's effective config and event path remain unknown.
+
+
+## R-012 — Local inventory script syntax (Windows CI)
+- **Result:** PowerShell parser step passed; the script was not executed by CI.
+- **Evidence:** [Workflow run 37909760671](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37909760671).
+- **Limit:** This validates script syntax only. It does not inventory the user's machine and does not test SEB runtime behavior.
