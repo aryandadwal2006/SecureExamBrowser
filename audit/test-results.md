@@ -40,3 +40,9 @@
 ## New provenance subtask
 
 Run [37906017253](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906017253) downloaded both public HirePro MSI packages, collected SHA-256 plus Authenticode signer/status for those files and the repository artifacts, and uploaded the JSON report. The Windows job succeeded; the REA job was still running when this report was compiled. Results: both public MSIs have valid signatures; the repo Chromium EXE is unsigned and differs from the public Chromium MSI by hash and size. See [vendor-package-comparison.md](vendor-package-comparison.md).
+
+
+## R-008 — Extract and compare current signed MSI payload (completed)
+- **Result:** Passed. The Windows job extracted the signed public SEB MSI without installation and found exact SHA-256 matches for all four examined root artifacts.
+- **Evidence:** [Workflow run 37906360710](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906360710); [component comparison artifact](https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906360710/artifacts/11604692503).
+- **Limit:** This confirms correspondence to the current public installer contents, not identity of files on the user's machine. Other root-level DLLs remain to be compared.
