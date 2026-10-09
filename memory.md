@@ -155,3 +155,7 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - Static references establish code structure and call relationships, not runtime activation. Online proctoring data flow and human observation remain separate channels.
 - Current public signed SEB MSI contains exact matches for all 39 root EXE/DLL files from the repo; this establishes repository/package provenance for the current public package, not the user's installed identity.
 - No live runtime or candidate-session test is done. Next is static configuration/message-flow review; later requires authorized Windows VM evidence.
+
+
+## Full hash table
+- Added audit/vendor-component-hashes.md with each of the 39 root-level EXE/DLL file names, byte lengths, SHA-256, matching extracted MSI path and exact-match flag. All 39 match.
