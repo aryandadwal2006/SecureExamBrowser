@@ -74,3 +74,10 @@ The main executable also validates standalone Authenticode, and the enclosing pu
 
 
 Complete per-file table: [audit/vendor-component-hashes.md](vendor-component-hashes.md). It records all 39 repository root-level EXE/DLL filenames, lengths, SHA-256 values, extracted MSI paths, and exact-match result.
+
+
+## User's installed-file identity check
+
+The user-provided inventory reports exact hash matches for the installed core SEB EXE/service/DLL/Chromium bootstrapper and three XUL config assets, plus the main application .config, against the current repository/public MSI artifacts. The service .config's installed hash matches the packaged 186-byte Windows copy; its 180-byte canonical Git blob differs only due to line-ending conversion. Details and all reported hashes are in [audit/local-install-comparison.md](local-install-comparison.md).
+
+The inventory did not include `chrome.exe`, so actual installed Chromium binary and dependency hashes remain unverified until the corrected script is rerun.
