@@ -52,3 +52,10 @@
 
 ## Method
 CIL decoding used the opcode definitions in rea-main/src/dotnet/ManagedMemberInstructionDecoder.ts as a reference while inspecting the selected method bodies. This was not a full REA build/test run and was not a substitute for an independent decompiler or dynamic validation.
+
+
+## Follow-up context — main application is now statically inventoried
+
+A separate REA run inspected the main `SecureExamBrowser.exe` and found multiple process/window/display, clipboard, camera/screen-sharing, executable-integrity, watchdog-health and log-protection subsystems in its managed type inventory. This does not contradict the narrow `IsSebRunning` observation above: the service method is only one component of the overall application.
+
+Do not extrapolate that method to the main GUI executable. See [main application static analysis](static-application-analysis.md). All findings remain static observations pending runtime activation and end-to-end event checks.
