@@ -120,3 +120,5 @@ This branch is for authorized assessment and reproducible detection-gap validati
 
 - [x] Inspect legacy screenshot module and screenshot-related message handler; record as source-level capability with correspondence/activation unknown (F-018).
 - [ ] Resolve legacy XUL-to-package correspondence and any actual screenshot behavior only via authorized runtime/organizer evidence.
+
+- [x] Add audit/README.md as the navigation index for continuation.
