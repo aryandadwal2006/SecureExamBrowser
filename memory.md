@@ -114,3 +114,12 @@ See plan.md, TODO.md, findings.md, audit/architecture.md, audit/test-matrix.md, 
 - The /accenture/ page differs and displays the SEB download + launch handoff. Current tenant/version differences are possible.
 - Repo `hirepro-chromium-installer.exe` is a distinct filename/extension and unsigned. Don't equate it to the public signed MSI or to the candidate's installer unless hashes prove that relationship.
 - Updated Windows workflow run 37906017253 downloads public MSI files and gathers SHA-256/Authenticode without executing; check its artifact/result before reporting a conclusion.
+
+
+## Public package comparison completed — 2026-10-09
+- Workflow run https://github.com/aryandadwal2006/SecureExamBrowser/actions/runs/37906017253 succeeded in its Windows package/provenance job; artifact ID 11604756323.
+- Official current `Chromium_1.0.1_signed.msi`: 103,059,456 bytes; SHA-256 `946557de73da7aaccda17f9b1af63716492058069cfd6bdd709a825f7666d67f`; Authenticode Valid; signer Hirepro Consulting Pvt Ltd.
+- Official current `SecureExamBrowserInstaller_en_2.0.2.msi`: 111,493,632 bytes; SHA-256 `ab22021acbfb81e30ff191d57772e616ec4fd971a88016fe6fd972f9cb322f42`; Authenticode Valid; signer Hirepro Consulting Pvt Ltd.
+- Repo `hirepro-chromium-installer.exe`: 102,636,032 bytes; SHA-256 `1b3c640153c82eb40074e4bf55877a90ea5f2ea3d426e5de4eddc0c4bc09ea16`; NotSigned; not the same byte identity as the current public MSI.
+- Repo `SecureExamBrowser.exe` signed by same signer thumbprint as current official MSIs; the service exe and contracts DLL are unsigned individually. This does not establish whether installer package signing covers those internal files or whether the exact candidate build matches.
+- See audit/vendor-package-comparison.md. Next high-value read-only comparison is package manifest/contained file hashes, not executing the installer.
