@@ -142,3 +142,6 @@ This branch is for authorized assessment and reproducible detection-gap validati
 - [x] Add a read-only local inventory script at audit/scripts/Collect-LocalSEBInventory.ps1. It collects only hashes/file metadata/signature status and avoids reading config contents, process arguments, tokens, logs or recordings.
 - [x] Add a Windows PowerShell parser check so the local inventory script is syntax-validated but not run in CI.
 - [ ] Local inventory is not yet needed for further static review. Only request it if the next phase must confirm the user's installed copy against the public package.
+
+- [x] Prepare a safe local-file inventory script for a future installed-file identity check; syntax parser passed on Windows CI. It has not been run on the user's machine.
+- [x] Document exact usage in audit/scripts/README.md. Do not ask the user to run it until local installed-file identity becomes the next required evidence.
