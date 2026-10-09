@@ -82,3 +82,7 @@ See findings.md, audit/static-application-analysis.md, audit/static-service-anal
 
 ## Platform-flow follow-up
 The user-provided screenshots and HirePro public page have been documented in audit/platform-observations.md. The browser external-application handoff, SEB's app-closing notice and the visible video/audio recording notice are separate from Windows service policy. Static main-client call edges connect startup/session paths to process monitoring and watchdog/integrity reporting, but runtime activation and remote receipts remain unverified.
+
+
+## Static control map
+The system-level map is now consolidated in [audit/control-map.md](audit/control-map.md), including each control family, observable/expected output, unverified runtime behavior, and prioritized validation steps. The static phase can be deepened through configuration/data-flow inspection; Windows runtime claims remain blocked pending a disposable lab.
